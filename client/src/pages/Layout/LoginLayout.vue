@@ -28,9 +28,9 @@
           <el-button type="primary" @click="submitForm('loginForm')"
             >Login</el-button
           >
-          <el-button type="secondary" @click="forgotPassword"
+          <!-- <el-button type="secondary" @click="forgotPassword"
             >Forgot Password</el-button
-          >
+          > -->
         </el-form-item>
       </el-form>
     </el-card>
