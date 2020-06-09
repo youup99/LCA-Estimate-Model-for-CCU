@@ -1,16 +1,12 @@
 // Cards
-import ChartCard from "./Cards/ChartCard.vue";
-import NavTabsCard from "./Cards/NavTabsCard.vue";
-import StatsCard from "./Cards/StatsCard.vue";
 
 // Forms
 import GeneralAssumptionsForm from "./Forms/GeneralAssumptionsForm.vue";
 import PathwayForm from "./Forms/PathwayForm.vue";
 
 // Tables
-import NavTabsTable from "./Tables/NavTabsTable.vue";
-import OrderedTable from "./Tables/OrderedTable.vue";
-import SimpleTable from "./Tables/SimpleTable.vue";
+import PathwayCalc from "./Tables/Calculation/PathwayCalc.vue";
+import Figure1Table from "./Tables/Figure1Table.vue";
 
 // Charts
 import Figure1Chart from "./Charts/figure1/Figure1Chart.vue";
@@ -21,12 +17,8 @@ import Figure4Chart from "./Charts/figure4/Figure4Chart.vue";
 export {
     GeneralAssumptionsForm,
     PathwayForm,
-    ChartCard,
-    NavTabsCard,
-    StatsCard,
-    NavTabsTable,
-    OrderedTable,
-    SimpleTable,
+    PathwayCalc,
+    Figure1Table,
     Figure1Chart,
     Figure2Chart,
     Figure3Chart,

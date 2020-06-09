@@ -99,15 +99,15 @@ export const firstChartSettings = {
             text: "Emissions (kg CO2eq emitted/kg CO2 converted)",
         },
         stackLabels: {
+            // enabled: true,
             style: {
-                fontWeight: "bold",
-                color:
-                // theme
-                    (Highcharts.defaultOptions.title.style &&
-                        Highcharts.defaultOptions.title.style.color) ||
-                    "gray",
-            },
-        },
+                fontWeight: 'bold',
+                color: ( // theme
+                    Highcharts.defaultOptions.title.style &&
+                    Highcharts.defaultOptions.title.style.color
+                ) || 'gray'
+            }
+        }
     },
     legend: {
         align: "center",
@@ -120,29 +120,42 @@ export const firstChartSettings = {
         shadow: false,
     },
     tooltip: {
-        headerFormat: "<b>{point.x}</b><br/>",
-        pointFormat: "{series.name}: {point.y}",
+        formatter: function() {
+            var sum = 0,
+                cont = this,
+                series = cont.series.chart.series,
+                each = Highcharts.each;
+            each(series, function(p, i) {
+                each(p.data, function(ob, j) {
+                    if (cont.point.index === ob.x) {
+                        sum += ob.y;
+                    }
+                });
+            });
+            return '<b>' + this.x + '</b><br/>' + this.series.name + ': ' + this.y + ' <br/>' +
+                'Total: ' + sum.toFixed(3);
+        }
     },
     plotOptions: {
         column: {
-            stacking: "normal",
+            stacking: "normal"
         },
     },
     series: [{
             name: "CO2 Converted",
-            data: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         },
         {
-            name: "Electrolysis",
-            data: [3, 4, 4, 2, 5, 3, 4, 4, 2, 5, 3, 4, 4, 2, 5, 3, 4, 4, 2],
+            name: "Hydrogen",
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         },
         {
             name: "CO2 Conversion Process",
-            data: [5, 3, 4, 7, 2, 5, 3, 4, 7, 2, 5, 3, 4, 7, 2, 5, 3, 4, 7],
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         },
         {
             name: "End Use",
-            data: [2, 2, 3, 2, 1, 2, 2, 3, 2, 1, 2, 2, 3, 2, 1, 2, 2, 3, 2],
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         },
         {
             name: "CO2 Capture Process",

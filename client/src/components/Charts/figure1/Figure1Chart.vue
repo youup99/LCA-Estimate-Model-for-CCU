@@ -51,10 +51,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { Event } from "@/event-bus";
 import Highcharts from "highcharts";
 import { firstChartSettings } from "./figure1";
 
 export default {
+  computed: {
+    ...mapState("summary", ["Figure1"]),
+  },
   data() {
     return {
       chart: null,
@@ -63,6 +68,33 @@ export default {
   },
   mounted() {
     this.chart = this.$refs.chart;
-  }
+    Event.$on("ready", () => {
+      this.calculateData();
+    });
+  },
+  methods: {
+    calculateData() {
+      var filtered = this.Figure1.filter((value) => {
+        return value.product !== "Syngas" && value.subCategory !== "PEM";
+      });
+      var co2Converted = [];
+      var hydrogen = [];
+      var co2ConversionProcess = [];
+      var endUse = [];
+      var co2CaptureProcess = [];
+      filtered.forEach((value) => {
+        co2Converted.push(parseFloat(value.co2Converted.toPrecision(3)));
+        hydrogen.push(value.electrolysis == undefined ? 0 : parseFloat(value.electrolysis.toPrecision(3)));
+        co2ConversionProcess.push(parseFloat(value.co2ConversionProcess.toPrecision(3)));
+        endUse.push(parseFloat(value.endUse.toPrecision(3)));
+        co2CaptureProcess.push(parseFloat(value.co2CaptureProcess.toPrecision(3)));
+      });
+      this.options.series[0].data = co2Converted;
+      this.options.series[1].data = hydrogen;
+      this.options.series[2].data = co2ConversionProcess;
+      this.options.series[3].data = endUse;
+      this.options.series[4].data = co2CaptureProcess;
+    },
+  },
 };
 </script>

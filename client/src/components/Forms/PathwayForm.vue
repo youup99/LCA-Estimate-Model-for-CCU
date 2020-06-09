@@ -12,28 +12,28 @@
           type="primary"
           icon="el-icon-refresh-right"
           @click="resetForm"
-          >Reset</el-button
+          >Reset Pathway</el-button
         >
       </div>
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="CO2 Mineralization" name="first">
-        <mineralization-form></mineralization-form>
+      <el-tab-pane label="CO2 Mineralization" name="mineralization">
+        <mineralization-form ref="mineralization"></mineralization-form>
       </el-tab-pane>
-      <el-tab-pane label="CO2 Bioconversion" name="second">
-        <bioconversion-form></bioconversion-form>
+      <el-tab-pane label="CO2 Bioconversion" name="bioconversion">
+        <bioconversion-form ref="bioconversion"></bioconversion-form>
       </el-tab-pane>
-      <el-tab-pane label="CO2 Reduction Involving Electricity" name="third">
-        <reduction-electricity-form></reduction-electricity-form
+      <el-tab-pane label="CO2 Reduction Involving Electricity" name="reductionElectricity">
+        <reduction-electricity-form ref="reductionElectricity"></reduction-electricity-form
       ></el-tab-pane>
-      <el-tab-pane label="CO2 Reduction by Hydrocarbon" name="fourth">
-        <reduction-hydrocarbon-form></reduction-hydrocarbon-form
+      <el-tab-pane label="CO2 Reduction by Hydrocarbon" name="reductionHydrocarbon">
+        <reduction-hydrocarbon-form ref="reductionHydrocarbon"></reduction-hydrocarbon-form
       ></el-tab-pane>
-      <el-tab-pane label="CO2 Reduction Involving Light" name="fifth">
-        <reduction-light-form></reduction-light-form
+      <el-tab-pane label="CO2 Reduction Involving Light" name="reductionLight">
+        <reduction-light-form ref="reductionLight"></reduction-light-form
       ></el-tab-pane>
-      <el-tab-pane label="CO2 Reduction by Hydrogen" name="sixth">
-        <reduction-hydrogen-form></reduction-hydrogen-form
+      <el-tab-pane label="CO2 Reduction by Hydrogen" name="reductionHydrogen">
+        <reduction-hydrogen-form ref="reductionHydrogen"></reduction-hydrogen-form
       ></el-tab-pane>
     </el-tabs>
   </el-card>
@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      activeName: "first",
+      activeName: "mineralization",
       activeLabel: "CO2 Mineralization",
     };
   },
@@ -66,7 +66,7 @@ export default {
       this.activeLabel = tab.label;
     },
     resetForm() {
-      // this.$refs.form.resetFields();
+      this.$refs[this.activeName].reset();
     },
   },
 };

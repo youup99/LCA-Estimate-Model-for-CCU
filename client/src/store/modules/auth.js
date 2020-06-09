@@ -26,7 +26,7 @@ const actions = {
     },
 
     logout: ({ commit, dispatch }) => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             commit('logout')
             localStorage.removeItem('user-token') // clear your user's token from localstorage
             resolve()

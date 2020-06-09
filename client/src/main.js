@@ -20,6 +20,7 @@ import App from "./App";
 
 // Element UI
 import ElementUI from 'element-ui';
+import ExTableColumn from 'ex-table-column';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // Bootstrap
@@ -60,6 +61,7 @@ router.beforeEach((to, from, next) => {
 Vue.prototype.$Chartist = Chartist;
 
 Vue.use(ElementUI);
+Vue.component(ExTableColumn.name, ExTableColumn);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueRouter);
@@ -67,12 +69,13 @@ Vue.use(MaterialDashboard);
 Vue.use(GlobalDirectives);
 Vue.use(HighchartsVue);
 
+var Event = new Vue({});
 /* eslint-disable no-new */
 new Vue({
     el: "#app",
+    store,
     render: h => h(App),
     router,
-    store,
     data: {
         Chartist: Chartist
     }

@@ -33,9 +33,12 @@
         <div class="row">
           <div class="col-md-4">
             <el-form-item label="Electricity" label-width="85px">
-              <el-select v-model="form.electricity" filterable>
+              <el-select
+                v-model="form._defaultEmission.electricity.active"
+                filterable
+              >
                 <el-option
-                  v-for="item in electricitySource"
+                  v-for="item in form._defaultEmission.electricity.list"
                   :key="item"
                   :label="item"
                   :value="item"
@@ -46,15 +49,18 @@
           </div>
           <div class="col-md-2">
             <el-form-item>
-              <el-checkbox v-model="form.electricityCustom[0]"
+              <el-checkbox v-model="form._customEmission.electricity.use"
                 >Use Custom</el-checkbox
               >
             </el-form-item>
           </div>
           <div class="col-md-6">
             <el-form-item>
-              <el-input type="number" v-model="form.electricityCustom[1]">
-                <template slot="append">kgCO2eq/<br>kWh</template></el-input
+              <el-input
+                type="number"
+                v-model="form._customEmission.electricity.value"
+              >
+                <template slot="append">kgCO2eq/<br />kWh</template></el-input
               >
             </el-form-item>
           </div>
@@ -62,9 +68,9 @@
         <div class="row">
           <div class="col-md-4">
             <el-form-item label="Heat" label-width="85px">
-              <el-select v-model="form.heat" filterable>
+              <el-select v-model="form._defaultEmission.heat.active" filterable>
                 <el-option
-                  v-for="item in heatSource"
+                  v-for="item in form._defaultEmission.heat.list"
                   :key="item"
                   :label="item"
                   :value="item"
@@ -75,13 +81,15 @@
           </div>
           <div class="col-md-2">
             <el-form-item>
-              <el-checkbox v-model="form.heatCustom[0]">Use Custom</el-checkbox>
+              <el-checkbox v-model="form._customEmission.heat.use"
+                >Use Custom</el-checkbox
+              >
             </el-form-item>
           </div>
           <div class="col-md-6">
             <el-form-item>
-              <el-input type="number" v-model="form.heatCustom[1]">
-                <template slot="append">kgCO2eq/<br>kWh</template>
+              <el-input type="number" v-model="form._customEmission.heat.value">
+                <template slot="append">kgCO2eq/<br />kWh</template>
               </el-input>
             </el-form-item>
           </div>
@@ -89,9 +97,12 @@
         <div class="row">
           <div class="col-md-4">
             <el-form-item label="Steam" label-width="85px">
-              <el-select v-model="form.steam" filterable>
+              <el-select
+                v-model="form._defaultEmission.steam.active"
+                filterable
+              >
                 <el-option
-                  v-for="item in steamSource"
+                  v-for="item in form._defaultEmission.steam.list"
                   :key="item"
                   :label="item"
                   :value="item"
@@ -102,15 +113,18 @@
           </div>
           <div class="col-md-2">
             <el-form-item>
-              <el-checkbox v-model="form.steamCustom[0]"
+              <el-checkbox v-model="form._customEmission.steam.use"
                 >Use Custom</el-checkbox
               >
             </el-form-item>
           </div>
           <div class="col-md-6">
             <el-form-item>
-              <el-input type="number" v-model="form.steamCustom[1]">
-                <template slot="append">kgCO2eq/<br>MJ</template>
+              <el-input
+                type="number"
+                v-model="form._customEmission.steam.value"
+              >
+                <template slot="append">kgCO2eq/<br />MJ</template>
               </el-input>
             </el-form-item>
           </div>
@@ -118,9 +132,12 @@
         <div class="row">
           <div class="col-md-4">
             <el-form-item label="Hydrogen" label-width="85px">
-              <el-select v-model="form.hydrogen" filterable>
+              <el-select
+                v-model="form._defaultEmission.hydrogen.active"
+                filterable
+              >
                 <el-option
-                  v-for="item in hydrogenSource"
+                  v-for="item in form._defaultEmission.hydrogen.list"
                   :key="item"
                   :label="item"
                   :value="item"
@@ -131,15 +148,18 @@
           </div>
           <div class="col-md-2">
             <el-form-item>
-              <el-checkbox v-model="form.hydrogenCustom[0]"
+              <el-checkbox v-model="form._customEmission.hydrogen.use"
                 >Use Custom</el-checkbox
               >
             </el-form-item>
           </div>
           <div class="col-md-6">
             <el-form-item>
-              <el-input type="number" v-model="form.hydrogenCustom[1]">
-                <template slot="append">kgCO2eq/<br>kg H2</template>
+              <el-input
+                type="number"
+                v-model="form._customEmission.hydrogen.value"
+              >
+                <template slot="append">kgCO2eq/<br />kg H2</template>
               </el-input>
             </el-form-item>
           </div>
@@ -147,9 +167,9 @@
         <div class="row">
           <div class="col-md-4">
             <el-form-item label="CO2 Source" label-width="85px">
-              <el-select v-model="form.co2" filterable>
+              <el-select v-model="form._defaultEmission.co2.active" filterable>
                 <el-option
-                  v-for="item in co2Source"
+                  v-for="item in form._defaultEmission.co2.list"
                   :key="item"
                   :label="item"
                   :value="item"
@@ -160,13 +180,15 @@
           </div>
           <div class="col-md-2">
             <el-form-item>
-              <el-checkbox v-model="form.co2Custom[0]">Use Custom</el-checkbox>
+              <el-checkbox v-model="form._customEmission.co2.use"
+                >Use Custom</el-checkbox
+              >
             </el-form-item>
           </div>
           <div class="col-md-6">
             <el-form-item>
-              <el-input type="number" v-model="form.co2Custom[1]">
-                <template slot="append">kgCO2eq/<br>kgCO2Captured</template>
+              <el-input type="number" v-model="form._customEmission.co2.value">
+                <template slot="append">kgCO2eq/<br />kgCO2Captured</template>
               </el-input>
             </el-form-item>
           </div>
@@ -180,7 +202,7 @@
               based on different studies to demonstrate some of the<br />
               variability associated with these pathways.
             </div>
-            <el-checkbox v-model="form.additionalValues"
+            <el-checkbox v-model="form._showAdditional"
               >Show additional literature values in Figure 1</el-checkbox
             ></el-tooltip
           ></el-form-item
@@ -190,45 +212,62 @@
   </el-card>
 </template>
 <script>
+import { mapState } from "vuex";
+import { Event } from "@/event-bus";
+
 export default {
+  computed: {
+    ...mapState("generalAssumptions", [
+      "defaultEmission",
+      "customEmission",
+      "showAdditional",
+    ]),
+  },
+  watch: {
+    form: {
+      handler(val) {
+        this.update(val);
+      },
+      deep: true,
+    },
+  },
+  created() {
+    this.form._defaultEmission = this.defaultEmission;
+    this.form._customEmission = this.customEmission;
+    this.form._showAdditional = this.showAdditional;
+  },
   data() {
     return {
       form: {
-        electricity: "Renewable",
-        heat: "Electrical heater + renewable",
-        steam: "Geothermal",
-        hydrogen: "Electrolysis + low carbon electricity",
-        co2: "Direct air capture",
-        electricityCustom: [false, 0.0],
-        heatCustom: [false, 0.0],
-        steamCustom: [false, 0.0],
-        hydrogenCustom: [false, 0.0],
-        co2Custom: [false, 0.0],
-        additionalValues: false,
+        _defaultEmission: {},
+        _customEmission: {},
+        _showAdditional: false,
       },
-      electricitySource: ["Renewable", "Natural gas", "Coal fired"],
-      heatSource: [
-        "Electrical heater + renewable",
-        "Natural gas industrial furnace",
-        "Combined heat&power",
-      ],
-      steamSource: ["Geothermal", "Natural gas industrial boiler"],
-      hydrogenSource: [
-        "Electrolysis + low carbon electricity",
-        "Steam methane reforming",
-        "Coal gasification",
-      ],
-      co2Source: [
-        "Direct air capture",
-        "Natural gas power plant",
-        "Coal power plant",
-      ],
     };
   },
   methods: {
+    update(val) {
+      // Convert all numbers to float type as HTML does not have float data type
+      var keys = Object.keys(val["_customEmission"]);
+      keys.forEach((key) => {
+        val["_customEmission"][key].value = parseFloat(
+          val["_customEmission"][key].value
+        );
+      });
+      var newValue = {
+        defaultEmission: val._defaultEmission,
+        customEmission: val._customEmission,
+        showAdditional: val._showAdditional
+      };
+      this.$store.dispatch("generalAssumptions/update", newValue).then(() => {
+        Event.$emit("calculate");
+      });
+    },
     resetForm() {
-      this.$nextTick(() => {
-        this.$refs.form.resetFields();
+      this.$store.dispatch("generalAssumptions/reset").then(() => {
+        this.form._defaultEmission = this.defaultEmission;
+        this.form._customEmission = this.customEmission;
+        this.form._showAdditional = this.showAdditional;
       });
     },
   },
