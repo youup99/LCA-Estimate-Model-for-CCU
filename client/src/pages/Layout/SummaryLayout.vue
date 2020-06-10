@@ -12,10 +12,10 @@ import SummaryTables from "../SummaryTables.vue";
 export default {
   components: {
     TopNavbar,
-    SummaryTables,
+    SummaryTables
   },
   data() {
     return {};
-  },
+  }
 };
 </script>

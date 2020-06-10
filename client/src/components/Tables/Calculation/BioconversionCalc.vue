@@ -451,7 +451,7 @@ export default {
         // TODO: Literature Values
         co2Converted2: this.subPathways[0].value[0].emission,
         co2CaptureProcess2: this.subPathways[0].value[2].emission,
-        electrolysis: 0,
+        electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[0].value[7].emission,
         endUse2: this.subPathways[0].value[8].emission,
         net2: this.subPathways[0].value[9].emission,
@@ -478,7 +478,7 @@ export default {
         // TODO: Literature Values
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[1].emission,
-        electrolysis: 0,
+        electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[1].value[5].emission,
         endUse2: this.subPathways[1].value[6].emission,
         net2: this.subPathways[1].value[7].emission,

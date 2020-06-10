@@ -37,14 +37,14 @@
 export default {
   data() {
     return {
-      activeMenu: "Home",
+      activeMenu: "Home"
     };
   },
   props: {
     mainLogo: {
       type: String,
-      default: require("@/assets/img/logo.png"),
-    },
+      default: require("@/assets/img/logo.png")
+    }
   },
   // mounted() {
   //   this.activeMenu = this.$router.currentRoute.name;
@@ -62,8 +62,8 @@ export default {
     handleSelect(key, keyPath) {
       this.activeMenu = key;
       this.$emit("tabClick", this.activeMenu);
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,23 +1,24 @@
 <template>
   <div>
-    <el-form
-      ref="PDE"
-      :model="forms.PDE"
-      label-width="120px"
-      label-position="left"
-    >
+    <el-form ref="PDE" :model="forms.PDE" label-width="120px" label-position="left">
       <div class="row">
         <div class="col-md-6">
-          <span><b>Sub-Pathway: P-DE</b></span>
+          <span>
+            <b>Sub-Pathway: P-DE</b>
+          </span>
         </div>
       </div>
       <br />
       <div class="row">
         <div class="col-md-6">
-          <span><b>Product: Diesel</b></span>
+          <span>
+            <b>Product: Diesel</b>
+          </span>
         </div>
         <div class="col-md-6">
-          <span><b>Emission Factors</b></span>
+          <span>
+            <b>Emission Factors</b>
+          </span>
         </div>
       </div>
       <br />
@@ -25,7 +26,10 @@
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
             <el-input type="number" v-model="forms.PDE.diesel.electricity">
-              <template slot="append">kWh/<br />kg Diesel</template>
+              <template slot="append">
+                kWh/
+                <br />kg Diesel
+              </template>
             </el-input>
           </el-form-item>
         </div>
@@ -37,8 +41,7 @@
                 :key="item"
                 :label="item"
                 :value="item"
-              >
-              </el-option>
+              ></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -48,37 +51,32 @@
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
             <el-select v-model="co2Source.active" disabled>
-              <el-option
-                v-for="item in co2Source.list"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
+              <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
         </div>
       </div>
     </el-form>
     <el-divider></el-divider>
-    <el-form
-      ref="PWE"
-      :model="forms.PWE"
-      label-width="120px"
-      label-position="left"
-    >
+    <el-form ref="PWE" :model="forms.PWE" label-width="120px" label-position="left">
       <div class="row">
         <div class="col-md-6">
-          <span><b>Sub-Pathway: P-WE</b></span>
+          <span>
+            <b>Sub-Pathway: P-WE</b>
+          </span>
         </div>
       </div>
       <br />
       <div class="row">
         <div class="col-md-6">
-          <span><b>Product: Diesel</b></span>
+          <span>
+            <b>Product: Diesel</b>
+          </span>
         </div>
         <div class="col-md-6">
-          <span><b>Emission Factors</b></span>
+          <span>
+            <b>Emission Factors</b>
+          </span>
         </div>
       </div>
       <br />
@@ -86,7 +84,10 @@
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
             <el-input type="number" v-model="forms.PWE.diesel.electricity">
-              <template slot="append">kWh/<br />kg Diesel</template>
+              <template slot="append">
+                kWh/
+                <br />kg Diesel
+              </template>
             </el-input>
           </el-form-item>
         </div>
@@ -98,8 +99,7 @@
                 :key="item"
                 :label="item"
                 :value="item"
-              >
-              </el-option>
+              ></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -108,20 +108,17 @@
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
             <el-input type="number" v-model="forms.PWE.diesel.heat">
-              <template slot="append">kWh/<br />kg Diesel</template>
+              <template slot="append">
+                kWh/
+                <br />kg Diesel
+              </template>
             </el-input>
           </el-form-item>
         </div>
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
             <el-select v-model="heatSource.active" disabled>
-              <el-option
-                v-for="item in heatSource.list"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
+              <el-option v-for="item in heatSource.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -131,13 +128,7 @@
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
             <el-select v-model="co2Source.active" disabled>
-              <el-option
-                v-for="item in co2Source.list"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
+              <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -155,7 +146,7 @@ export default {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     electricitySource: function() {
       return this.defaultEmission.electricity;
@@ -165,15 +156,15 @@ export default {
     },
     co2Source: function() {
       return this.defaultEmission.co2;
-    },
+    }
   },
   watch: {
     forms: {
       handler(val) {
         this.update(val);
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   created() {
     this.forms.PDE = this.bioconversion.PDE;
@@ -183,8 +174,8 @@ export default {
     return {
       forms: {
         PDE: {},
-        PWE: {},
-      },
+        PWE: {}
+      }
     };
   },
   methods: {
@@ -206,7 +197,7 @@ export default {
         this.forms.PDE = this.bioconversion.PDE;
         this.forms.PWE = this.bioconversion.PWE;
       });
-    },
-  },
+    }
+  }
 };
 </script>

@@ -11,19 +11,19 @@ import summary from "./modules/summary";
 
 Vue.use(Vuex);
 const vuexPersist = new VuexPersist({
-    key: "my-app",
-    storage: window.localStorage,
+  key: "my-app",
+  storage: window.localStorage
 });
 
 export default new Vuex.Store({
-    modules: {
-        auth,
-        constants,
-        generalAssumptions,
-        pathways,
-        pathwayCalc,
-        incumbents,
-        summary,
-    },
-    plugins: [vuexPersist.plugin],
+  modules: {
+    auth,
+    constants,
+    generalAssumptions,
+    pathways,
+    pathwayCalc,
+    incumbents,
+    summary
+  },
+  plugins: [vuexPersist.plugin]
 });

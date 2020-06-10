@@ -4,28 +4,36 @@
       <el-tab-pane label="Diesel" name="first">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Ethanol" name="second">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Ethanol</b></span>
+            <span>
+              <b>Product: Ethanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Methane" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methane</b></span>
+            <span>
+              <b>Product: Methane</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Methanol" name="fourth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: Methanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -38,30 +46,16 @@
           : []
       "
     >
-      <el-table-column label="">
-        <el-table-column prop="item" label="Item"> </el-table-column>
+      <el-table-column label>
+        <el-table-column prop="item" label="Item"></el-table-column>
       </el-table-column>
       <el-table-column label="Reference">
-        <el-table-column
-          prop="referenceAmount"
-          label="Amount"
-          :formatter="formatter"
-        >
-        </el-table-column>
-        <el-table-column prop="referenceUnit" label="Unit"> </el-table-column>
+        <el-table-column prop="referenceAmount" label="Amount" :formatter="formatter"></el-table-column>
+        <el-table-column prop="referenceUnit" label="Unit"></el-table-column>
       </el-table-column>
-      <el-table-column label="">
-        <el-table-column
-          prop="emission"
-          label="kg CO2eq/kg Product"
-          :formatter="formatter"
-        >
-        </el-table-column>
-        <el-table-column
-          prop="converted"
-          label="kg CO2eq/MJ Product"
-          :formatter="formatter"
-        ></el-table-column>
+      <el-table-column label>
+        <el-table-column prop="emission" label="kg CO2eq/kg Product" :formatter="formatter"></el-table-column>
+        <el-table-column prop="converted" label="kg CO2eq/MJ Product" :formatter="formatter"></el-table-column>
       </el-table-column>
     </el-table>
   </div>
@@ -75,16 +69,16 @@ export default {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -92,25 +86,25 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
@@ -128,7 +122,7 @@ export default {
     },
     methanol: function() {
       return this.energyUnitConversions.LHV.methanol;
-    },
+    }
   },
   mounted() {
     Event.$on("calculate", () => {
@@ -139,7 +133,7 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "Diesel",
-      products: [],
+      products: []
     };
   },
   methods: {
@@ -148,19 +142,19 @@ export default {
       this.products.push(
         {
           name: "Diesel",
-          value: this.getDiesel(),
+          value: this.getDiesel()
         },
         {
           name: "Ethanol",
-          value: this.getEthanol(),
+          value: this.getEthanol()
         },
         {
           name: "Methane",
-          value: this.getMethane(),
+          value: this.getMethane()
         },
         {
           name: "Methanol",
-          value: this.getMethanol(),
+          value: this.getMethanol()
         }
       );
       this.$store.dispatch("incumbents/update", this.products).then(() => {
@@ -184,7 +178,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Diesel",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.038190131983605;
@@ -195,7 +189,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kWh/kg Diesel",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.0235606723739015;
@@ -206,7 +200,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg H2/kg Diesel",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 1.06058915492307;
@@ -217,7 +211,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kWh/kg Diesel",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.395117312625428;
@@ -228,7 +222,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "MJ/kg Diesel",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = this.emissionFactors.fuelCycleEmissions.diesel;
@@ -239,7 +233,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Diesel",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var emission =
@@ -259,7 +253,7 @@ export default {
       var data6 = {
         item: "Total",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       return [data0, data1, data2, data3, data4, {}, data5, {}, data6];
@@ -273,7 +267,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Ethanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.0377454120591678;
@@ -284,7 +278,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kWh/kg Ethanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = this.emissionFactors.fuelCycleEmissions.ethanol;
@@ -295,7 +289,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Ethanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var emission = data0.emission + data1.emission + data2.emission;
@@ -303,7 +297,7 @@ export default {
       var data3 = {
         item: "Total",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
       return [data0, data1, {}, data2, {}, data3];
     },
@@ -316,7 +310,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Methane",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.358157068102718;
@@ -327,7 +321,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kWh/kg Methane",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 1.1700406030323;
@@ -338,7 +332,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "MJ/kg Methane",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = this.emissionFactors.fuelCycleEmissions.methane;
@@ -349,7 +343,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Methane",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var emission =
@@ -359,7 +353,7 @@ export default {
       var data4 = {
         item: "Total",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       return [data0, data1, data2, {}, data3, {}, data4];
@@ -373,7 +367,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2eq/kg Methanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.220473530480705;
@@ -384,7 +378,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kWh/kg Methanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = 0.261219333453926;
@@ -395,7 +389,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "MJ/kg Methanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var referenceAmount = this.emissionFactors.fuelCycleEmissions.methanol
@@ -407,7 +401,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kg CO2 eq/kg Methanol",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       var emission =
@@ -417,11 +411,11 @@ export default {
       var data4 = {
         item: "Total",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       return [data0, data1, data2, {}, data3, {}, data4];
-    },
-  },
+    }
+  }
 };
 </script>

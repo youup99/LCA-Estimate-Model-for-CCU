@@ -1,7 +1,7 @@
 <template>
   <el-container direction="vertical">
-      <top-navbar></top-navbar>
-      <calculation></calculation>
+    <top-navbar></top-navbar>
+    <calculation></calculation>
   </el-container>
 </template>
 
@@ -17,6 +17,6 @@ export default {
   },
   data() {
     return {};
-  },
+  }
 };
 </script>

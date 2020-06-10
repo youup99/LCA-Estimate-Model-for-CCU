@@ -2,28 +2,24 @@
   <div class="row">
     <div class="col-md-12">
       <el-table :data="summary">
-        <el-table-column label="Metric (kg CO2eq/kg CO2 converted)">
+        <el-table-column label="Metric (kg CO2eq/kg product)">
           <el-table-column prop="category" label="Category"></el-table-column>
           <el-table-column prop="subCategory" label="Sub-Category"></el-table-column>
           <el-table-column prop="product" label="Product"></el-table-column>
-          <el-table-column prop="co2Converted" label="CO2 Converted" :formatter="formatter"></el-table-column>
+          <el-table-column prop="co2Converted2" label="CO2 Converted" :formatter="formatter"></el-table-column>
           <el-table-column
-            prop="co2CaptureProcess"
+            prop="co2CaptureProcess2"
             label="CO2 Capture Process"
             :formatter="formatter"
           ></el-table-column>
-          <el-table-column prop="electrolysis" label="Electrolysis" :formatter="formatter"></el-table-column>
+          <el-table-column prop="electrolysis2" label="Electrolysis" :formatter="formatter"></el-table-column>
           <el-table-column
-            prop="co2ConversionProcess"
+            prop="co2ConversionProcess2"
             label="CO2 Conversion Process"
             :formatter="formatter"
           ></el-table-column>
-          <el-table-column prop="endUse" label="End Use" :formatter="formatter"></el-table-column>
-          <el-table-column prop="net" label="Net" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit1" label="Lit1" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit2" label="Lit2" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit3" label="Lit3" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit4" label="Lit4" :formatter="formatter"></el-table-column>
+          <el-table-column prop="endUse2" label="End Use" :formatter="formatter"></el-table-column>
+          <el-table-column prop="net2" label="Net" :formatter="formatter"></el-table-column>
         </el-table-column>
       </el-table>
     </div>
@@ -82,7 +78,7 @@ export default {
         this.getReductionLight();
         this.getBioconversion();
 
-        this.$store.dispatch("summary/updateFigure1", this.temp).then(() => {
+        this.$store.dispatch("summary/updateFigure2", this.temp).then(() => {
           Event.$emit("ready");
         });
         this.ready = this.ready.fill(false);
@@ -102,30 +98,22 @@ export default {
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }) => ({
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }))(value);
         this.temp.push(subset);
       });
@@ -137,30 +125,22 @@ export default {
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }) => ({
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }))(value);
         this.temp.push(subset);
       });
@@ -172,30 +152,22 @@ export default {
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }) => ({
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }))(value);
         this.temp.push(subset);
       });
@@ -207,30 +179,22 @@ export default {
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }) => ({
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }))(value);
         this.temp.push(subset);
       });
@@ -242,30 +206,22 @@ export default {
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }) => ({
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }))(value);
         this.temp.push(subset);
       });
@@ -277,30 +233,22 @@ export default {
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }) => ({
           category,
           subCategory,
           product,
-          co2Converted,
-          co2CaptureProcess,
-          electrolysis,
-          co2ConversionProcess,
-          endUse,
-          net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2
         }))(value);
         this.temp.push(subset);
       });

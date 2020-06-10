@@ -12,8 +12,7 @@
           type="primary"
           icon="el-icon-refresh-right"
           @click="resetForm"
-          >Reset Pathway</el-button
-        >
+        >Reset Pathway</el-button>
       </div>
     </div>
     <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -24,17 +23,17 @@
         <bioconversion-form ref="bioconversion"></bioconversion-form>
       </el-tab-pane>
       <el-tab-pane label="CO2 Reduction Involving Electricity" name="reductionElectricity">
-        <reduction-electricity-form ref="reductionElectricity"></reduction-electricity-form
-      ></el-tab-pane>
+        <reduction-electricity-form ref="reductionElectricity"></reduction-electricity-form>
+      </el-tab-pane>
       <el-tab-pane label="CO2 Reduction by Hydrocarbon" name="reductionHydrocarbon">
-        <reduction-hydrocarbon-form ref="reductionHydrocarbon"></reduction-hydrocarbon-form
-      ></el-tab-pane>
+        <reduction-hydrocarbon-form ref="reductionHydrocarbon"></reduction-hydrocarbon-form>
+      </el-tab-pane>
       <el-tab-pane label="CO2 Reduction Involving Light" name="reductionLight">
-        <reduction-light-form ref="reductionLight"></reduction-light-form
-      ></el-tab-pane>
+        <reduction-light-form ref="reductionLight"></reduction-light-form>
+      </el-tab-pane>
       <el-tab-pane label="CO2 Reduction by Hydrogen" name="reductionHydrogen">
-        <reduction-hydrogen-form ref="reductionHydrogen"></reduction-hydrogen-form
-      ></el-tab-pane>
+        <reduction-hydrogen-form ref="reductionHydrogen"></reduction-hydrogen-form>
+      </el-tab-pane>
     </el-tabs>
   </el-card>
 </template>
@@ -53,12 +52,12 @@ export default {
     ReductionElectricityForm,
     ReductionHydrocarbonForm,
     ReductionLightForm,
-    ReductionHydrogenForm,
+    ReductionHydrogenForm
   },
   data() {
     return {
       activeName: "mineralization",
-      activeLabel: "CO2 Mineralization",
+      activeLabel: "CO2 Mineralization"
     };
   },
   methods: {
@@ -67,7 +66,7 @@ export default {
     },
     resetForm() {
       this.$refs[this.activeName].reset();
-    },
-  },
+    }
+  }
 };
 </script>

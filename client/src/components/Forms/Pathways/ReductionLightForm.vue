@@ -1,23 +1,24 @@
 <template>
   <div>
-    <el-form
-      ref="PCAT"
-      :model="forms.PCAT"
-      label-width="120px"
-      label-position="left"
-    >
+    <el-form ref="PCAT" :model="forms.PCAT" label-width="120px" label-position="left">
       <div class="row">
         <div class="col-md-6">
-          <span><b>Sub-Pathway: P.CAT</b></span>
+          <span>
+            <b>Sub-Pathway: P.CAT</b>
+          </span>
         </div>
       </div>
       <br />
       <div class="row">
         <div class="col-md-6">
-          <span><b>Product: Methane</b></span>
+          <span>
+            <b>Product: Methane</b>
+          </span>
         </div>
         <div class="col-md-6">
-          <span><b>Emission Factors</b></span>
+          <span>
+            <b>Emission Factors</b>
+          </span>
         </div>
       </div>
       <br />
@@ -25,7 +26,10 @@
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
             <el-input type="number" v-model="forms.PCAT.methane.electricity">
-              <template slot="append">kWh/<br />kg Methane</template>
+              <template slot="append">
+                kWh/
+                <br />kg Methane
+              </template>
             </el-input>
           </el-form-item>
         </div>
@@ -37,8 +41,7 @@
                 :key="item"
                 :label="item"
                 :value="item"
-              >
-              </el-option>
+              ></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -47,27 +50,26 @@
         <div class="col-md-6">
           <el-form-item label="Natural Gas" label-width="85px">
             <el-input type="number" v-model="forms.PCAT.methane.naturalGas">
-              <template slot="append">kg/<br />kg Methane</template>
+              <template slot="append">
+                kg/
+                <br />kg Methane
+              </template>
             </el-input>
           </el-form-item>
         </div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
             <el-select v-model="co2Source.active" disabled>
-              <el-option
-                v-for="item in co2Source.list"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
+              <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <span><b>Product: Methanol</b></span>
+          <span>
+            <b>Product: Methanol</b>
+          </span>
         </div>
         <div class="col-md-6"></div>
       </div>
@@ -76,7 +78,10 @@
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
             <el-input type="number" v-model="forms.PCAT.methanol.electricity">
-              <template slot="append">kWh/<br />kg Methanol</template>
+              <template slot="append">
+                kWh/
+                <br />kg Methanol
+              </template>
             </el-input>
           </el-form-item>
         </div>
@@ -88,8 +93,7 @@
                 :key="item"
                 :label="item"
                 :value="item"
-              >
-              </el-option>
+              ></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -98,20 +102,17 @@
         <div class="col-md-6">
           <el-form-item label="Natural Gas" label-width="85px">
             <el-input type="number" v-model="forms.PCAT.methanol.naturalGas">
-              <template slot="append">kg/<br />kg Methanol</template>
+              <template slot="append">
+                kg/
+                <br />kg Methanol
+              </template>
             </el-input>
           </el-form-item>
         </div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
             <el-select v-model="co2Source.active" disabled>
-              <el-option
-                v-for="item in co2Source.list"
-                :key="item"
-                :label="item"
-                :value="item"
-              >
-              </el-option>
+              <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
         </div>
@@ -129,7 +130,7 @@ export default {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     electricitySource: function() {
       return this.defaultEmission.electricity;
@@ -139,15 +140,15 @@ export default {
     },
     co2Source: function() {
       return this.defaultEmission.co2;
-    },
+    }
   },
   watch: {
     forms: {
       handler(val) {
         this.update(val);
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   created() {
     this.forms.PCAT = this.reductionLight.PCAT;
@@ -155,8 +156,8 @@ export default {
   data() {
     return {
       forms: {
-        PCAT: {},
-      },
+        PCAT: {}
+      }
     };
   },
   methods: {
@@ -177,7 +178,7 @@ export default {
       this.$store.dispatch("pathways/resetReductionLight").then(() => {
         this.forms.PCAT = this.reductionLight.PCAT;
       });
-    },
-  },
+    }
+  }
 };
 </script>

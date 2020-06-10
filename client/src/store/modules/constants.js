@@ -2,16 +2,16 @@ import { defaultConstants } from "./default/defaultConstants";
 
 const state = defaultConstants;
 
-const getters = {}
+const getters = {};
 
-const actions = {}
+const actions = {};
 
-const mutations = {}
+const mutations = {};
 
 export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations
-}
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+};

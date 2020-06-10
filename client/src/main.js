@@ -19,19 +19,21 @@ import VueRouter from "vue-router";
 import App from "./App";
 
 // Element UI
-import ElementUI from 'element-ui';
-import ExTableColumn from 'ex-table-column';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from "element-ui";
+import ExTableColumn from "ex-table-column";
+import "element-ui/lib/theme-chalk/index.css";
 
 // Bootstrap
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 // Highcharts
-import HighchartsVue from 'highcharts-vue'
-var Highcharts = require('highcharts'),
-    HighchartsGroupedCategories = require('highcharts-grouped-categories')(Highcharts);
+import HighchartsVue from "highcharts-vue";
+var Highcharts = require("highcharts"),
+  HighchartsGroupedCategories = require("highcharts-grouped-categories")(
+    Highcharts
+  );
 
 // router setup
 import routes from "./routes/routes";
@@ -45,18 +47,19 @@ import MaterialDashboard from "./material-dashboard";
 import Chartist from "chartist";
 
 // store
-import store from './store';
+import store from "./store";
 
 // configure router
 const router = new VueRouter({
-    routes, // short for routes: routes
-    linkExactActiveClass: "nav-item active"
+  routes, // short for routes: routes
+  linkExactActiveClass: "nav-item active"
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.name !== "Login" && !store.getters['auth/isAuthenticated']) next('/login')
-    else next()
-})
+  if (to.name !== "Login" && !store.getters["auth/isAuthenticated"])
+    next("/login");
+  else next();
+});
 
 Vue.prototype.$Chartist = Chartist;
 
@@ -72,11 +75,11 @@ Vue.use(HighchartsVue);
 var Event = new Vue({});
 /* eslint-disable no-new */
 new Vue({
-    el: "#app",
-    store,
-    render: h => h(App),
-    router,
-    data: {
-        Chartist: Chartist
-    }
+  el: "#app",
+  store,
+  render: h => h(App),
+  router,
+  data: {
+    Chartist: Chartist
+  }
 });

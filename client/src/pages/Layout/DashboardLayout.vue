@@ -19,7 +19,7 @@ export default {
     TopNavbar,
     Dashboard,
     Calculation,
-    SummaryTables,
+    SummaryTables
   },
   data() {
     return {

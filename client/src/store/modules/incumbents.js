@@ -1,30 +1,30 @@
 const state = {
-    Diesel: {},
-    Ethanol: {},
-    Methane: {},
-    Methanol: {}
+  Diesel: {},
+  Ethanol: {},
+  Methane: {},
+  Methanol: {}
 };
 
-const getters = {}
+const getters = {};
 
 const actions = {
-    update({ commit, dispatch }, newValue) {
-        commit('update', newValue);
-    }
-}
+  update({ commit, dispatch }, newValue) {
+    commit("update", newValue);
+  }
+};
 
 const mutations = {
-    update(state, newValue) {
-        newValue.forEach((value, index) => {
-            state[value.name] = value.value
-        })
-    }
-}
+  update(state, newValue) {
+    newValue.forEach((value, index) => {
+      state[value.name] = value.value;
+    });
+  }
+};
 
 export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations
-}
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+};

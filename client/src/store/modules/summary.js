@@ -1,28 +1,34 @@
 const state = {
-    Figure1: {},
-    Figure2: {},
-    Figure3: {},
-    Figure4: {}
+  Figure1: {},
+  Figure2: {},
+  Figure3: {},
+  Figure4: {}
 };
 
-const getters = {}
+const getters = {};
 
 const actions = {
-    update({ commit, dispatch }, newValue) {
-        commit('update', newValue);
-    }
-}
+  updateFigure1({ commit, dispatch }, newValue) {
+    commit("updateFigure1", newValue);
+  },
+  updateFigure2({ commit, dispatch }, newValue) {
+    commit("updateFigure2", newValue);
+  }
+};
 
 const mutations = {
-    update(state, newValue) {
-        state.Figure1 = newValue;
-    }
-}
+  updateFigure1(state, newValue) {
+    state.Figure1 = newValue;
+  },
+  updateFigure2(state, newValue) {
+    state.Figure2 = newValue;
+  }
+};
 
 export default {
-    namespaced: true,
-    state,
-    getters,
-    actions,
-    mutations
-}
+  namespaced: true,
+  state,
+  getters,
+  actions,
+  mutations
+};

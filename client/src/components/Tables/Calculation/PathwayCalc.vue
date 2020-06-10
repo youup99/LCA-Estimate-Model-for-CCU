@@ -19,8 +19,8 @@
         <electricity-calc></electricity-calc>
       </el-tab-pane>
       <el-tab-pane label="CO2 Reduction by Hydrocarbon" name="sixth">
-        <hydrocarbon-calc></hydrocarbon-calc
-      ></el-tab-pane>
+        <hydrocarbon-calc></hydrocarbon-calc>
+      </el-tab-pane>
       <el-tab-pane label="Incumbents" name="seventh">
         <incumbents-calc></incumbents-calc>
       </el-tab-pane>
@@ -46,18 +46,18 @@ export default {
     LightCalc,
     HydrogenCalc,
     ElectricityCalc,
-    HydrocarbonCalc,
+    HydrocarbonCalc
   },
   data() {
     return {
       activeName: "first",
-      activeLabel: "CO2 Mineralization",
+      activeLabel: "CO2 Mineralization"
     };
   },
   methods: {
     handleClick(tab, event) {
       this.activeLabel = tab.label;
-    },
-  },
+    }
+  }
 };
 </script>

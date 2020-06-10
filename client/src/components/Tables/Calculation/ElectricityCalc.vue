@@ -2138,12 +2138,16 @@ export default {
         product: "Syngas",
         co2Converted: this.subPathways[0].value[0].converted,
         co2CaptureProcess: this.subPathways[0].value[2].converted,
+        electrolysis: 0,
         co2ConversionProcess: this.subPathways[0].value[7].converted,
+        endUse: 0,
         net: this.subPathways[0].value[9].converted,
         // TODO: Literature Values
         co2Converted2: this.subPathways[0].value[0].emission,
         co2CaptureProcess2: this.subPathways[0].value[2].emission,
         electrolysis2: this.subPathways[0].value[7].emission,
+        co2ConversionProcess2: 0,
+        endUse2: 0,
         net2: this.subPathways[0].value[9].emission,
         // TODO: Literature Values
       };
@@ -2170,7 +2174,6 @@ export default {
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[2].emission,
         electrolysis2: this.subPathways[1].value[10].emission,
-
         co2ConversionProcess2: this.subPathways[1].value[4].emission,
         endUse2: this.subPathways[1].value[12].emission,
         net2: this.subPathways[1].value[14].emission,
@@ -2194,6 +2197,7 @@ export default {
         product: "Methanol",
         co2Converted: this.subPathways[2].value[0].converted,
         co2CaptureProcess: this.subPathways[2].value[2].converted,
+        electrolysis: 0,
         co2ConversionProcess: this.subPathways[2].value[8].converted,
         endUse: this.subPathways[2].value[10].converted,
         net: this.subPathways[2].value[12].converted,
@@ -2224,6 +2228,7 @@ export default {
         product: "Diesel",
         co2Converted: this.subPathways[3].value[0].converted,
         co2CaptureProcess: this.subPathways[3].value[2].converted,
+        electrolysis: 0,
         co2ConversionProcess: this.subPathways[3].value[8].converted,
         endUse: this.subPathways[3].value[10].converted,
         net: this.subPathways[3].value[12].converted,
@@ -2254,6 +2259,7 @@ export default {
         product: "Ethanol",
         co2Converted: this.subPathways[4].value[0].converted,
         co2CaptureProcess: this.subPathways[4].value[2].converted,
+        electrolysis: 0,
         co2ConversionProcess: this.subPathways[4].value[6].converted,
         endUse: this.subPathways[4].value[8].converted,
         net: this.subPathways[4].value[10].converted,
@@ -2261,6 +2267,7 @@ export default {
         co2Converted2: this.subPathways[4].value[0].emission,
         co2CaptureProcess2: this.subPathways[4].value[2].emission,
         electrolysis2: this.subPathways[4].value[6].emission,
+        co2ConversionProcess2: 0,
         endUse2: this.subPathways[4].value[8].emission,
         net2: this.subPathways[4].value[10].emission,
         // TODO: Literature Values
