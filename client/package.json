@@ -16,6 +16,7 @@
     "core-js": "3.6.4",
     "element-ui": "^2.13.1",
     "ex-table-column": "^1.0.8",
+    "firebase": "^7.15.0",
     "google-maps": "4.2.3",
     "highcharts": "^8.0.4",
     "highcharts-grouped-categories": "^1.1.5",

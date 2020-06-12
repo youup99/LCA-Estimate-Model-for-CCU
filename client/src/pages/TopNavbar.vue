@@ -54,9 +54,11 @@ export default {
       if (command === "Profile") {
         this.$router.push("/profile");
       } else if (command === "Log out") {
-        this.$store.dispatch("auth/logout").then(() => {
+        this.$store.dispatch("auth/signOut").then(() => {
           this.$router.push("/login");
-        });
+        }).catch((error) => {
+          this.$message.error(error);
+        })
       }
     },
     handleSelect(key, keyPath) {

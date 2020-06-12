@@ -39,10 +39,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { Event } from "@/event-bus";
 import Highcharts from "highcharts";
 import { fourthChartSettings } from "./figure4";
 
 export default {
+  computed: {
+    ...mapState("summary", ["Figure4"])
+  },
   data() {
     return {
       chart: null,
@@ -51,6 +56,21 @@ export default {
   },
   mounted() {
     this.chart = this.$refs.chart;
+    Event.$on("ready", () => {
+      this.calculateData();
+    });
+  },
+  methods: {
+    calculateData() {
+      var filtered = this.Figure4.filter(value => {
+        return value.product !== "Syngas" && value.subCategory !== "PEM";
+      });
+      var globalReductionPotential = [];
+      filtered.forEach(value => {
+        globalReductionPotential.push(parseFloat(value.globalReductionPotential.toPrecision(3)));
+      });
+      this.options.series[0].data = globalReductionPotential;
+    }
   }
 };
 </script>

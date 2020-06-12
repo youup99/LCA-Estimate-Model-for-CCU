@@ -8,20 +8,26 @@
         :model="loginForm"
         :rules="rules"
         ref="loginForm"
-        label-width="100px"
+        label-width="90px"
         class="login-form"
       >
-        <el-form-item label="Username" prop="username">
-          <el-input v-model="loginForm.username" placeholder="Enter your username"></el-input>
+        <el-form-item label="Email" prop="email">
+          <el-input v-model="loginForm.email" placeholder="Enter your email"></el-input>
         </el-form-item>
         <el-form-item label="Password" prop="password">
-          <el-input v-model="loginForm.password" placeholder="Enter your password" show-password></el-input>
+          <el-input
+            v-model="loginForm.password"
+            placeholder="Enter your password"
+            @change="submitForm('loginForm')"
+            show-password
+          ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('loginForm')">Login</el-button>
           <el-button type="secondary" @click="forgotPassword">Forgot Password</el-button>
         </el-form-item>
       </el-form>
+      <el-link type="danger" @click="signUp()">New User? Sign up now!</el-link>
     </el-card>
   </div>
 </template>
@@ -37,14 +43,14 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "",
+        email: "",
         password: ""
       },
       rules: {
-        username: [
+        email: [
           {
             required: true,
-            message: "Please enter a username",
+            message: "Please enter an email",
             trigger: "blur"
           }
         ],
@@ -62,25 +68,25 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          const { username, password } = this.loginForm;
+          const { email, password } = this.loginForm;
           this.$store
-            .dispatch("auth/login", { username, password })
-            .then(() => {
+            .dispatch("auth/signIn", { email, password })
+            .then(value => {
               this.$router.push("/");
             })
-            .catch(err => {
-              this.$message({
-                message: err,
-                type: "error"
-              });
+            .catch(error => {
+              this.$message.error(error);
             });
         } else {
           return false;
         }
       });
     },
+    signUp() {
+      this.$router.push("/register");
+    },
     forgotPassword() {
-      this.$router.push("/resetPassword");
+      this.$router.push("/forgotpassword");
     }
   }
 };

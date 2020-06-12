@@ -13,8 +13,12 @@
             <el-tab-pane label="Figure 2" name="second">
               <figure2-table></figure2-table>
             </el-tab-pane>
-            <el-tab-pane label="Figure 3" name="third"></el-tab-pane>
-            <el-tab-pane label="Figure 4" name="fourth"></el-tab-pane>
+            <el-tab-pane label="Figure 3" name="third">
+              <figure3-table></figure3-table>
+            </el-tab-pane>
+            <el-tab-pane label="Figure 4" name="fourth">
+              <figure4-table></figure4-table>
+            </el-tab-pane>
           </el-tabs>
         </el-card>
       </div>
@@ -23,12 +27,14 @@
 </template>
 
 <script>
-import { Figure1Table, Figure2Table } from "@/components";
+import { Figure1Table, Figure2Table, Figure3Table, Figure4Table } from "@/components";
 
 export default {
   components: {
     Figure1Table,
-    Figure2Table
+    Figure2Table,
+    Figure3Table,
+    Figure4Table
   },
   data() {
     return {

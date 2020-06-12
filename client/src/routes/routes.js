@@ -1,7 +1,7 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
-import CalculationLayout from "@/pages/Layout/CalculationLayout.vue";
 import LoginLayout from "@/pages/Layout/LoginLayout.vue";
-import SummaryLayout from "@/pages/Layout/SummaryLayout.vue";
+import RegistrationLayout from "@/pages/Layout/RegistrationLayout.vue";
+import ForgotPasswordLayout from "@/pages/Layout/ForgotPasswordLayout.vue";
 
 const routes = [
   {
@@ -15,14 +15,14 @@ const routes = [
     component: LoginLayout
   },
   {
-    path: "/calculation",
-    name: "Calculation",
-    component: CalculationLayout
+    path: "/register",
+    name: "Register",
+    component: RegistrationLayout
   },
   {
-    path: "/summary",
-    name: "Summary",
-    component: SummaryLayout
+    path: "/forgotpassword",
+    name: "Forgot Password",
+    component: ForgotPasswordLayout
   },
   {
     path: "*",

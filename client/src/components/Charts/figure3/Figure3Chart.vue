@@ -42,10 +42,15 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { Event } from "@/event-bus";
 import Highcharts from "highcharts";
 import { thirdChartSettings } from "./figure3";
 
 export default {
+  computed: {
+    ...mapState("summary", ["Figure3"])
+  },
   data() {
     return {
       chart: null,
@@ -54,6 +59,21 @@ export default {
   },
   mounted() {
     this.chart = this.$refs.chart;
+    Event.$on("ready", () => {
+      this.calculateData();
+    });
+  },
+  methods: {
+    calculateData() {
+      var filtered = this.Figure3.filter(value => {
+        return value.product !== "Syngas" && value.subCategory !== "PEM";
+      });
+      var avoidedEmission = [];
+      filtered.forEach(value => {
+        avoidedEmission.push(parseFloat(value.avoidedEmission.toPrecision(3)));
+      });
+      this.options.series[0].data = avoidedEmission;
+    }
   }
 };
 </script>

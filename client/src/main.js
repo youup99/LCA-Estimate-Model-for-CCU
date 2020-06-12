@@ -35,6 +35,9 @@ var Highcharts = require("highcharts"),
     Highcharts
   );
 
+// Firebase
+import "@/plugins/firebase";
+
 // router setup
 import routes from "./routes/routes";
 
@@ -56,8 +59,10 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "Login" && !store.getters["auth/isAuthenticated"])
+  if (to.name !== "Login" && to.name !== "Register" && to.name !== "Forgot Password" && !store.getters["auth/isUserAuth"])
     next("/login");
+  else if(to.name === "Login" && store.getters["auth/isUserAuth"])
+      next("/");
   else next();
 });
 

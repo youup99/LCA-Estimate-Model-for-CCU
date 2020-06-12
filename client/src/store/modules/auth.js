@@ -1,59 +1,98 @@
+import firebase from "firebase/app";
 const state = {
-  token: localStorage.getItem("user-token") || "",
-  status: ""
+  user: null,
+  error: null,
 };
 
 const getters = {
-  isAuthenticated: state => {
-    return !!state.token;
+  getUser(state) {
+    return state.user;
   },
-  authStatus: state => {
-    return state.status;
-  }
+  isUserAuth(state) {
+    return !!state.user;
+  },
+  getError(state) {
+    return state.error;
+  },
 };
 
 const actions = {
-  login: ({ commit, dispatch }, user) => {
-    return new Promise((resolve, reject) => {
-      // The Promise used for router redirect in login
-      commit("login");
-      const token = user.username;
-      localStorage.setItem("user-token", token);
-      if (user.username === "username" && user.password === "password") {
-        commit("success", token);
-        resolve();
+  authAction({ commit }) {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        commit("setUser", user);
       } else {
-        commit("error");
-        localStorage.removeItem("user-token");
-        reject("Incorrect username/password");
+        commit("setUser", null);
       }
     });
   },
-
-  logout: ({ commit, dispatch }) => {
-    return new Promise(resolve => {
-      commit("logout");
-      localStorage.removeItem("user-token"); // clear your user's token from localstorage
-      resolve();
+  signUp({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(payload.email, payload.password)
+        .then((response) => {
+          commit("setUser", response.user);
+          resolve();
+        })
+        .catch((error) => {
+          commit("setError", error.message);
+          reject(error.message);
+        });
     });
-  }
+  },
+  signIn({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(payload.email, payload.password)
+        .then((response) => {
+          commit("setUser", response.user);
+          resolve();
+        })
+        .catch((error) => {
+          commit("setError", error.message);
+          reject(error.message);
+        });
+    });
+  },
+  signOut({ commit }) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          commit("setUser", null);
+          resolve();
+        })
+        .catch((error) => {
+          commit("setError", error.message);
+          reject(error.message);
+        });
+    });
+  },
+  resetPassword({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .auth()
+        .sendPasswordResetEmail(payload.email)
+        .then(() => {
+          resolve();
+        })
+        .catch((error) => {
+          commit("setError", error.message);
+        });
+    });
+  },
 };
 
 const mutations = {
-  login: state => {
-    state.status = "loading";
+  setUser(state, payload) {
+    state.user = payload;
   },
-  success: (state, token) => {
-    state.status = "success";
-    state.token = token;
+  setError(state, payload) {
+    state.error = payload;
   },
-  error: state => {
-    state.status = "error";
-  },
-  logout: state => {
-    state.status = "";
-    state.token = "";
-  }
 };
 
 export default {
@@ -61,5 +100,5 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };

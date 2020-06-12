@@ -2149,6 +2149,9 @@ export default {
         co2ConversionProcess2: 0,
         endUse2: 0,
         net2: this.subPathways[0].value[9].emission,
+        avoidedEmission2: 0,
+        avoidedEmission: 0,
+        globalEmissionReductionPotential: 0,
         // TODO: Literature Values
       };
 
