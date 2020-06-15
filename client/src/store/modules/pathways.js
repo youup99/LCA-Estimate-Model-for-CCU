@@ -1,7 +1,12 @@
 import { defaultPathways } from "./default/defaultPathways";
 
 const state = JSON.parse(JSON.stringify(defaultPathways));
-const getters = {};
+
+const getters = {
+  getState(state) {
+    return state;
+  },
+};
 
 const actions = {
   updateMineralization({ commit, dispatch }, newValue) {
@@ -39,7 +44,7 @@ const actions = {
   },
   resetReductionHydrocarbon({ commit, dispatch }) {
     commit("resetReductionHydrocarbon");
-  }
+  },
 };
 
 const mutations = {
@@ -96,13 +101,17 @@ const mutations = {
       state.reductionHydrocarbon,
       JSON.parse(JSON.stringify(defaultPathways.reductionHydrocarbon))
     );
-  }
+  },
 };
 
 export default {
   namespaced: true,
+  firestorePath: "userDocs/{userId}/store/pathways",
+  firestoreRefType: "doc", // or 'doc'
+  moduleName: "pathways",
+  statePropName: "",
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };

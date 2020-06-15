@@ -12,10 +12,22 @@ import summary from "./modules/summary";
 Vue.use(Vuex);
 const vuexPersist = new VuexPersist({
   key: "my-app",
-  storage: window.localStorage
+  storage: window.localStorage,
 });
 
-export default new Vuex.Store({
+// Firestore
+import VuexEasyFirestore from "vuex-easy-firestore";
+import { Firebase, initFirebase } from "@/plugins/firebase.js";
+
+const easyFirestore = VuexEasyFirestore(
+  [constants, generalAssumptions, incumbents, pathwayCalc, pathways, summary],
+  {
+    logging: true,
+    FirebaseDependency: Firebase,
+  }
+);
+
+const store = new Vuex.Store({
   modules: {
     auth,
     constants,
@@ -23,7 +35,26 @@ export default new Vuex.Store({
     pathways,
     pathwayCalc,
     incumbents,
-    summary
+    summary,
   },
-  plugins: [vuexPersist.plugin]
+  plugins: [vuexPersist.plugin, easyFirestore],
 });
+
+initFirebase().catch((error) => {
+  console.log(error);
+  // take user to a page stating an error occurred
+  // (might be a connection error, or the app is open in another tab)
+});
+
+Firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch("constants/fetchAndAdd");
+    store.dispatch("generalAssumptions/fetchAndAdd");
+    store.dispatch("incumbents/fetchAndAdd");
+    store.dispatch("pathwayCalc/fetchAndAdd");
+    store.dispatch("pathways/fetchAndAdd");
+    store.dispatch("summary/fetchAndAdd");
+  }
+});
+
+export default store;

@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+
 const state = {
   user: null,
   error: null,

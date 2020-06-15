@@ -7,7 +7,11 @@ const state = {
   reductionHydrocarbon: {}
 };
 
-const getters = {};
+const getters = {
+  getState(state) {
+    return state;
+  },
+};
 
 const actions = {
   updateMineralization({ commit, dispatch }, newValue) {
@@ -53,6 +57,10 @@ const mutations = {
 
 export default {
   namespaced: true,
+  firestorePath: 'userDocs/{userId}/store/pathwayCalc',
+  firestoreRefType: 'doc', // or 'doc'
+  moduleName: 'pathwayCalc',
+  statePropName: '',
   state,
   getters,
   actions,
