@@ -142,7 +142,8 @@ export const thirdChartSettings = {
   },
   series: [
     {
-      data: [5, 3, 4, 7, 2, 5, 3, 4, 7, 2, 5, 3, 4, 7, 2, 5, 3, 4, 7]
+      data: [5, 3, 4, 7, 2, 5, 3, 4, 7, 2, 5, 3, 4, 7, 2, 5, 3, 4, 7],
+      type: 'column'
     }
   ]
 };

@@ -162,7 +162,8 @@ export const fourthChartSettings = {
         0,
         1.5,
         1.8
-      ]
+      ],
+      type: 'column'
     }
   ]
 };

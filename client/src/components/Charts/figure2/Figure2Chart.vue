@@ -80,79 +80,102 @@ export default {
       });
       this.chartData["CWM"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       this.chartData["Calcite"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       this.chartData["Magnesite"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       this.chartData["Methane"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       this.chartData["Methanol"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       this.chartData["Diesel"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       this.chartData["Ethanol"] = {
         co2Converted: [],
-        hydrogen: [],
-        co2ConversionProcess: [],
         endUse: [],
-        co2CaptureProcess: []
+        co2ConversionProcess: [],
+        hydrogen: [],
+        co2CaptureProcess: [],
+        net: []
       };
       filtered.forEach(value => {
         this.chartData[value.product].co2Converted.push(
-          parseFloat(value.co2Converted2.toPrecision(3))
-        );
-        this.chartData[value.product].hydrogen.push(parseFloat(value.electrolysis2.toPrecision(3)));
-        this.chartData[value.product].co2ConversionProcess.push(
-          parseFloat(value.co2ConversionProcess2.toPrecision(3))
+          value.co2Converted2 == undefined
+            ? 0
+            : parseFloat(value.co2Converted2.toPrecision(3))
         );
         this.chartData[value.product].endUse.push(
-          parseFloat(value.endUse2.toPrecision(3))
+          value.endUse2 == undefined
+            ? 0
+            : parseFloat(value.endUse2.toPrecision(3))
+        );
+        this.chartData[value.product].co2ConversionProcess.push(
+          value.co2ConversionProcess2 == undefined
+            ? 0
+            : parseFloat(value.co2ConversionProcess2.toPrecision(3))
+        );
+        this.chartData[value.product].hydrogen.push(
+          value.electrolysis2 == undefined
+            ? 0
+            : parseFloat(value.electrolysis2.toPrecision(3))
         );
         this.chartData[value.product].co2CaptureProcess.push(
-          parseFloat(value.co2CaptureProcess2.toPrecision(3))
+          value.co2CaptureProcess2 == undefined
+            ? 0
+            : parseFloat(value.co2CaptureProcess2.toPrecision(3))
+        );
+        this.chartData[value.product].net.push(
+          parseFloat(value.net2.toPrecision(3))
         );
       });
       this.options.series[0].data = this.chartData[
         this.activeLabel
       ].co2Converted;
-      this.options.series[1].data = this.chartData[this.activeLabel].hydrogen;
+      this.options.series[1].data = this.chartData[this.activeLabel].endUse;
       this.options.series[2].data = this.chartData[
         this.activeLabel
       ].co2ConversionProcess;
-      this.options.series[3].data = this.chartData[this.activeLabel].endUse;
+      this.options.series[3].data = this.chartData[this.activeLabel].hydrogen;
       this.options.series[4].data = this.chartData[
         this.activeLabel
       ].co2CaptureProcess;
+      this.options.series[5].data = this.chartData[this.activeLabel].net;
     },
     handleClick(tab) {
       this.activeLabel = tab.label;
@@ -162,14 +185,15 @@ export default {
       this.options.series[0].data = this.chartData[
         this.activeLabel
       ].co2Converted;
-      this.options.series[1].data = this.chartData[this.activeLabel].hydrogen;
+      this.options.series[1].data = this.chartData[this.activeLabel].endUse;
       this.options.series[2].data = this.chartData[
         this.activeLabel
       ].co2ConversionProcess;
-      this.options.series[3].data = this.chartData[this.activeLabel].endUse;
+      this.options.series[3].data = this.chartData[this.activeLabel].hydrogen;
       this.options.series[4].data = this.chartData[
         this.activeLabel
       ].co2CaptureProcess;
+      this.options.series[5].data = this.chartData[this.activeLabel].net;
       if (tab.label === "CWM") {
         this.options.xAxis.categories = [
           {

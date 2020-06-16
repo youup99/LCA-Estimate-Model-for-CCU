@@ -77,26 +77,29 @@ export default {
         return value.product !== "Syngas" && value.subCategory !== "PEM";
       });
       var co2Converted = [];
-      var hydrogen = [];
-      var co2ConversionProcess = [];
       var endUse = [];
+      var co2ConversionProcess = [];
+      var hydrogen = [];
       var co2CaptureProcess = [];
+      var net = [];
       filtered.forEach(value => {
         co2Converted.push(parseFloat(value.co2Converted.toPrecision(3)));
-        hydrogen.push(value.electrolysis);
+        endUse.push(parseFloat(value.endUse.toPrecision(3)));
         co2ConversionProcess.push(
           parseFloat(value.co2ConversionProcess.toPrecision(3))
         );
-        endUse.push(parseFloat(value.endUse.toPrecision(3)));
+        hydrogen.push(parseFloat(value.electrolysis.toPrecision(3)));
         co2CaptureProcess.push(
           parseFloat(value.co2CaptureProcess.toPrecision(3))
         );
+        net.push(parseFloat(value.net.toPrecision(3)));
       });
       this.options.series[0].data = co2Converted;
-      this.options.series[1].data = hydrogen;
+      this.options.series[1].data = endUse;
       this.options.series[2].data = co2ConversionProcess;
-      this.options.series[3].data = endUse;
+      this.options.series[3].data = hydrogen;
       this.options.series[4].data = co2CaptureProcess;
+      this.options.series[5].data = net;
     }
   }
 };

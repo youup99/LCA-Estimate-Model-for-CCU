@@ -39,7 +39,9 @@ export default {
       "reductionHydrogen",
       "reductionElectricity",
       "reductionHydrocarbon"
-    ])
+    ]),
+    ...mapState("incumbents", ["Summary"]),
+    ...mapState("constants", ["emissionFactors"])
   },
   mounted() {
     Event.$on("summary", pathway => {
@@ -77,6 +79,7 @@ export default {
         this.getReductionHydrogen();
         this.getReductionLight();
         this.getBioconversion();
+        this.getIncumbents();
 
         this.$store.dispatch("summary/updateFigure2", this.temp).then(() => {
           Event.$emit("ready");
@@ -252,6 +255,36 @@ export default {
         }))(value);
         this.temp.push(subset);
       });
+    },
+    getIncumbents(){
+      this.Summary.forEach(value => {
+        var subset = (({
+          category,
+          product,
+          net2
+        }) => ({
+          category,
+          product,
+          net2
+        }))(value);
+        this.temp.push(subset);
+      });
+      var data0 = {
+        category: "Incumbent",
+        product: "CWM",
+        net2: this.emissionFactors.incumbent.cement
+      };
+      var data1 = {
+        category: "Incumbent",
+        product: "Calcite",
+        net2: this.emissionFactors.incumbent.cement
+      };
+      var data2 = {
+        category: "Incumbent",
+        product: "Magnesite",
+        net2: this.emissionFactors.incumbent.cement
+      };
+      this.temp.push(data0, data1, data2);
     }
   }
 };

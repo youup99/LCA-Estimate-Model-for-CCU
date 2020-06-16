@@ -22,7 +22,7 @@ import { Firebase, initFirebase } from "@/plugins/firebase.js";
 const easyFirestore = VuexEasyFirestore(
   [constants, generalAssumptions, incumbents, pathwayCalc, pathways, summary],
   {
-    logging: true,
+    // logging: true,
     FirebaseDependency: Firebase,
   }
 );
@@ -41,7 +41,6 @@ const store = new Vuex.Store({
 });
 
 initFirebase().catch((error) => {
-  console.log(error);
   // take user to a page stating an error occurred
   // (might be a connection error, or the app is open in another tab)
 });

@@ -133,7 +133,8 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "Diesel",
-      products: []
+      products: [],
+      summary: []
     };
   },
   methods: {
@@ -156,7 +157,16 @@ export default {
           name: "Methanol",
           value: this.getMethanol()
         }
+        // {
+        //   name: "Summary",
+        //   value: this.getSummary()
+        // }
       );
+      this.summary = this.getSummary();
+      this.products.push({
+        name: "Summary",
+        value: this.summary
+      });
       this.$store.dispatch("incumbents/update", this.products).then(() => {
         Event.$emit("incumbentReady");
       });
@@ -415,6 +425,29 @@ export default {
       };
 
       return [data0, data1, data2, {}, data3, {}, data4];
+    },
+    getSummary() {
+      var data0 = {
+        category: "Incumbent",
+        product: "Methane",
+        net2: this.products[2].value[6].emission
+      };
+      var data1 = {
+        category: "Incumbent",
+        product: "Methanol",
+        net2: this.products[3].value[6].emission
+      };
+      var data2 = {
+        category: "Incumbent",
+        product: "Diesel",
+        net2: this.products[0].value[8].emission
+      };
+      var data3 = {
+        category: "Incumbent",
+        product: "Ethanol",
+        net2: this.products[1].value[5].emission
+      };
+      return [data0, data1, data2, data3];
     }
   }
 };

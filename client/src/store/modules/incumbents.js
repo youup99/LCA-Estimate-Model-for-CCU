@@ -3,6 +3,7 @@ const state = {
   Ethanol: {},
   Methane: {},
   Methanol: {},
+  Summary: {},
 };
 
 const getters = {
