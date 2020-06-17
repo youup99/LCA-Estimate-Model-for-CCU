@@ -1,36 +1,46 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="P-DE" name="first"
-        ><div class="row">
+      <el-tab-pane label="P-DE" name="first">
+        <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: Photobioreactor Dry-Extraction</b></span>
+            <span>
+              <b>Sub-Pathway: Photobioreactor Dry-Extraction</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="P-WE" name="second">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: Pond Wet Extraction</b></span>
+            <span>
+              <b>Sub-Pathway: Pond Wet Extraction</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Summary" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Summary</b></span>
+            <span>
+              <b>Summary</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -51,24 +61,25 @@ import CalculationTable from "../CalculationTable.vue";
 
 export default {
   components: {
-    CalculationTable,
+    CalculationTable
   },
   computed: {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
+    ...mapState("literature", ["bioconversionLit"]),
     ...mapState("pathways", ["bioconversion"]),
     ...mapState("incumbents", ["Diesel", "Ethanol", "Methane", "Methanol"]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -76,25 +87,25 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
@@ -103,7 +114,7 @@ export default {
     },
     fischerTropschDiesel: function() {
       return this.energyUnitConversions.LHV.fischerTropschDiesel;
-    },
+    }
   },
   mounted() {
     Event.$on("incumbentReady", () => {
@@ -115,7 +126,7 @@ export default {
       activeTabName: "first",
       activeTabLabel: "P-DE",
       subPathways: [],
-      summary: [],
+      summary: []
     };
   },
   methods: {
@@ -124,18 +135,18 @@ export default {
       this.subPathways.push(
         {
           name: "P-DE",
-          value: this.getPDE(),
+          value: this.getPDE()
         },
         {
           name: "P-WE",
-          value: this.getPWE(),
+          value: this.getPWE()
         }
       );
       this.summary = this.getSummary();
       this.$store
         .dispatch("pathwayCalc/updateBioconversion", {
           subPathways: this.subPathways,
-          summary: this.summary,
+          summary: this.summary
         })
         .then(() => {
           Event.$emit("summary", "bioconversion");
@@ -165,13 +176,13 @@ export default {
         activeUnit: "kg CO2conv/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-DE - Algae
       var data1 = {
         referenceAmount: 4.44,
-        referenceUnit: "kg Algae/kg Diesel",
+        referenceUnit: "kg Algae/kg Diesel"
       };
 
       // P-DE - CO2 Capture Process
@@ -191,7 +202,7 @@ export default {
         activeUnit: "kg CO2 eq/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-DE - Total Electricty
@@ -208,7 +219,7 @@ export default {
         intermediateUnit: "kWh/kg Biodiesel",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Diesel",
-        emission: emission,
+        emission: emission
       };
 
       // P-DE - Hexane
@@ -225,7 +236,7 @@ export default {
         intermediateUnit: "kg CO2/kg Biodiesel",
         activeAmount: activeAmount,
         activeUnit: "kg CO2/kg Biodiesel",
-        emission: emission,
+        emission: emission
       };
 
       // P-DE - Methanol
@@ -244,7 +255,7 @@ export default {
         intermediateUnit: "kg CO2/kg Biodiesel",
         activeAmount: activeAmount,
         activeUnit: "kg CO2/kg Biodiesel",
-        emission: emission,
+        emission: emission
       };
 
       // P-DE - Total
@@ -255,7 +266,7 @@ export default {
         item: "Total",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-DE - End Use
@@ -275,7 +286,7 @@ export default {
         activeUnit: "kg CO2/kg Biodiesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-DE - Net
@@ -292,7 +303,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -305,7 +316,7 @@ export default {
         {},
         data6,
         data7,
-        data8,
+        data8
       ];
     },
     getPWE() {
@@ -326,7 +337,7 @@ export default {
         activeUnit: "kg CO2conv/kg Biodiesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-WE - CO2 Capture Process
@@ -346,7 +357,7 @@ export default {
         activeUnit: "kg CO2 eq/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-WE - Total Electricty
@@ -362,7 +373,7 @@ export default {
         intermediateUnit: "kwh/kg Biodiesel",
         activeAmount: activeAmount,
         activeUnit: "kwh/kg Biodiesel",
-        emission: emission,
+        emission: emission
       };
 
       // P-WE - Total Heat
@@ -378,7 +389,7 @@ export default {
         intermediateUnit: "kwh/kg Biodiesel",
         activeAmount: activeAmount,
         activeUnit: "kwh/kg Biodiesel",
-        emission: emission,
+        emission: emission
       };
 
       // P-WE - Total
@@ -390,7 +401,7 @@ export default {
         item: "Total",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-WE - End Use
@@ -410,7 +421,7 @@ export default {
         activeUnit: "kg CO2/kg Biodiesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P-WE - Net
@@ -427,13 +438,23 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [data0, data1, data2, data3, {}, data4, data5, data6];
     },
     getSummary() {
       // P-DE
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.bioconversionLit.PDE.diesel.conversion.baseline[0];
+        literatureValues.lit2 = this.bioconversionLit.PDE.diesel.conversion.baseline[1];
+        literatureValues.lit3 = this.bioconversionLit.PDE.diesel.conversion.baseline[2];
+      }
       var avoidedEmission =
         this.Diesel[this.Diesel.length - 1].emission -
         this.subPathways[0].value[9].emission;
@@ -448,19 +469,30 @@ export default {
         co2ConversionProcess: this.subPathways[0].value[7].converted,
         endUse: this.subPathways[0].value[8].converted,
         net: this.subPathways[0].value[9].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
         co2Converted2: this.subPathways[0].value[0].emission,
         co2CaptureProcess2: this.subPathways[0].value[2].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[0].value[7].emission,
         endUse2: this.subPathways[0].value[8].emission,
         net2: this.subPathways[0].value[9].emission,
-        // TODO: Literature Values
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // P-WE
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.bioconversionLit.PWE.diesel.conversion.baseline[0];
+        literatureValues.lit2 = this.bioconversionLit.PWE.diesel.conversion.baseline[1];
+        literatureValues.lit3 = this.bioconversionLit.PWE.diesel.conversion.baseline[2];
+      }
       var avoidedEmission =
         this.Diesel[this.Diesel.length - 1].emission -
         this.subPathways[1].value[7].emission;
@@ -475,20 +507,21 @@ export default {
         co2ConversionProcess: this.subPathways[1].value[5].converted,
         endUse: this.subPathways[1].value[6].converted,
         net: this.subPathways[1].value[7].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[1].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[1].value[5].emission,
         endUse2: this.subPathways[1].value[6].emission,
         net2: this.subPathways[1].value[7].emission,
-        // TODO: Literature Values
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       return [data0, data1];
-    },
-  },
+    }
+  }
 };
 </script>

@@ -1,153 +1,199 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="SOEC-CO - Syngas" name="first"
-        ><div class="row">
+      <el-tab-pane label="SOEC-CO - Syngas" name="first">
+        <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-CO</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-CO</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Syngas</b></span>
+            <span>
+              <b>Product: Syngas</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-CO - Methane" name="second">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-CO</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-CO</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methane</b></span>
+            <span>
+              <b>Product: Methane</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-CO - Methanol" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-CO</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-CO</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: Methanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-CO - Diesel" name="fourth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-CO</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-CO</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-CO - Ethanol" name="fifth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-CO</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-CO</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Ethanol</b></span>
+            <span>
+              <b>Product: Ethanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-EL - Methane" name="sixth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-EL</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-EL</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methane</b></span>
+            <span>
+              <b>Product: Methane</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-EL - Methanol" name="seventh">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-EL</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-EL</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: Methanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="SOEC-EL - Diesel" name="eighth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: SOEC-EL</b></span>
+            <span>
+              <b>Sub-Pathway: SOEC-EL</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="PEM - Methane" name="ninth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: PEM</b></span>
+            <span>
+              <b>Sub-Pathway: PEM</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methane</b></span>
+            <span>
+              <b>Product: Methane</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="PEM - Methanol" name="tenth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: PEM</b></span>
+            <span>
+              <b>Sub-Pathway: PEM</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: Methanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="PEM - Diesel" name="eleventh">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: PEM</b></span>
+            <span>
+              <b>Sub-Pathway: PEM</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Summary" name="twelvth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Summary</b></span>
+            <span>
+              <b>Summary</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -168,24 +214,25 @@ import CalculationTable from "../CalculationTable.vue";
 
 export default {
   components: {
-    CalculationTable,
+    CalculationTable
   },
   computed: {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
+    ...mapState("literature", ["reductionElectricityLit"]),
     ...mapState("pathways", ["reductionElectricity"]),
     ...mapState("incumbents", ["Diesel", "Ethanol", "Methane", "Methanol"]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -193,25 +240,25 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
@@ -235,7 +282,7 @@ export default {
     },
     naturalGas: function() {
       return this.energyUnitConversions.LHV.naturalGas;
-    },
+    }
   },
   mounted() {
     Event.$on("incumbentReady", () => {
@@ -247,7 +294,7 @@ export default {
       activeTabName: "first",
       activeTabLabel: "SOEC-CO - Syngas",
       subPathways: [],
-      summary: [],
+      summary: []
     };
   },
   methods: {
@@ -256,54 +303,54 @@ export default {
       this.subPathways.push(
         {
           name: "SOEC-CO - Syngas",
-          value: this.getSyngas(),
+          value: this.getSyngas()
         },
         {
           name: "SOEC-CO - Methane",
-          value: this.getMethane(),
+          value: this.getMethane()
         },
         {
           name: "SOEC-CO - Methanol",
-          value: this.getMethanol(),
+          value: this.getMethanol()
         },
         {
           name: "SOEC-CO - Diesel",
-          value: this.getDiesel(),
+          value: this.getDiesel()
         },
         {
           name: "SOEC-CO - Ethanol",
-          value: this.getEthanol(),
+          value: this.getEthanol()
         },
         {
           name: "SOEC-EL - Methane",
-          value: this.getMethane2(),
+          value: this.getMethane2()
         },
         {
           name: "SOEC-EL - Methanol",
-          value: this.getMethanol2(),
+          value: this.getMethanol2()
         },
         {
           name: "SOEC-EL - Diesel",
-          value: this.getDiesel2(),
+          value: this.getDiesel2()
         },
         {
           name: "PEM - Methane",
-          value: this.getMethane3(),
+          value: this.getMethane3()
         },
         {
           name: "PEM - Methanol",
-          value: this.getMethanol3(),
+          value: this.getMethanol3()
         },
         {
           name: "PEM - Diesel",
-          value: this.getDiesel3(),
+          value: this.getDiesel3()
         }
       );
       this.summary = this.getSummary();
       this.$store
         .dispatch("pathwayCalc/updateReductionElectricity", {
           subPathways: this.subPathways,
-          summary: this.summary,
+          summary: this.summary
         })
         .then(() => {
           Event.$emit("summary", "reductionElectricity");
@@ -331,7 +378,7 @@ export default {
         activeUnit: "kg CO2eq/kg Syngas",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Syngas - CO2 Unconverted
@@ -345,7 +392,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2 unconv/kg Syngas",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2 unconv/kg Syngas",
+        activeUnit: "kg CO2 unconv/kg Syngas"
       };
 
       // SOEC-CO - Syngas - CO2 Capture Process
@@ -365,7 +412,7 @@ export default {
         activeUnit: "kg CO2eq/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Syngas - Co-electrolysis
@@ -379,7 +426,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Syngas",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Syngas",
+        activeUnit: "kWh/kg Syngas"
       };
 
       // SOEC-CO - Syngas - Water Evaporation
@@ -393,7 +440,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Syngas",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Syngas",
+        activeUnit: "kWh/kg Syngas"
       };
 
       // SOEC-CO - Syngas - Preheating Feed
@@ -407,7 +454,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Syngas",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Syngas",
+        activeUnit: "kWh/kg Syngas"
       };
 
       // SOEC-CO - Syngas - Total
@@ -431,7 +478,7 @@ export default {
         activeUnit: "kWh/kg Syngas",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Syngas - Net
@@ -442,7 +489,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [data0, data1, data2, {}, data3, data4, data5, data6, {}, data7];
@@ -466,7 +513,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methane - CO2 Unconverted
@@ -481,7 +528,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Methane",
+        activeUnit: "kg CO2eq/kg Methane"
       };
 
       // SOEC-CO - Methane - CO2 Capture Process
@@ -501,7 +548,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methane - Methanation
@@ -527,7 +574,7 @@ export default {
         activeUnit: "kWh/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methane - Co-electrolysis
@@ -535,7 +582,7 @@ export default {
       var data4 = {
         item: "Co-electrolysis",
         referenceAmount: referenceAmount,
-        referenceUnit: "kWh/kg Syngas",
+        referenceUnit: "kWh/kg Syngas"
       };
 
       // SOEC-CO - Methane - Water Evaporation
@@ -554,7 +601,7 @@ export default {
         intermediateUnit: "kWh/kg Methane",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methane",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Methane - Preheating Feed
@@ -565,7 +612,7 @@ export default {
         referenceAmount: referenceAmount,
         referenceUnit: "kW/5000 kg Syngas/day",
         intermediateAmount: "(Heating)",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Methane - Electrolysis for extra H2
@@ -582,7 +629,7 @@ export default {
         intermediateUnit: "kWh/kg methane",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg methane",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Methane - Total
@@ -593,7 +640,7 @@ export default {
         item: "Total",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methane - Combustion
@@ -613,7 +660,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methane - Net
@@ -639,7 +686,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -657,7 +704,7 @@ export default {
         {},
         data9,
         {},
-        data10,
+        data10
       ];
     },
     getMethanol() {
@@ -679,7 +726,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methanol - CO2 Unconverted
@@ -694,7 +741,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Methanol",
+        activeUnit: "kg CO2eq/kg Methanol"
       };
 
       // SOEC-CO - Methanol - CO2 Capture Process
@@ -714,7 +761,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methanol - Methanol Synthesis Stage
@@ -732,7 +779,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
         emission: emission,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methanol - Co-electrolysis
@@ -749,7 +796,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Methanol - Water Evaporation
@@ -757,7 +804,7 @@ export default {
       var data5 = {
         item: "Water Evaporation",
         referenceAmount: referenceAmount,
-        referenceUnit: "kW/5000 kg Syngas/day",
+        referenceUnit: "kW/5000 kg Syngas/day"
       };
 
       // SOEC-CO - Methanol - Preheating Feed
@@ -775,7 +822,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Methanol - Total
@@ -791,7 +838,7 @@ export default {
         activeAmount: activeAmount,
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methanol - Combustion
@@ -812,7 +859,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methanol - Net
@@ -830,7 +877,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -846,7 +893,7 @@ export default {
         {},
         data8,
         {},
-        data9,
+        data9
       ];
     },
     getDiesel() {
@@ -868,7 +915,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Diesel - CO2 Unconverted
@@ -883,7 +930,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Diesel",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Diesel",
+        activeUnit: "kg CO2eq/kg Diesel"
       };
 
       // SOEC-CO - Diesel - CO2 Capture Process
@@ -903,7 +950,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Diesel - Co-electrolysis
@@ -920,7 +967,7 @@ export default {
         intermediateUnit: "kWh/kg Diesel",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Diesel",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Diesel - Water Evaporation
@@ -928,7 +975,7 @@ export default {
       var data4 = {
         item: "Water Evaporation",
         referenceAmount: referenceAmount,
-        referenceUnit: "kW/5000 kg Syngas/day",
+        referenceUnit: "kW/5000 kg Syngas/day"
       };
 
       // SOEC-CO - Diesel - Preheating Feed
@@ -946,7 +993,7 @@ export default {
         intermediateUnit: "kWh/kg Diesel",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Diesel",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Diesel - Fischer-Tropsch
@@ -962,7 +1009,7 @@ export default {
         intermediateUnit: "kg CO2/kg Diesel",
         activeAmount: activeAmount,
         activeUnit: "kg CO2/kg Diesel",
-        emission: emission,
+        emission: emission
       };
 
       // SOEC-CO - Diesel - Total
@@ -974,7 +1021,7 @@ export default {
         item: "Total",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Diesel - Combustion
@@ -994,7 +1041,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Diesel - Net
@@ -1011,7 +1058,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -1027,7 +1074,7 @@ export default {
         {},
         data8,
         {},
-        data9,
+        data9
       ];
     },
     getEthanol() {
@@ -1048,7 +1095,7 @@ export default {
         activeUnit: "kg CO2/kg Ethanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Ethanol - CO2 Unconverted
@@ -1062,7 +1109,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Ethanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Ethanol",
+        activeUnit: "kg CO2/kg Ethanol"
       };
 
       // SOEC-CO - Ethanol - CO2 Capture Process
@@ -1082,7 +1129,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Ethanol - Co-electrolysis
@@ -1096,7 +1143,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Ethanol",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Ethanol",
+        activeUnit: "kWh/kg Ethanol"
       };
 
       // SOEC-CO - Ethanol - Allocation Factor for Ethanol
@@ -1104,7 +1151,7 @@ export default {
       var data4 = {
         item: "Allocation Factor for Ethanol",
         referenceAmount: referenceAmount,
-        referenceUnit: "for Ethanol (energy)",
+        referenceUnit: "for Ethanol (energy)"
       };
 
       // SOEC-CO - Ethanol - Total
@@ -1123,7 +1170,7 @@ export default {
         activeUnit: "kWh/kg Ethanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Ethanol - Combustion
@@ -1143,7 +1190,7 @@ export default {
         activeUnit: "kg CO2/kg Ethanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Ethanol - Net
@@ -1160,7 +1207,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -1174,7 +1221,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getMethane2() {
@@ -1195,7 +1242,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methane - CO2 Unconverted
@@ -1209,7 +1256,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Methane",
+        activeUnit: "kg CO2eq/kg Methane"
       };
 
       // SOEC-EL - Methane - CO2 Capture Process
@@ -1229,7 +1276,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methane - Hydrogen Amount
@@ -1237,7 +1284,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methane",
+        referenceUnit: "kg H2/kg Methane"
       };
 
       // SOEC-EL - Methane - Electrolysis for H2
@@ -1257,7 +1304,7 @@ export default {
         activeUnit: "kWh/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methane - Methanation
@@ -1278,7 +1325,7 @@ export default {
         activeUnit: "kWh/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methane - Combustion
@@ -1298,7 +1345,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methane - Net
@@ -1324,7 +1371,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -1339,7 +1386,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getMethanol2() {
@@ -1360,7 +1407,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methanol - CO2 Unconverted
@@ -1374,7 +1421,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Methanol",
+        activeUnit: "kg CO2eq/kg Methanol"
       };
 
       // SOEC-EL - Methanol - CO2 Capture Process
@@ -1394,7 +1441,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methanol - Hydrogen Amount
@@ -1402,7 +1449,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol",
+        referenceUnit: "kg H2/kg Methanol"
       };
 
       // SOEC-EL - Methanol - Electrolysis for H2
@@ -1422,7 +1469,7 @@ export default {
         activeUnit: "kWh/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methanol - Methanol Synthesis
@@ -1443,7 +1490,7 @@ export default {
         activeUnit: "kWh/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methanol - Combustion
@@ -1464,7 +1511,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Methanol - Net
@@ -1490,7 +1537,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -1505,7 +1552,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getDiesel2() {
@@ -1526,7 +1573,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Diesel - CO2 Unconverted
@@ -1540,7 +1587,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Diesel",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Diesel",
+        activeUnit: "kg CO2eq/kg Diesel"
       };
 
       // SOEC-EL - Diesel - CO2 Capture Process
@@ -1560,7 +1607,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Diesel - Electrolysis for H2
@@ -1583,7 +1630,7 @@ export default {
         activeUnit: "kWh/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Diesel - Fischer-Tropsch
@@ -1603,7 +1650,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Diesel - Combustion
@@ -1623,7 +1670,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-EL - Diesel - Net
@@ -1649,7 +1696,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [data0, data1, data2, {}, data3, {}, data4, {}, data5, {}, data6];
@@ -1672,7 +1719,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methane - CO2 Unconverted
@@ -1686,7 +1733,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Methane",
+        activeUnit: "kg CO2eq/kg Methane"
       };
 
       // PEM - Methane - CO2 Capture Process
@@ -1706,7 +1753,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methane - Hydrogen Amount
@@ -1714,7 +1761,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methane",
+        referenceUnit: "kg H2/kg Methane"
       };
 
       // PEM - Methane - Electrolysis for H2
@@ -1734,7 +1781,7 @@ export default {
         activeUnit: "kWh/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methane - Methanation
@@ -1754,7 +1801,7 @@ export default {
         activeUnit: "kWh/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methane - Combustion
@@ -1774,7 +1821,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // SOEC-CO - Methane - Net
@@ -1800,7 +1847,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -1815,7 +1862,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getMethanol3() {
@@ -1836,7 +1883,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methanol - CO2 Unconverted
@@ -1850,7 +1897,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Methanol",
+        activeUnit: "kg CO2eq/kg Methanol"
       };
 
       // PEM - Methanol - CO2 Capture Process
@@ -1870,7 +1917,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methanol - Hydrogen Amount
@@ -1878,7 +1925,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol",
+        referenceUnit: "kg H2/kg Methanol"
       };
 
       // PEM - Methanol - Electrolysis for H2
@@ -1898,7 +1945,7 @@ export default {
         activeUnit: "kWh/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methanol - Methanol Synthesis
@@ -1919,7 +1966,7 @@ export default {
         activeUnit: "kWh/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methanol - Combustion
@@ -1940,7 +1987,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Methanol - Net
@@ -1966,7 +2013,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -1981,7 +2028,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getDiesel3() {
@@ -2002,7 +2049,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Diesel - CO2 Unconverted
@@ -2016,7 +2063,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg Diesel",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg Diesel",
+        activeUnit: "kg CO2eq/kg Diesel"
       };
 
       // PEM - Diesel - CO2 Capture Process
@@ -2036,7 +2083,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Diesel - Electrolysis for H2
@@ -2059,7 +2106,7 @@ export default {
         activeUnit: "kWh/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Diesel - Fischer-Tropsch
@@ -2079,7 +2126,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Diesel - Combustion
@@ -2099,7 +2146,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // PEM - Diesel - Net
@@ -2125,7 +2172,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [data0, data1, data2, {}, data3, {}, data4, {}, data5, {}, data6];
@@ -2151,7 +2198,7 @@ export default {
         net2: this.subPathways[0].value[9].emission,
         avoidedEmission2: 0,
         avoidedEmission: 0,
-        globalEmissionReductionPotential: 0,
+        globalEmissionReductionPotential: 0
         // TODO: Literature Values
       };
 
@@ -2183,7 +2230,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // SOEC-CO - Methanol
@@ -2214,7 +2261,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // SOEC-CO - Diesel
@@ -2245,7 +2292,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // SOEC-CO - Ethanol
@@ -2276,10 +2323,40 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // SOEC-EL - Methane
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit1_2: 0,
+        lit2_2: 0,
+        lit3_2: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.reductionElectricityLit.SOECEL.methane.conversion.baseline[0];
+        literatureValues.lit2 = this.reductionElectricityLit.SOECEL.methane.conversion.baseline[1];
+        literatureValues.lit3 = this.reductionElectricityLit.SOECEL.methane.conversion.baseline[2];
+        literatureValues.lit1_2 = this.reductionElectricityLit.SOECEL.methane.emission.baseline[0];
+        literatureValues.lit2_2 = this.reductionElectricityLit.SOECEL.methane.emission.baseline[1];
+        literatureValues.lit3_2 = this.reductionElectricityLit.SOECEL.methane.emission.baseline[2];
+      } else if (this.defaultEmission.electricity.active === "Renewable") {
+        literatureValues.lit1 = this.reductionElectricityLit.SOECEL.methane.conversion.low[0];
+        literatureValues.lit2 = this.reductionElectricityLit.SOECEL.methane.conversion.low[1];
+        literatureValues.lit3 = this.reductionElectricityLit.SOECEL.methane.conversion.low[2];
+        literatureValues.lit1_2 = this.reductionElectricityLit.SOECEL.methane.emission.low[0];
+        literatureValues.lit2_2 = this.reductionElectricityLit.SOECEL.methane.emission.low[1];
+        literatureValues.lit3_2 = this.reductionElectricityLit.SOECEL.methane.emission.low[2];
+      } else if (this.defaultEmission.electricity.active === "Coal fired") {
+        literatureValues.lit1 = this.reductionElectricityLit.SOECEL.methane.conversion.high[0];
+        literatureValues.lit2 = this.reductionElectricityLit.SOECEL.methane.conversion.high[1];
+        literatureValues.lit3 = this.reductionElectricityLit.SOECEL.methane.conversion.high[2];
+        literatureValues.lit1_2 = this.reductionElectricityLit.SOECEL.methane.emission.high[0];
+        literatureValues.lit2_2 = this.reductionElectricityLit.SOECEL.methane.emission.high[1];
+        literatureValues.lit3_2 = this.reductionElectricityLit.SOECEL.methane.emission.high[2];
+      }
       var avoidedEmission2 =
         this.Methane[this.Methane.length - 1].converted -
         this.subPathways[5].value[11].converted2;
@@ -2297,20 +2374,62 @@ export default {
         co2ConversionProcess: this.subPathways[5].value[7].converted,
         endUse: this.subPathways[5].value[9].converted,
         net: this.subPathways[5].value[11].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
         co2Converted2: this.subPathways[5].value[0].emission,
         co2CaptureProcess2: this.subPathways[5].value[2].emission,
         electrolysis2: this.subPathways[5].value[5].emission,
         co2ConversionProcess2: this.subPathways[5].value[7].emission,
         endUse2: this.subPathways[5].value[9].emission,
         net2: this.subPathways[5].value[11].emission,
-        // TODO: Literature Values
+        lit1_2: literatureValues.lit1_2,
+        lit2_2: literatureValues.lit2_2,
+        lit3_2: literatureValues.lit3_2,
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // SOEC-EL - Methanol
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
+        lit1_2: 0,
+        lit2_2: 0,
+        lit3_2: 0,
+        lit4_2: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.reductionElectricityLit.SOECEL.methanol.conversion.baseline[0];
+        literatureValues.lit2 = this.reductionElectricityLit.SOECEL.methanol.conversion.baseline[1];
+        literatureValues.lit3 = this.reductionElectricityLit.SOECEL.methanol.conversion.baseline[2];
+        literatureValues.lit4 = this.reductionElectricityLit.SOECEL.methanol.conversion.baseline[3];
+        literatureValues.lit1_2 = this.reductionElectricityLit.SOECEL.methanol.emission.baseline[0];
+        literatureValues.lit2_2 = this.reductionElectricityLit.SOECEL.methanol.emission.baseline[1];
+        literatureValues.lit3_2 = this.reductionElectricityLit.SOECEL.methanol.emission.baseline[2];
+        literatureValues.lit4_2 = this.reductionElectricityLit.SOECEL.methanol.emission.baseline[3];
+      } else if (this.defaultEmission.electricity.active === "Renewable") {
+        literatureValues.lit1 = this.reductionElectricityLit.SOECEL.methanol.conversion.low[0];
+        literatureValues.lit2 = this.reductionElectricityLit.SOECEL.methanol.conversion.low[1];
+        literatureValues.lit3 = this.reductionElectricityLit.SOECEL.methanol.conversion.low[2];
+        literatureValues.lit4 = this.reductionElectricityLit.SOECEL.methanol.conversion.low[3];
+        literatureValues.lit1_2 = this.reductionElectricityLit.SOECEL.methanol.emission.low[0];
+        literatureValues.lit2_2 = this.reductionElectricityLit.SOECEL.methanol.emission.low[1];
+        literatureValues.lit3_2 = this.reductionElectricityLit.SOECEL.methanol.emission.low[2];
+        literatureValues.lit4_2 = this.reductionElectricityLit.SOECEL.methanol.emission.low[3];
+      } else if (this.defaultEmission.electricity.active === "Coal fired") {
+        literatureValues.lit1 = this.reductionElectricityLit.SOECEL.methanol.conversion.high[0];
+        literatureValues.lit2 = this.reductionElectricityLit.SOECEL.methanol.conversion.high[1];
+        literatureValues.lit3 = this.reductionElectricityLit.SOECEL.methanol.conversion.high[2];
+        literatureValues.lit4 = this.reductionElectricityLit.SOECEL.methanol.conversion.high[3];
+        literatureValues.lit1_2 = this.reductionElectricityLit.SOECEL.methanol.emission.high[0];
+        literatureValues.lit2_2 = this.reductionElectricityLit.SOECEL.methanol.emission.high[1];
+        literatureValues.lit3_2 = this.reductionElectricityLit.SOECEL.methanol.emission.high[2];
+        literatureValues.lit4_2 = this.reductionElectricityLit.SOECEL.methanol.emission.high[3];
+      }
       var avoidedEmission2 =
         this.Methanol[this.Methanol.length - 1].converted -
         this.subPathways[6].value[11].converted2;
@@ -2328,17 +2447,23 @@ export default {
         co2ConversionProcess: this.subPathways[6].value[7].converted,
         endUse: this.subPathways[6].value[9].converted,
         net: this.subPathways[6].value[11].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
+        lit4: literatureValues.lit4,
         co2Converted2: this.subPathways[6].value[0].emission,
         co2CaptureProcess2: this.subPathways[6].value[2].emission,
         electrolysis2: this.subPathways[6].value[5].emission,
         co2ConversionProcess2: this.subPathways[6].value[7].emission,
         endUse2: this.subPathways[6].value[9].emission,
         net2: this.subPathways[6].value[11].emission,
-        // TODO: Literature Values
+        lit1_2: literatureValues.lit1_2,
+        lit2_2: literatureValues.lit2_2,
+        lit3_2: literatureValues.lit3_2,
+        lit4_2: literatureValues.lit4_2,
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // SOEC-EL - Diesel
@@ -2369,7 +2494,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // PEM - Methane
@@ -2400,7 +2525,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // PEM - Methanol
@@ -2431,7 +2556,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // PEM - Diesel
@@ -2462,7 +2587,7 @@ export default {
         // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       return [
@@ -2476,9 +2601,9 @@ export default {
         data7,
         data8,
         data9,
-        data10,
+        data10
       ];
-    },
-  },
+    }
+  }
 };
 </script>

@@ -170,7 +170,9 @@ export const firstChartSettings = {
     },
     scatter: {
       tooltip: {
-        pointFormat: "Net: <b>{point.y}</b>"
+        pointFormatter: function() {
+          return this.series.name + ": <b>" + this.y + "</b>";
+        },
       },
     },
   },
@@ -204,6 +206,30 @@ export const firstChartSettings = {
       name: "Net",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "scatter",
+    },
+    {
+      name: "Lit1",
+      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      type: "scatter",
+      visible: false
+    },
+    {
+      name: "Lit2",
+      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      type: "scatter",
+      visible: false
+    },
+    {
+      name: "Lit3",
+      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      type: "scatter",
+      visible: false
+    },
+    {
+      name: "Lit4",
+      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      type: "scatter",
+      visible: false
     },
   ],
 };

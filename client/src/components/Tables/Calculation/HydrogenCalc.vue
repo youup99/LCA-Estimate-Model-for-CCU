@@ -1,49 +1,63 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="D-H2 - Diesel" name="first"
-        ><div class="row">
+      <el-tab-pane label="D-H2 - Diesel" name="first">
+        <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: D-H2</b></span>
+            <span>
+              <b>Sub-Pathway: D-H2</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Diesel</b></span>
+            <span>
+              <b>Product: Diesel</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="D-H2 - Methane" name="second">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: D-H2</b></span>
+            <span>
+              <b>Sub-Pathway: D-H2</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methane</b></span>
+            <span>
+              <b>Product: Methane</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="D-H2 - Methanol" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: D-H2</b></span>
+            <span>
+              <b>Sub-Pathway: D-H2</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: Methanol</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Summary" name="fourth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Summary</b></span>
+            <span>
+              <b>Summary</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -64,24 +78,25 @@ import CalculationTable from "../CalculationTable.vue";
 
 export default {
   components: {
-    CalculationTable,
+    CalculationTable
   },
   computed: {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
+    ...mapState("literature", ["reductionHydrogenLit"]),
     ...mapState("pathways", ["reductionHydrogen"]),
     ...mapState("incumbents", ["Diesel", "Ethanol", "Methane", "Methanol"]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -89,25 +104,25 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
@@ -125,7 +140,7 @@ export default {
     },
     fischerTropschDiesel: function() {
       return this.energyUnitConversions.LHV.fischerTropschDiesel;
-    },
+    }
   },
   mounted() {
     Event.$on("incumbentReady", () => {
@@ -137,7 +152,7 @@ export default {
       activeTabName: "first",
       activeTabLabel: "D-H2 - Diesel",
       subPathways: [],
-      summary: [],
+      summary: []
     };
   },
   methods: {
@@ -146,22 +161,22 @@ export default {
       this.subPathways.push(
         {
           name: "D-H2 - Diesel",
-          value: this.getDiesel(),
+          value: this.getDiesel()
         },
         {
           name: "D-H2 - Methane",
-          value: this.getMethane(),
+          value: this.getMethane()
         },
         {
           name: "D-H2 - Methanol",
-          value: this.getMethanol(),
+          value: this.getMethanol()
         }
       );
       this.summary = this.getSummary();
       this.$store
         .dispatch("pathwayCalc/updateReductionHydrogen", {
           subPathways: this.subPathways,
-          summary: this.summary,
+          summary: this.summary
         })
         .then(() => {
           Event.$emit("summary", "reductionHydrogen");
@@ -189,7 +204,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Diesel - CO2 Unconverted
@@ -203,7 +218,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Diesel",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Diesel",
+        activeUnit: "kg CO2/kg Diesel"
       };
 
       // D-H2 - Diesel - CO2 Capture Process
@@ -223,7 +238,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Diesel - Amount of H2
@@ -237,7 +252,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg H2/kg Diesel",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Diesel",
+        activeUnit: "kg H2/kg Diesel"
       };
 
       // D-H2 - Diesel - Hydrogen Intensity
@@ -251,7 +266,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg H2",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg H2",
+        activeUnit: "kg CO2eq/kg H2"
       };
 
       // D-H2 - Diesel - Fischer-Tropsch
@@ -274,7 +289,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Diesel - Combustion
@@ -294,7 +309,7 @@ export default {
         activeUnit: "kg CO2/kg Diesel",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Diesel - Net
@@ -311,7 +326,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -325,7 +340,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getMethane() {
@@ -346,7 +361,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methane - CO2 Unconverted
@@ -360,7 +375,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Methane",
+        activeUnit: "kg CO2/kg Methane"
       };
 
       // D-H2 - Methane - CO2 Capture Process
@@ -380,7 +395,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methane - Hydrogen Amount
@@ -394,7 +409,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg H2/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Methane",
+        activeUnit: "kg H2/kg Methane"
       };
 
       // D-H2 - Methane - Hydrogen Intensity
@@ -408,7 +423,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg H2",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg H2",
+        activeUnit: "kg CO2eq/kg H2"
       };
 
       // D-H2 - Methane - Methanation
@@ -431,7 +446,7 @@ export default {
         activeUnit: "kWh/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methane - Combustion
@@ -451,7 +466,7 @@ export default {
         activeUnit: "kg CO2/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methane - Net
@@ -468,7 +483,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -482,7 +497,7 @@ export default {
         {},
         data6,
         {},
-        data7,
+        data7
       ];
     },
     getMethanol() {
@@ -503,7 +518,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methanol - CO2 Unconverted
@@ -517,7 +532,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Methanol",
+        activeUnit: "kg CO2/kg Methanol"
       };
 
       // D-H2 - Methanol - CO2 Capture Process
@@ -537,7 +552,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methanol - Hydrogen Amount
@@ -551,7 +566,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg H2/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Methanol",
+        activeUnit: "kg H2/kg Methanol"
       };
 
       // D-H2 - Methanol - Hydrogen Intensity
@@ -565,7 +580,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2eq/kg H2",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg H2",
+        activeUnit: "kg CO2eq/kg H2"
       };
 
       // D-H2 - Methanol - Electricity Consumption
@@ -579,7 +594,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Methanol",
+        activeUnit: "kWh/kg Methanol"
       };
 
       // D-H2 - Methanol - Heat
@@ -593,7 +608,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Methanol",
+        activeUnit: "kWh/kg Methanol"
       };
 
       // D-H2 - Methanol - Cooling
@@ -607,7 +622,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Methanol",
+        activeUnit: "kWh/kg Methanol"
       };
 
       // D-H2 - Methanol - Cooling Emission Factor
@@ -632,7 +647,7 @@ export default {
         activeUnit: "kg CO2eq/MJ",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methanol - Combustion
@@ -653,7 +668,7 @@ export default {
         activeUnit: "kg CO2eq/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // D-H2 - Methanol - Net
@@ -670,7 +685,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -687,11 +702,21 @@ export default {
         {},
         data9,
         {},
-        data10,
+        data10
       ];
     },
     getSummary() {
       // D-H2 - Methane
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.reductionHydrogenLit.DH2.methane.conversion.baseline[0];
+        literatureValues.lit2 = this.reductionHydrogenLit.DH2.methane.conversion.baseline[1];
+        literatureValues.lit3 = this.reductionHydrogenLit.DH2.methane.conversion.baseline[2];
+      }
       var avoidedEmission =
         this.Methane[this.Methane.length - 1].emission -
         this.subPathways[1].value[10].emission;
@@ -706,19 +731,32 @@ export default {
         co2ConversionProcess: this.subPathways[1].value[6].converted,
         endUse: this.subPathways[1].value[8].converted,
         net: this.subPathways[1].value[10].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[2].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[1].value[6].emission,
         endUse2: this.subPathways[1].value[8].emission,
         net2: this.subPathways[1].value[10].emission,
-        // TODO: Literature Values
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // D-H2 - Methanol
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.reductionHydrogenLit.DH2.methanol.conversion.baseline[0];
+        literatureValues.lit2 = this.reductionHydrogenLit.DH2.methanol.conversion.baseline[1];
+        literatureValues.lit3 = this.reductionHydrogenLit.DH2.methanol.conversion.baseline[2];
+        literatureValues.lit4 = this.reductionHydrogenLit.DH2.methanol.conversion.baseline[3];
+      }
       var avoidedEmission =
         this.Methanol[this.Methanol.length - 1].emission -
         this.subPathways[2].value[13].emission;
@@ -733,16 +771,18 @@ export default {
         co2ConversionProcess: this.subPathways[2].value[9].converted,
         endUse: this.subPathways[2].value[11].converted,
         net: this.subPathways[2].value[13].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
+        lit4: literatureValues.lit4,
         co2Converted2: this.subPathways[2].value[0].emission,
         co2CaptureProcess2: this.subPathways[2].value[2].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[2].value[9].emission,
         endUse2: this.subPathways[2].value[11].emission,
         net2: this.subPathways[2].value[13].emission,
-        // TODO: Literature Values
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // D-H2 - Diesel
@@ -769,11 +809,11 @@ export default {
         net2: this.subPathways[0].value[10].emission,
         // TODO: Literature Values
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       return [data0, data1, data2];
-    },
-  },
+    }
+  }
 };
 </script>

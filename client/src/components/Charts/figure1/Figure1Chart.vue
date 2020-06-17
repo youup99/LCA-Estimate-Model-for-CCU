@@ -57,6 +57,7 @@ import { firstChartSettings } from "./figure1";
 
 export default {
   computed: {
+    ...mapState("generalAssumptions", ["showAdditional"]),
     ...mapState("summary", ["Figure1"])
   },
   data() {
@@ -82,6 +83,10 @@ export default {
       var hydrogen = [];
       var co2CaptureProcess = [];
       var net = [];
+      var lit1 = [];
+      var lit2 = [];
+      var lit3 = [];
+      var lit4 = [];
       filtered.forEach(value => {
         co2Converted.push(parseFloat(value.co2Converted.toPrecision(3)));
         endUse.push(parseFloat(value.endUse.toPrecision(3)));
@@ -93,6 +98,18 @@ export default {
           parseFloat(value.co2CaptureProcess.toPrecision(3))
         );
         net.push(parseFloat(value.net.toPrecision(3)));
+        lit1.push(
+          value.lit1 == undefined ? 0 : parseFloat(value.lit1.toPrecision(3))
+        );
+        lit2.push(
+          value.lit2 == undefined ? 0 : parseFloat(value.lit2.toPrecision(3))
+        );
+        lit3.push(
+          value.lit3 == undefined ? 0 : parseFloat(value.lit3.toPrecision(3))
+        );
+        lit4.push(
+          value.lit4 == undefined ? 0 : parseFloat(value.lit4.toPrecision(3))
+        );
       });
       this.options.series[0].data = co2Converted;
       this.options.series[1].data = endUse;
@@ -100,6 +117,23 @@ export default {
       this.options.series[3].data = hydrogen;
       this.options.series[4].data = co2CaptureProcess;
       this.options.series[5].data = net;
+      this.options.series[6].data = lit1;
+      this.options.series[7].data = lit2;
+      this.options.series[8].data = lit3;
+      this.options.series[9].data = lit4;
+
+      if (this.showAdditional) {
+        this.options.series[6].visible = true;
+        this.options.series[7].visible = true;
+        this.options.series[8].visible = true;
+        this.options.series[9].visible = true;
+      }
+      else {
+        this.options.series[6].visible = false;
+        this.options.series[7].visible = false;
+        this.options.series[8].visible = false;
+        this.options.series[9].visible = false;
+      }
     }
   }
 };

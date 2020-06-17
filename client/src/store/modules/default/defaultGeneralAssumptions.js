@@ -3,7 +3,7 @@ export const defaultGeneralAssumptions = {
     electricity: {
       list: ["Renewable", "Natural gas", "Coal fired"],
       active: "Renewable",
-      Renewable: 0.024,
+      "Renewable": 0.024,
       "Natural gas": 0.49,
       "Coal fired": 0.8
     },
@@ -21,7 +21,7 @@ export const defaultGeneralAssumptions = {
     steam: {
       list: ["Geothermal", "Natural gas industrial boiler"],
       active: "Geothermal",
-      Geothermal: 0.002,
+      "Geothermal": 0.002,
       "Natural gas industrial boiler": 0.052
     },
     hydrogen: {

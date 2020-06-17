@@ -1,49 +1,63 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="DMC-W" name="first"
-        ><div class="row">
+      <el-tab-pane label="DMC-W" name="first">
+        <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: DMC-W</b></span>
+            <span>
+              <b>Sub-Pathway: DMC-W</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Calcite</b></span>
+            <span>
+              <b>Product: Calcite</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="WMC" name="second">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: WMC</b></span>
+            <span>
+              <b>Sub-Pathway: WMC</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: CWM</b></span>
+            <span>
+              <b>Product: CWM</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="DMC-O" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: DMC-O</b></span>
+            <span>
+              <b>Sub-Pathway: DMC-O</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Magnesite</b></span>
+            <span>
+              <b>Product: Magnesite</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Summary" name="fourth">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Summary</b></span>
+            <span>
+              <b>Summary</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -64,23 +78,24 @@ import CalculationTable from "../CalculationTable.vue";
 
 export default {
   components: {
-    CalculationTable,
+    CalculationTable
   },
   computed: {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
+    ...mapState("literature", ["mineralizationLit"]),
     ...mapState("pathways", ["mineralization"]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -88,31 +103,31 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
         this.defaultEmission.hydrogen.active
       ];
-    },
+    }
   },
   mounted() {
     Event.$on("incumbentReady", () => {
@@ -124,7 +139,7 @@ export default {
       activeTabName: "first",
       activeTabLabel: "DMC-W",
       subPathways: [],
-      summary: [],
+      summary: []
     };
   },
   methods: {
@@ -133,22 +148,22 @@ export default {
       this.subPathways.push(
         {
           name: "DMC-W",
-          value: this.getDMCW(),
+          value: this.getDMCW()
         },
         {
           name: "WMC",
-          value: this.getWMC(),
+          value: this.getWMC()
         },
         {
           name: "DMC-O",
-          value: this.getDMCO(),
+          value: this.getDMCO()
         }
       );
       this.summary = this.getSummary();
       this.$store
         .dispatch("pathwayCalc/updateMineralization", {
           subPathways: this.subPathways,
-          summary: this.summary,
+          summary: this.summary
         })
         .then(() => {
           Event.$emit("summary", "mineralization");
@@ -174,7 +189,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kg CO2 conv/kg Calcite",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-W - CO2 Capture Process
@@ -192,7 +207,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kg CO2 eq/kg CO2 captured",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-W - Total Electricty
@@ -209,7 +224,7 @@ export default {
         intermediateUnit: "kWh/kg Calcite",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Calcite",
-        emission: emission,
+        emission: emission
       };
 
       // DMC-W - Total Heat
@@ -228,7 +243,7 @@ export default {
         intermediateUnit: "kWh/kg Calcite",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Calcite",
-        emission: emission,
+        emission: emission
       };
 
       // DMC-W - Total
@@ -237,7 +252,7 @@ export default {
       var data4 = {
         item: "Total",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-W - End Use
@@ -259,7 +274,7 @@ export default {
         item: "End Use",
         activeAmount: active(),
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-W - Net
@@ -270,7 +285,7 @@ export default {
       var data6 = {
         item: "Net",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       return [data0, data1, data2, data3, {}, data4, data5, data6];
@@ -291,7 +306,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kg CO2 conv/kg CWM",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // WMC - CO2 Captured Process
@@ -309,7 +324,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kg CO2 eq/kg CO2 captured",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // WMC - Total Electricty
@@ -328,7 +343,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kWh/kg CWM",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // WMC - End Use
@@ -351,7 +366,7 @@ export default {
         item: "End Use",
         activeAmount: active(),
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // WMC - Net
@@ -362,7 +377,7 @@ export default {
       var data4 = {
         item: "Net",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       return [data0, data1, data2, {}, data3, data4];
@@ -383,7 +398,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kg CO2 conv/kg Magnesite",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-O - CO2 Captured Process
@@ -401,7 +416,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kg CO2 eq/kg CO2 captured",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-O - Total Electricty
@@ -420,7 +435,7 @@ export default {
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Magnesite",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-O - End Use
@@ -443,7 +458,7 @@ export default {
         item: "End Use",
         activeAmount: active(),
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       // DMC-O - Net
@@ -454,13 +469,51 @@ export default {
       var data4 = {
         item: "Net",
         emission: emission,
-        converted: converted,
+        converted: converted
       };
 
       return [data0, data1, data2, {}, data3, data4];
     },
     getSummary() {
       // WMC
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
+        lit1_2: 0,
+        lit2_2: 0,
+        lit3_2: 0,
+        lit4_2: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.mineralizationLit.WMC.CWM.conversion.baseline[0];
+        literatureValues.lit2 = this.mineralizationLit.WMC.CWM.conversion.baseline[1];
+        literatureValues.lit3 = this.mineralizationLit.WMC.CWM.conversion.baseline[2];
+        literatureValues.lit4 = this.mineralizationLit.WMC.CWM.conversion.baseline[3];
+        literatureValues.lit1_2 = this.mineralizationLit.WMC.CWM.emission.baseline[0];
+        literatureValues.lit2_2 = this.mineralizationLit.WMC.CWM.emission.baseline[1];
+        literatureValues.lit3_2 = this.mineralizationLit.WMC.CWM.emission.baseline[2];
+        literatureValues.lit4_2 = this.mineralizationLit.WMC.CWM.emission.baseline[3];
+      } else if (this.defaultEmission.electricity.active === "Renewable") {
+        literatureValues.lit1 = this.mineralizationLit.WMC.CWM.conversion.low[0];
+        literatureValues.lit2 = this.mineralizationLit.WMC.CWM.conversion.low[1];
+        literatureValues.lit3 = this.mineralizationLit.WMC.CWM.conversion.low[2];
+        literatureValues.lit4 = this.mineralizationLit.WMC.CWM.conversion.low[3];
+        literatureValues.lit1_2 = this.mineralizationLit.WMC.CWM.emission.low[0];
+        literatureValues.lit2_2 = this.mineralizationLit.WMC.CWM.emission.low[1];
+        literatureValues.lit3_2 = this.mineralizationLit.WMC.CWM.emission.low[2];
+        literatureValues.lit4_2 = this.mineralizationLit.WMC.CWM.emission.low[3];
+      } else if (this.defaultEmission.electricity.active === "Coal fired") {
+        literatureValues.lit1 = this.mineralizationLit.WMC.CWM.conversion.high[0];
+        literatureValues.lit2 = this.mineralizationLit.WMC.CWM.conversion.high[1];
+        literatureValues.lit3 = this.mineralizationLit.WMC.CWM.conversion.high[2];
+        literatureValues.lit4 = this.mineralizationLit.WMC.CWM.conversion.high[3];
+        literatureValues.lit1_2 = this.mineralizationLit.WMC.CWM.emission.high[0];
+        literatureValues.lit2_2 = this.mineralizationLit.WMC.CWM.emission.high[1];
+        literatureValues.lit3_2 = this.mineralizationLit.WMC.CWM.emission.high[2];
+        literatureValues.lit4_2 = this.mineralizationLit.WMC.CWM.emission.high[3];
+      }
       var avoidedEmission =
         this.emissionFactors.incumbent.cement -
         this.subPathways[1].value[5].emission;
@@ -475,19 +528,39 @@ export default {
         co2ConversionProcess: this.subPathways[1].value[2].converted,
         endUse: this.subPathways[1].value[4].converted,
         net: this.subPathways[1].value[5].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
+        lit4: literatureValues.lit4,
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[1].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[1].value[2].emission,
         endUse2: this.subPathways[1].value[4].emission,
         net2: this.subPathways[1].value[5].emission,
-        // TODO: Literature Values
+        lit1_2: literatureValues.lit1_2,
+        lit2_2: literatureValues.lit2_2,
+        lit3_2: literatureValues.lit3_2,
+        lit4_2: literatureValues.lit4_2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // DMC-W
+      var literatureValues = {
+        lit1: 0,
+        lit1_2: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.mineralizationLit.DMCW.calcite.conversion.baseline;
+        literatureValues.lit1_2 = this.mineralizationLit.DMCW.calcite.emission.baseline;
+      } else if (this.defaultEmission.electricity.active === "Renewable") {
+        literatureValues.lit1 = this.mineralizationLit.DMCW.calcite.conversion.low;
+        literatureValues.lit1_2 = this.mineralizationLit.DMCW.calcite.emission.low;
+      } else if (this.defaultEmission.electricity.active === "Coal fired") {
+        literatureValues.lit1 = this.mineralizationLit.DMCW.calcite.conversion.high;
+        literatureValues.lit1_2 = this.mineralizationLit.DMCW.calcite.emission.high;
+      }
       var avoidedEmission =
         this.emissionFactors.incumbent.cement -
         this.subPathways[0].value[7].emission;
@@ -502,19 +575,49 @@ export default {
         co2ConversionProcess: this.subPathways[0].value[5].converted,
         endUse: this.subPathways[0].value[6].converted,
         net: this.subPathways[0].value[7].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
         co2Converted2: this.subPathways[0].value[0].emission,
         co2CaptureProcess2: this.subPathways[0].value[1].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[0].value[5].emission,
         endUse2: this.subPathways[0].value[6].emission,
         net2: this.subPathways[0].value[7].emission,
-        // TODO: Literature Values
+        lit1_2: literatureValues.lit1_2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // DMC-O
+      var literatureValues = {
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit1_2: 0,
+        lit2_2: 0,
+        lit3_2: 0
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
+        literatureValues.lit1 = this.mineralizationLit.DMCO.magnesite.conversion.baseline[0];
+        literatureValues.lit2 = this.mineralizationLit.DMCO.magnesite.conversion.baseline[1];
+        literatureValues.lit3 = this.mineralizationLit.DMCO.magnesite.conversion.baseline[2];
+        literatureValues.lit1_2 = this.mineralizationLit.DMCO.magnesite.emission.baseline[0];
+        literatureValues.lit2_2 = this.mineralizationLit.DMCO.magnesite.emission.baseline[1];
+        literatureValues.lit3_2 = this.mineralizationLit.DMCO.magnesite.emission.baseline[2];
+      } else if (this.defaultEmission.electricity.active === "Renewable") {
+        literatureValues.lit1 = this.mineralizationLit.DMCO.magnesite.conversion.low[0];
+        literatureValues.lit2 = this.mineralizationLit.DMCO.magnesite.conversion.low[1];
+        literatureValues.lit3 = this.mineralizationLit.DMCO.magnesite.conversion.low[2];
+        literatureValues.lit1_2 = this.mineralizationLit.DMCO.magnesite.emission.low[0];
+        literatureValues.lit2_2 = this.mineralizationLit.DMCO.magnesite.emission.low[1];
+        literatureValues.lit3_2 = this.mineralizationLit.DMCO.magnesite.emission.low[2];
+      } else if (this.defaultEmission.electricity.active === "Coal fired") {
+        literatureValues.lit1 = this.mineralizationLit.DMCO.magnesite.conversion.high[0];
+        literatureValues.lit2 = this.mineralizationLit.DMCO.magnesite.conversion.high[1];
+        literatureValues.lit3 = this.mineralizationLit.DMCO.magnesite.conversion.high[2];
+        literatureValues.lit1_2 = this.mineralizationLit.DMCO.magnesite.emission.high[0];
+        literatureValues.lit2_2 = this.mineralizationLit.DMCO.magnesite.emission.high[1];
+        literatureValues.lit3_2 = this.mineralizationLit.DMCO.magnesite.emission.high[2];
+      }
       var avoidedEmission =
         this.emissionFactors.incumbent.cement -
         this.subPathways[2].value[5].emission;
@@ -529,20 +632,24 @@ export default {
         co2ConversionProcess: this.subPathways[2].value[2].converted,
         endUse: this.subPathways[2].value[4].converted,
         net: this.subPathways[2].value[5].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
+        lit2: literatureValues.lit2,
+        lit3: literatureValues.lit3,
         co2Converted2: this.subPathways[2].value[0].emission,
         co2CaptureProcess2: this.subPathways[2].value[1].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[2].value[2].emission,
         endUse2: this.subPathways[2].value[4].emission,
         net2: this.subPathways[2].value[5].emission,
-        // TODO: Literature Values
+        lit1_2: literatureValues.lit1_2,
+        lit2_2: literatureValues.lit2_2,
+        lit3_2: literatureValues.lit3_2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       return [data0, data1, data2];
-    },
-  },
+    }
+  }
 };
 </script>

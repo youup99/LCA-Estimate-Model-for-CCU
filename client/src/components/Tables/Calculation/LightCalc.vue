@@ -65,6 +65,7 @@ export default {
       "constants",
       "processCorrelations",
     ]),
+    ...mapState("literature", ["reductionLightLit"]),
     ...mapState("pathways", ["reductionLight"]),
     ...mapState("incumbents", ["Diesel", "Ethanol", "Methane", "Methanol"]),
     electricity: function() {
@@ -636,6 +637,12 @@ export default {
     },
     getSummary() {
       // P.CAT - Methane
+      var literatureValues = {
+        lit1: 0
+      }
+      if(this.defaultEmission.electricity.active === "Natural gas"){
+        literatureValues.lit1 = this.reductionLightLit.PCAT.methane.conversion.baseline;
+      }
       var avoidedEmission =
         this.Methane[this.Methane.length - 1].emission -
         this.subPathways[0].value[15].emission;
@@ -650,19 +657,24 @@ export default {
         co2ConversionProcess: this.subPathways[0].value[11].converted,
         endUse: this.subPathways[0].value[13].converted,
         net: this.subPathways[0].value[15].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
         co2Converted2: this.subPathways[0].value[0].emission,
         co2CaptureProcess2: this.subPathways[0].value[2].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[0].value[11].emission,
         endUse2: this.subPathways[0].value[13].emission,
         net2: this.subPathways[0].value[15].emission,
-        // TODO: Literature Values
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp,
       };
 
       // P.CAT - Methanol
+      var literatureValues = {
+        lit1: 0
+      }
+      if(this.defaultEmission.electricity.active === "Natural gas"){
+        literatureValues.lit1 = this.reductionLightLit.PCAT.methanol.conversion.baseline;
+      }
       var avoidedEmission =
         this.Methanol[this.Methanol.length - 1].emission -
         this.subPathways[1].value[15].emission;
@@ -677,14 +689,13 @@ export default {
         co2ConversionProcess: this.subPathways[1].value[11].converted,
         endUse: this.subPathways[1].value[13].converted,
         net: this.subPathways[1].value[15].converted,
-        // TODO: Literature Values
+        lit1: literatureValues.lit1,
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[2].emission,
         electrolysis2: 0,
         co2ConversionProcess2: this.subPathways[1].value[11].emission,
         endUse2: this.subPathways[1].value[13].emission,
         net2: this.subPathways[1].value[15].emission,
-        // TODO: Literature Values
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp,
       };

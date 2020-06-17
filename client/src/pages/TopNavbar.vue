@@ -69,6 +69,10 @@ export default {
           this.$store.getters["incumbents/getState"]
         );
         this.$store.dispatch(
+          "literature/set",
+          this.$store.getters["literature/getState"]
+        );
+        this.$store.dispatch(
           "pathwayCalc/set",
           this.$store.getters["pathwayCalc/getState"]
         );
@@ -84,6 +88,7 @@ export default {
         this.$store.dispatch("constants/fetchAndAdd");
         this.$store.dispatch("generalAssumptions/fetchAndAdd");
         this.$store.dispatch("incumbents/fetchAndAdd");
+        this.$store.dispatch("literature/fetchAndAdd");
         this.$store.dispatch("pathwayCalc/fetchAndAdd");
         this.$store.dispatch("pathways/fetchAndAdd");
         this.$store.dispatch("summary/fetchAndAdd");

@@ -44,11 +44,11 @@
           ></el-table-column>
           <el-table-column prop="endUse2" label="End Use" :formatter="formatter"></el-table-column>
           <el-table-column prop="net2" label="Net" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit12" label="Lit1" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit22" label="Lit2" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit32" label="Lit3" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit42" label="Lit4" :formatter="formatter"></el-table-column>
-          <el-table-column prop="lit52" label="Lit5" :formatter="formatter"></el-table-column>
+          <el-table-column prop="lit1_2" label="Lit1" :formatter="formatter"></el-table-column>
+          <el-table-column prop="lit2_2" label="Lit2" :formatter="formatter"></el-table-column>
+          <el-table-column prop="lit3_2" label="Lit3" :formatter="formatter"></el-table-column>
+          <el-table-column prop="lit4_2" label="Lit4" :formatter="formatter"></el-table-column>
+          <el-table-column prop="lit5_2" label="Lit5" :formatter="formatter"></el-table-column>
         </el-table-column>
         <el-table-column label="Avoided Emissions">
           <el-table-column

@@ -108,10 +108,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }) => ({
           category,
           subCategory,
@@ -122,10 +122,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -143,10 +143,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }) => ({
           category,
           subCategory,
@@ -157,10 +157,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -178,10 +178,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }) => ({
           category,
           subCategory,
@@ -192,10 +192,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -213,10 +213,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }) => ({
           category,
           subCategory,
@@ -227,10 +227,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -248,10 +248,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }) => ({
           category,
           subCategory,
@@ -262,10 +262,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -283,10 +283,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }) => ({
           category,
           subCategory,
@@ -297,10 +297,10 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          // lit1,
-          // lit2,
-          // lit3,
-          // lit4
+          lit1,
+          lit2,
+          lit3,
+          lit4
         }))(value);
         this.temp.push(subset);
       });
