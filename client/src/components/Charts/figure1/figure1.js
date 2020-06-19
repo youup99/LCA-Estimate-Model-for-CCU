@@ -138,32 +138,6 @@ export const firstChartSettings = {
     borderWidth: 1,
     shadow: false,
   },
-  tooltip: {
-    // formatter: function() {
-    //   var sum = 0,
-    //     cont = this,
-    //     series = cont.series.chart.series,
-    //     each = Highcharts.each;
-    //   each(series, function(p, i) {
-    //     each(p.data, function(ob, j) {
-    //       if (cont.point.index === ob.x) {
-    //         sum += ob.y;
-    //       }
-    //     });
-    //   });
-    //   return (
-    //     "<b>" +
-    //     this.x +
-    //     "</b><br/>" +
-    //     this.series.name +
-    //     ": " +
-    //     this.y +
-    //     " <br/>" +
-    //     "Total: " +
-    //     sum.toPrecision(3)
-    //   );
-    // },
-  },
   plotOptions: {
     column: {
       stacking: "normal",
@@ -211,25 +185,25 @@ export const firstChartSettings = {
       name: "Lit1",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "scatter",
-      visible: false
+      visible: false,
     },
     {
       name: "Lit2",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "scatter",
-      visible: false
+      visible: false,
     },
     {
       name: "Lit3",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "scatter",
-      visible: false
+      visible: false,
     },
     {
       name: "Lit4",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "scatter",
-      visible: false
+      visible: false,
     },
   ],
 };

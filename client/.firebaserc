@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "lca-estimate-model-for-ccu"
+    "default": "lca-estimate-model-for-ccu",
+    "docs": "lca-estimate-model-for-ccu-doc"
   }
 }

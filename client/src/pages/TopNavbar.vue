@@ -25,6 +25,9 @@
                 <el-dropdown-item command="Profile">Profile</el-dropdown-item>
                 <el-dropdown-item command="Save">Save Settings</el-dropdown-item>
                 <el-dropdown-item command="Load">Load Settings</el-dropdown-item>
+                <el-dropdown-item command="Docs">
+                  Docs
+                </el-dropdown-item>
                 <el-dropdown-item command="Log out">Log out</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -101,6 +104,11 @@ export default {
           .catch(error => {
             this.$message.error(error);
           });
+      } else if (command === "Docs") {
+        window.open(
+          "https://lca-estimate-model-for-ccu-doc.web.app/",
+          "_blank"
+        );
       }
     },
     handleSelect(key, keyPath) {
