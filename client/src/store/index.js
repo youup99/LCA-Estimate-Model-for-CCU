@@ -9,6 +9,7 @@ import literature from "./modules/literature";
 import pathways from "./modules/pathways";
 import pathwayCalc from "./modules/pathwayCalc";
 import summary from "./modules/summary";
+import { Loading, Message } from "element-ui";
 
 Vue.use(Vuex);
 const vuexPersist = new VuexPersist({
@@ -57,6 +58,7 @@ initFirebase().catch((error) => {
 
 Firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    let loadingInstance = Loading.service();
     store.dispatch("constants/fetchAndAdd");
     store.dispatch("generalAssumptions/fetchAndAdd");
     store.dispatch("incumbents/fetchAndAdd");
@@ -64,6 +66,10 @@ Firebase.auth().onAuthStateChanged((user) => {
     store.dispatch("pathwayCalc/fetchAndAdd");
     store.dispatch("pathways/fetchAndAdd");
     store.dispatch("summary/fetchAndAdd");
+    setTimeout(() => {
+      loadingInstance.close();
+      Message.success("Loaded saved values");
+    }, 1000);
   }
 });
 

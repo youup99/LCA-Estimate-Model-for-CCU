@@ -25,9 +25,7 @@
                 <el-dropdown-item command="Profile">Profile</el-dropdown-item>
                 <el-dropdown-item command="Save">Save Settings</el-dropdown-item>
                 <el-dropdown-item command="Load">Load Settings</el-dropdown-item>
-                <el-dropdown-item command="Docs">
-                  Docs
-                </el-dropdown-item>
+                <el-dropdown-item command="Docs">Docs</el-dropdown-item>
                 <el-dropdown-item command="Log out">Log out</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -87,7 +85,9 @@ export default {
           "summary/set",
           this.$store.getters["summary/getState"]
         );
+        this.$message.success("Sucessfully Saved!");
       } else if (command === "Load") {
+        let loading = this.$loading();
         this.$store.dispatch("constants/fetchAndAdd");
         this.$store.dispatch("generalAssumptions/fetchAndAdd");
         this.$store.dispatch("incumbents/fetchAndAdd");
@@ -95,6 +95,10 @@ export default {
         this.$store.dispatch("pathwayCalc/fetchAndAdd");
         this.$store.dispatch("pathways/fetchAndAdd");
         this.$store.dispatch("summary/fetchAndAdd");
+        setTimeout(() => {
+          loading.close();
+          this.$message.success("Loaded saved values");
+        }, 1000);
       } else if (command === "Log out") {
         this.$store
           .dispatch("auth/signOut")
