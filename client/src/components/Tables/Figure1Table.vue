@@ -178,10 +178,6 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
         }) => ({
           category,
           subCategory,
@@ -192,10 +188,6 @@ export default {
           co2ConversionProcess,
           endUse,
           net,
-          lit1,
-          lit2,
-          lit3,
-          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -249,9 +241,6 @@ export default {
           endUse,
           net,
           lit1,
-          lit2,
-          lit3,
-          lit4
         }) => ({
           category,
           subCategory,
@@ -263,9 +252,6 @@ export default {
           endUse,
           net,
           lit1,
-          lit2,
-          lit3,
-          lit4
         }))(value);
         this.temp.push(subset);
       });
@@ -286,7 +272,6 @@ export default {
           lit1,
           lit2,
           lit3,
-          lit4
         }) => ({
           category,
           subCategory,
@@ -300,7 +285,6 @@ export default {
           lit1,
           lit2,
           lit3,
-          lit4
         }))(value);
         this.temp.push(subset);
       });

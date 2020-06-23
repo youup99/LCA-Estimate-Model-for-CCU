@@ -57,7 +57,7 @@ initFirebase().catch((error) => {
 });
 
 Firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
+  if (store.getters["auth/isUserAuth"]) {
     let loadingInstance = Loading.service();
     store.dispatch("constants/fetchAndAdd");
     store.dispatch("generalAssumptions/fetchAndAdd");

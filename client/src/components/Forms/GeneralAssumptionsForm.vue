@@ -181,7 +181,7 @@
               <br />variability associated with these pathways.
             </div>
             <el-checkbox
-              v-model="form._showAdditional"
+              v-model="form._showAdditional.value"
             >Show additional literature values in Figure 1</el-checkbox>
           </el-tooltip>
         </el-form-item>
@@ -219,7 +219,7 @@ export default {
       form: {
         _defaultEmission: {},
         _customEmission: {},
-        _showAdditional: false
+        _showAdditional: null
       }
     };
   },

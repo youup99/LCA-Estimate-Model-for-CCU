@@ -2189,7 +2189,10 @@ export default {
         co2ConversionProcess: this.subPathways[0].value[7].converted,
         endUse: 0,
         net: this.subPathways[0].value[9].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[0].value[0].emission,
         co2CaptureProcess2: this.subPathways[0].value[2].emission,
         electrolysis2: this.subPathways[0].value[7].emission,
@@ -2199,7 +2202,6 @@ export default {
         avoidedEmission2: 0,
         avoidedEmission: 0,
         globalEmissionReductionPotential: 0
-        // TODO: Literature Values
       };
 
       // SOEC-CO - Methane
@@ -2220,14 +2222,16 @@ export default {
         co2ConversionProcess: this.subPathways[1].value[4].converted,
         endUse: this.subPathways[1].value[12].converted,
         net: this.subPathways[1].value[14].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[1].value[0].emission,
         co2CaptureProcess2: this.subPathways[1].value[2].emission,
         electrolysis2: this.subPathways[1].value[10].emission,
         co2ConversionProcess2: this.subPathways[1].value[4].emission,
         endUse2: this.subPathways[1].value[12].emission,
         net2: this.subPathways[1].value[14].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2251,14 +2255,16 @@ export default {
         co2ConversionProcess: this.subPathways[2].value[8].converted,
         endUse: this.subPathways[2].value[10].converted,
         net: this.subPathways[2].value[12].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[2].value[0].emission,
         co2CaptureProcess2: this.subPathways[2].value[2].emission,
         electrolysis2: this.subPathways[2].value[8].emission,
         co2ConversionProcess2: this.subPathways[2].value[4].emission,
         endUse2: this.subPathways[2].value[10].emission,
         net2: this.subPathways[2].value[12].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2282,14 +2288,16 @@ export default {
         co2ConversionProcess: this.subPathways[3].value[8].converted,
         endUse: this.subPathways[3].value[10].converted,
         net: this.subPathways[3].value[12].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[3].value[0].emission,
         co2CaptureProcess2: this.subPathways[3].value[2].emission,
         electrolysis2: this.subPathways[3].value[7].emission,
         co2ConversionProcess2: this.subPathways[3].value[8].emission,
         endUse2: this.subPathways[3].value[10].emission,
         net2: this.subPathways[3].value[12].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2313,14 +2321,16 @@ export default {
         co2ConversionProcess: this.subPathways[4].value[6].converted,
         endUse: this.subPathways[4].value[8].converted,
         net: this.subPathways[4].value[10].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[4].value[0].emission,
         co2CaptureProcess2: this.subPathways[4].value[2].emission,
         electrolysis2: this.subPathways[4].value[6].emission,
         co2ConversionProcess2: 0,
         endUse2: this.subPathways[4].value[8].emission,
         net2: this.subPathways[4].value[10].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2377,6 +2387,7 @@ export default {
         lit1: literatureValues.lit1,
         lit2: literatureValues.lit2,
         lit3: literatureValues.lit3,
+        lit4: 0,
         co2Converted2: this.subPathways[5].value[0].emission,
         co2CaptureProcess2: this.subPathways[5].value[2].emission,
         electrolysis2: this.subPathways[5].value[5].emission,
@@ -2484,14 +2495,16 @@ export default {
         co2ConversionProcess: this.subPathways[7].value[6].converted,
         endUse: this.subPathways[7].value[8].converted,
         net: this.subPathways[7].value[10].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[7].value[0].emission,
         co2CaptureProcess2: this.subPathways[7].value[2].emission,
         electrolysis2: this.subPathways[7].value[4].emission,
         co2ConversionProcess2: this.subPathways[7].value[6].emission,
         endUse2: this.subPathways[7].value[8].emission,
         net2: this.subPathways[7].value[10].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2515,14 +2528,16 @@ export default {
         co2ConversionProcess: this.subPathways[8].value[7].converted,
         endUse: this.subPathways[8].value[9].converted,
         net: this.subPathways[8].value[11].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[8].value[0].emission,
         co2CaptureProcess2: this.subPathways[8].value[2].emission,
         electrolysis2: this.subPathways[8].value[5].emission,
         co2ConversionProcess2: this.subPathways[8].value[7].emission,
         endUse2: this.subPathways[8].value[9].emission,
         net2: this.subPathways[8].value[11].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2546,14 +2561,16 @@ export default {
         co2ConversionProcess: this.subPathways[9].value[7].converted,
         endUse: this.subPathways[9].value[9].converted,
         net: this.subPathways[9].value[11].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[9].value[0].emission,
         co2CaptureProcess2: this.subPathways[9].value[2].emission,
         electrolysis2: this.subPathways[9].value[5].emission,
         co2ConversionProcess2: this.subPathways[9].value[7].emission,
         endUse2: this.subPathways[9].value[9].emission,
         net2: this.subPathways[9].value[11].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp
@@ -2577,14 +2594,16 @@ export default {
         co2ConversionProcess: this.subPathways[10].value[6].converted,
         endUse: this.subPathways[10].value[8].converted,
         net: this.subPathways[10].value[10].converted,
-        // TODO: Literature Values
+        lit1: 0,
+        lit2: 0,
+        lit3: 0,
+        lit4: 0,
         co2Converted2: this.subPathways[10].value[0].emission,
         co2CaptureProcess2: this.subPathways[10].value[2].emission,
         electrolysis2: this.subPathways[10].value[4].emission,
         co2ConversionProcess2: this.subPathways[10].value[6].emission,
         endUse2: this.subPathways[10].value[8].emission,
         net2: this.subPathways[10].value[10].emission,
-        // TODO: Literature Values
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
         globalEmissionReductionPotential: gerp

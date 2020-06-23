@@ -60,31 +60,31 @@ export default {
         this.$store.dispatch(
           "constants/set",
           this.$store.getters["constants/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$store.dispatch(
           "generalAssumptions/set",
           this.$store.getters["generalAssumptions/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$store.dispatch(
           "incumbents/set",
           this.$store.getters["incumbents/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$store.dispatch(
           "literature/set",
           this.$store.getters["literature/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$store.dispatch(
           "pathwayCalc/set",
           this.$store.getters["pathwayCalc/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$store.dispatch(
           "pathways/set",
           this.$store.getters["pathways/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$store.dispatch(
           "summary/set",
           this.$store.getters["summary/getState"]
-        );
+        ).catch((error) => console.log(error))
         this.$message.success("Sucessfully Saved!");
       } else if (command === "Load") {
         let loading = this.$loading();

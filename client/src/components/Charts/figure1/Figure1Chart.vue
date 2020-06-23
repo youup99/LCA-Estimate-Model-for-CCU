@@ -122,7 +122,7 @@ export default {
       this.options.series[8].data = lit3;
       this.options.series[9].data = lit4;
 
-      if (this.showAdditional) {
+      if (this.showAdditional.value) {
         this.options.series[6].visible = true;
         this.options.series[7].visible = true;
         this.options.series[8].visible = true;

@@ -105,9 +105,12 @@ export default {
       this.$store.dispatch("auth/signUp", {
         email: this.signUpForm.email,
         password: this.signUpForm.password
-      }).then(() => {
+      })
+      .then(() => {
           this.$router.push("/");
-      }).catch((error) => {
+          this.$message.success("Registration is successful!");
+      })
+      .catch((error) => {
           this.$message.error(error);
       })
     }

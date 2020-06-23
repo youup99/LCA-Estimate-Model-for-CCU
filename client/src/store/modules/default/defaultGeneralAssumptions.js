@@ -69,5 +69,7 @@ export const defaultGeneralAssumptions = {
       value: 0
     }
   },
-  showAdditional: false
+  showAdditional: {
+    value: false
+  }
 };
