@@ -22,11 +22,22 @@
                 <md-icon class="md-size-2x">account_circle</md-icon>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="Profile">Profile</el-dropdown-item>
-                <el-dropdown-item command="Save">Save Settings</el-dropdown-item>
-                <el-dropdown-item command="Load">Load Settings</el-dropdown-item>
-                <el-dropdown-item command="Docs">Docs</el-dropdown-item>
-                <el-dropdown-item command="Log out">Log out</el-dropdown-item>
+                <!-- <el-dropdown-item command="Profile">
+                  <md-icon class="md-size">account_box</md-icon>Profile
+                </el-dropdown-item> -->
+                <el-dropdown-item command="Save">
+                  <md-icon class="md-size">save</md-icon>Save Settings
+                </el-dropdown-item>
+                <el-dropdown-item command="Load">
+                  <md-icon class="md-size">cloud_download</md-icon>Load Settings
+                </el-dropdown-item>
+                <el-dropdown-item command="Docs">
+                  <md-icon class="md-size">description</md-icon>Docs
+                </el-dropdown-item>
+                <el-dropdown-item command="Log out">
+                  <md-icon class="md-size">exit_to_app</md-icon>
+                  Log out
+                </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </md-list>
