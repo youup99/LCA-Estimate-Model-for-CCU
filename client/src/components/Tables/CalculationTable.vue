@@ -8,17 +8,17 @@
           <el-table-column prop="subCategory" label="Sub-Category"></el-table-column>
           <el-table-column prop="product" label="Product"></el-table-column>
         </el-table-column>
-        <el-table-column label="Metric (kg CO2eq/kg CO2 converted)">
-          <el-table-column prop="co2Converted" label="CO2 Converted" :formatter="formatter"></el-table-column>
+        <el-table-column label="Metric (kg CO₂eq/kg CO₂ converted)">
+          <el-table-column prop="co2Converted" label="CO₂ Converted" :formatter="formatter"></el-table-column>
           <el-table-column
             prop="co2CaptureProcess"
-            label="CO2 Capture Process"
+            label="CO₂ Capture Process"
             :formatter="formatter"
           ></el-table-column>
           <el-table-column prop="electrolysis" label="Electrolysis" :formatter="formatter"></el-table-column>
           <el-table-column
             prop="co2ConversionProcess"
-            label="CO2 Conversion Process"
+            label="CO₂ Conversion Process"
             :formatter="formatter"
           ></el-table-column>
           <el-table-column prop="endUse" label="End Use" :formatter="formatter"></el-table-column>
@@ -29,17 +29,17 @@
           <el-table-column prop="lit4" label="Lit4" :formatter="formatter"></el-table-column>
           <el-table-column prop="lit5" label="Lit5" :formatter="formatter"></el-table-column>
         </el-table-column>
-        <el-table-column label="Metric (kg CO2eq/kg Product)">
-          <el-table-column prop="co2Converted2" label="CO2 Converted" :formatter="formatter"></el-table-column>
+        <el-table-column label="Metric (kg CO₂eq/kg Product)">
+          <el-table-column prop="co2Converted2" label="CO₂ Converted" :formatter="formatter"></el-table-column>
           <el-table-column
             prop="co2CaptureProcess2"
-            label="CO2 Capture Process"
+            label="CO₂ Capture Process"
             :formatter="formatter"
           ></el-table-column>
           <el-table-column prop="electrolysis2" label="Electrolysis" :formatter="formatter"></el-table-column>
           <el-table-column
             prop="co2ConversionProcess2"
-            label="CO2 Conversion Process"
+            label="CO₂ Conversion Process"
             :formatter="formatter"
           ></el-table-column>
           <el-table-column prop="endUse2" label="End Use" :formatter="formatter"></el-table-column>
@@ -53,21 +53,21 @@
         <el-table-column label="Avoided Emissions">
           <el-table-column
             prop="avoidedEmission2"
-            label="kg CO2eq/MJ Product"
+            label="kg CO₂eq/MJ Product"
             :formatter="formatter"
           ></el-table-column>
         </el-table-column>
         <el-table-column label="Avoided Emissions">
           <el-table-column
             prop="avoidedEmission"
-            label="kg CO2eq/kg Product"
+            label="kg CO₂eq/kg Product"
             :formatter="formatter"
           ></el-table-column>
         </el-table-column>
         <el-table-column label="Global Emission Reduction Potential">
           <el-table-column
             prop="globalEmissionReductionPotential"
-            label="Gt CO2eq"
+            label="Gt CO₂eq"
             :formatter="formatter"
           ></el-table-column>
         </el-table-column>
@@ -98,13 +98,13 @@
           <el-table-column prop="activeUnit" label="Unit"></el-table-column>
         </el-table-column>
         <el-table-column label>
-          <el-table-column prop="emission" label="kg CO2eq/kg Product" :formatter="formatter"></el-table-column>
+          <el-table-column prop="emission" label="kg CO₂eq/kg Product" :formatter="formatter"></el-table-column>
           <el-table-column
             prop="converted"
-            label="kg CO2eq/kg CO2 Converted"
+            label="kg CO₂eq/kg CO₂ Converted"
             :formatter="formatter"
           ></el-table-column>
-          <el-table-column prop="converted2" label="kg CO2eq/MJ Product" :formatter="formatter"></el-table-column>
+          <el-table-column prop="converted2" label="kg CO₂eq/MJ Product" :formatter="formatter"></el-table-column>
         </el-table-column>
       </el-table>
     </div>

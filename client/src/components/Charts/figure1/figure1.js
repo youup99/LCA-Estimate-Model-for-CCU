@@ -36,7 +36,7 @@ export const firstChartSettings = {
     },
     categories: [
       {
-        name: "CO2 Mineralization",
+        name: "CO₂ Mineralization",
         categories: [
           {
             name: "WMC",
@@ -53,7 +53,7 @@ export const firstChartSettings = {
         ],
       },
       {
-        name: "CO2 Reduction Involving Electricity",
+        name: "CO₂ Reduction Involving Electricity",
         categories: [
           {
             name: "SOEC-CO",
@@ -66,7 +66,7 @@ export const firstChartSettings = {
         ],
       },
       {
-        name: "CO2 Reduction by Hydrocarbon",
+        name: "CO₂ Reduction by Hydrocarbon",
         categories: [
           {
             name: "DMR-CO",
@@ -79,7 +79,7 @@ export const firstChartSettings = {
         ],
       },
       {
-        name: "CO2 Reduction by Hydrogen",
+        name: "CO₂ Reduction by Hydrogen",
         categories: [
           {
             name: "D-H2",
@@ -88,7 +88,7 @@ export const firstChartSettings = {
         ],
       },
       {
-        name: "CO2 Reduction Involving Light",
+        name: "CO₂ Reduction Involving Light",
         categories: [
           {
             name: "P.CAT",
@@ -97,7 +97,7 @@ export const firstChartSettings = {
         ],
       },
       {
-        name: "CO2 Bioconversion",
+        name: "CO₂ Bioconversion",
         categories: [
           {
             name: "P-DE",
@@ -113,7 +113,7 @@ export const firstChartSettings = {
   },
   yAxis: {
     title: {
-      text: "Emissions (kg CO2eq emitted/kg CO2 converted)",
+      text: "Emissions (kg CO₂eq emitted/kg CO₂ converted)",
     },
     stackLabels: {
       // enabled: true,
@@ -152,7 +152,7 @@ export const firstChartSettings = {
   },
   series: [
     {
-      name: "CO2 Converted",
+      name: "CO₂ Converted",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "column",
     },
@@ -162,7 +162,7 @@ export const firstChartSettings = {
       type: "column",
     },
     {
-      name: "CO2 Conversion Process",
+      name: "CO₂ Conversion Process",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "column",
     },
@@ -172,7 +172,7 @@ export const firstChartSettings = {
       type: "column",
     },
     {
-      name: "CO2 Capture Process",
+      name: "CO₂ Capture Process",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: "column",
     },

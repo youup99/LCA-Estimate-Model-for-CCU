@@ -70,7 +70,7 @@
           <el-form-item label="Methane Input" label-width="105px">
             <el-input type="number" v-model="forms.DMRCO.methanol.methane">
               <template slot="append">
-                kg CH4/
+                kg Methane/
                 <br />kg Methanol
               </template>
             </el-input>
@@ -156,7 +156,7 @@
           <el-form-item label="H2 Input" label-width="105px">
             <el-input type="number" v-model="forms.DMRH2.methanol.h2">
               <template slot="append">
-                kg H2/
+                kg Hydrogen/
                 <br />kg Methanol
               </template>
             </el-input>
@@ -180,7 +180,7 @@
           <el-form-item label="Methane Input" label-width="105px">
             <el-input type="number" v-model="forms.DMRH2.methanol.methane">
               <template slot="append">
-                kg CH4/
+                kg Methane/
                 <br />kg Methanol
               </template>
             </el-input>

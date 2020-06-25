@@ -105,7 +105,7 @@ export default {
         steamUnit: "kg CO2eq/MJ",
         hydrogenName: this.defaultEmission.hydrogen.active,
         hydrogenValue: this.hydrogen,
-        hydrogenUnit: "kg CO2eq/kg H2",
+        hydrogenUnit: "kg CO2eq/kg Hydrogen",
         co2Name: this.defaultEmission.co2.active,
         co2Value: this.co2,
         co2Unit: "kg CO2eq/kg CO2 captured"

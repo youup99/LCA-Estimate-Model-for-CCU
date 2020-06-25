@@ -27,7 +27,7 @@
           <el-form-item label="Hydrogen Input" label-width="110px">
             <el-input type="number" v-model="forms.DH2.diesel.hydrogen">
               <template slot="append">
-                kg H2/
+                kg Hydrogen/
                 <br />kg Diesel
               </template>
             </el-input>
@@ -94,7 +94,7 @@
           <el-form-item label="Hydrogen Input" label-width="110px">
             <el-input type="number" v-model="forms.DH2.methane.hydrogen">
               <template slot="append">
-                kg H2/
+                kg Hydrogen/
                 <br />kg Methane
               </template>
             </el-input>
@@ -180,7 +180,7 @@
           <el-form-item label="Hydrogen Input" label-width="110px">
             <el-input type="number" v-model="forms.DH2.methanol.hydrogen">
               <template slot="append">
-                kg H2/
+                kg Hydrogen/
                 <br />kg Methanol
               </template>
             </el-input>

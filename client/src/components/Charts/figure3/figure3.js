@@ -36,7 +36,7 @@ export const thirdChartSettings = {
     },
     categories: [
       {
-        name: "CO2 Mineralization",
+        name: "CO₂ Mineralization",
         categories: [
           {
             name: "WMC",
@@ -53,7 +53,7 @@ export const thirdChartSettings = {
         ]
       },
       {
-        name: "CO2 Reduction Involving Electricity",
+        name: "CO₂ Reduction Involving Electricity",
         categories: [
           {
             name: "SOEC-CO",
@@ -66,7 +66,7 @@ export const thirdChartSettings = {
         ]
       },
       {
-        name: "CO2 Reduction by Hydrocarbon",
+        name: "CO₂ Reduction by Hydrocarbon",
         categories: [
           {
             name: "DMR-CO",
@@ -79,7 +79,7 @@ export const thirdChartSettings = {
         ]
       },
       {
-        name: "CO2 Reduction by Hydrogen",
+        name: "CO₂ Reduction by Hydrogen",
         categories: [
           {
             name: "D-H2",
@@ -88,7 +88,7 @@ export const thirdChartSettings = {
         ]
       },
       {
-        name: "CO2 Reduction Involving Light",
+        name: "CO₂ Reduction Involving Light",
         categories: [
           {
             name: "P.CAT",
@@ -97,7 +97,7 @@ export const thirdChartSettings = {
         ]
       },
       {
-        name: "CO2 Bioconversion",
+        name: "CO₂ Bioconversion",
         categories: [
           {
             name: "P-DE",
@@ -115,7 +115,7 @@ export const thirdChartSettings = {
     height: 400,
     title: {
       align: "middle",
-      text: "Avoided Emissions (kg CO2eq avoided/kg Product)"
+      text: "Avoided Emissions (kg CO₂eq avoided/kg Product)"
     },
     stackLabels: {
       style: {

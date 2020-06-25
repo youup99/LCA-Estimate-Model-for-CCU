@@ -622,9 +622,9 @@ export default {
       var activeAmount = this.reductionElectricity.SOECCO.methane.electricity;
       var emission = activeAmount * this.electricity;
       var data7 = {
-        item: "Electrolysis for extra H2",
+        item: "Electrolysis for extra H₂",
         referenceAmount: referenceAmount,
-        referenceUnit: "kWh/kg H2",
+        referenceUnit: "kWh/kg H₂",
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg methane",
         activeAmount: activeAmount,
@@ -1284,7 +1284,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methane"
+        referenceUnit: "kg H₂/kg Methane"
       };
 
       // SOEC-EL - Methane - Electrolysis for H2
@@ -1295,9 +1295,9 @@ export default {
       var converted = -emission / data0.emission;
       var converted2 = emission / this.methane;
       var data4 = {
-        item: "Electrolysis for H2",
+        item: "Electrolysis for H₂",
         referenceAmount: referenceAmount,
-        referenceUnit: "kWh/kg H2",
+        referenceUnit: "kWh/kg H₂",
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methane",
         activeAmount: activeAmount,
@@ -1449,7 +1449,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol"
+        referenceUnit: "kg H₂/kg Methanol"
       };
 
       // SOEC-EL - Methanol - Electrolysis for H2
@@ -1460,9 +1460,9 @@ export default {
       var converted = -emission / data0.emission;
       var converted2 = emission / this.methanol;
       var data4 = {
-        item: "Electrolysis for H2",
+        item: "Electrolysis for H₂",
         referenceAmount: referenceAmount,
-        referenceUnit: "kWh/kg H2",
+        referenceUnit: "kWh/kg H₂",
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
@@ -1621,7 +1621,7 @@ export default {
       var converted = -emission / data0.emission;
       var converted2 = emission / this.fischerTropschDiesel;
       var data3 = {
-        item: "Electrolysis for H2",
+        item: "Electrolysis for H₂",
         referenceAmount: referenceAmount,
         referenceUnit: "MJ/MJ of Diesel",
         intermediateAmount: intermediateAmount,
@@ -1761,7 +1761,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methane"
+        referenceUnit: "kg H₂/kg Methane"
       };
 
       // PEM - Methane - Electrolysis for H2
@@ -1772,9 +1772,9 @@ export default {
       var converted = -emission / data0.emission;
       var converted2 = emission / this.methane;
       var data4 = {
-        item: "Electrolysis for H2",
+        item: "Electrolysis for H₂",
         referenceAmount: referenceAmount,
-        referenceUnit: "kWh/kg H2",
+        referenceUnit: "kWh/kg H₂",
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methane",
         activeAmount: activeAmount,
@@ -1925,7 +1925,7 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol"
+        referenceUnit: "kg H₂/kg Methanol"
       };
 
       // PEM - Methanol - Electrolysis for H2
@@ -1936,9 +1936,9 @@ export default {
       var converted = -emission / data0.emission;
       var converted2 = emission / this.methanol;
       var data4 = {
-        item: "Electrolysis for H2",
+        item: "Electrolysis for H₂",
         referenceAmount: referenceAmount,
-        referenceUnit: "kWh/kg H2",
+        referenceUnit: "kWh/kg H₂",
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
@@ -2097,7 +2097,7 @@ export default {
       var converted = -emission / data0.emission;
       var converted2 = emission / this.fischerTropschDiesel;
       var data3 = {
-        item: "Electrolysis for H2",
+        item: "Electrolysis for H₂",
         referenceAmount: referenceAmount,
         referenceUnit: "MJ/MJ of Diesel",
         intermediateAmount: intermediateAmount,

@@ -268,13 +268,13 @@ export default {
       var intermediateAmount = referenceAmount;
       var activeAmount = intermediateAmount;
       var data7 = {
-        item: "N2O Emitted",
+        item: "N₂O Emitted",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg N2O/kg Methanol",
+        referenceUnit: "kg N₂O/kg Methanol",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg N2O/kg Methanol",
+        intermediateUnit: "kg N₂O/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg N2O/kg Methanol",
+        activeUnit: "kg N₂O/kg Methanol",
       };
 
       // P.CAT - Methanol - Methane Emitted
@@ -510,13 +510,13 @@ export default {
       var intermediateAmount = referenceAmount;
       var activeAmount = intermediateAmount;
       var data7 = {
-        item: "N2O Emitted",
+        item: "N₂O Emitted",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg N2O/kg Methane",
+        referenceUnit: "kg N₂O/kg Methane",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg N2O/kg Methane",
+        intermediateUnit: "kg N₂O/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg N2O/kg Methane",
+        activeUnit: "kg N₂O/kg Methane",
       };
 
       // P.CAT - Methane - Methane Emitted

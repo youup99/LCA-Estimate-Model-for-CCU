@@ -181,7 +181,7 @@ export default {
       this.activeLabel = tab.label;
       this.options.title.text = "Emissions per kg of " + tab.label;
       this.options.yAxis.title.text =
-        "Emissions (kg CO2eq emitted/kg " + tab.label + ")";
+        "Emissions (kg CO₂eq emitted/kg " + tab.label + ")";
       this.options.series[0].data = this.chartData[
         this.activeLabel
       ].co2Converted;
@@ -197,7 +197,7 @@ export default {
       if (tab.label === "CWM") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Mineralization",
+            name: "CO₂ Mineralization",
             categories: ["WMC"]
           },
           {
@@ -207,7 +207,7 @@ export default {
       } else if (tab.label === "Calcite") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Mineralization",
+            name: "CO₂ Mineralization",
             categories: ["DMC-W"]
           },
           {
@@ -217,7 +217,7 @@ export default {
       } else if (tab.label === "Magnesite") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Mineralization",
+            name: "CO₂ Mineralization",
             categories: ["DMC-O"]
           },
           {
@@ -227,15 +227,15 @@ export default {
       } else if (tab.label === "Methane") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Reduction Involving Electricity",
+            name: "CO₂ Reduction Involving Electricity",
             categories: ["SOEC-CO", "SOEC-EL"]
           },
           {
-            name: "CO2 Reduction by Hydrogen",
+            name: "CO₂ Reduction by Hydrogen",
             categories: ["D-H2"]
           },
           {
-            name: "CO2 Reduction Involving Light",
+            name: "CO₂ Reduction Involving Light",
             categories: ["P.CAT"]
           },
           {
@@ -245,19 +245,19 @@ export default {
       } else if (tab.label === "Methanol") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Reduction Involving Electricity",
+            name: "CO₂ Reduction Involving Electricity",
             categories: ["SOEC-CO", "SOEC-EL"]
           },
           {
-            name: "CO2 Reduction by Hydrocarbon",
+            name: "CO₂ Reduction by Hydrocarbon",
             categories: ["DMR-CO", "DMR-H2"]
           },
           {
-            name: "CO2 Reduction by Hydrogen",
+            name: "CO₂ Reduction by Hydrogen",
             categories: ["D-H2"]
           },
           {
-            name: "CO2 Reduction Involving Light",
+            name: "CO₂ Reduction Involving Light",
             categories: ["P.CAT"]
           },
           {
@@ -267,15 +267,15 @@ export default {
       } else if (tab.label === "Diesel") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Reduction Involving Electricity",
+            name: "CO₂ Reduction Involving Electricity",
             categories: ["SOEC-CO", "SOEC-EL"]
           },
           {
-            name: "CO2 Reduction by Hydrogen",
+            name: "CO₂ Reduction by Hydrogen",
             categories: ["D-H2"]
           },
           {
-            name: "CO2 Bioconversion",
+            name: "CO₂ Bioconversion",
             categories: ["P-DE", "P-WE"]
           },
           {
@@ -285,7 +285,7 @@ export default {
       } else if (tab.label === "Ethanol") {
         this.options.xAxis.categories = [
           {
-            name: "CO2 Reduction Involving Electricity",
+            name: "CO₂ Reduction Involving Electricity",
             categories: ["SOEC-CO"]
           },
           {

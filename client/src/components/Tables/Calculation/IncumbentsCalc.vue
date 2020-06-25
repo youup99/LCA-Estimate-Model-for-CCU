@@ -208,7 +208,7 @@ export default {
       var data2 = {
         item: "Total Hydrogen Consumption",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Diesel",
+        referenceUnit: "kg H₂/kg Diesel",
         emission: emission,
         converted: converted
       };

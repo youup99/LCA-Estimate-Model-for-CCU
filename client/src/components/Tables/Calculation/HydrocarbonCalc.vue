@@ -215,11 +215,11 @@ export default {
       var data3 = {
         item: "Methane Input",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol",
+        referenceUnit: "kg H₂/kg Methanol",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg H2/kg Methanol",
+        intermediateUnit: "kg H₂/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Methanol",
+        activeUnit: "kg H₂/kg Methanol",
         emission: emission,
       };
 
@@ -402,13 +402,13 @@ export default {
       var activeAmount = this.reductionHydrocarbon.DMRH2.methanol.h2;
       var emission = activeAmount * this.hydrogen;
       var data3 = {
-        item: "H2 Amount",
+        item: "H₂ Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol",
+        referenceUnit: "kg H₂/kg Methanol",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg H2/kg Methanol",
+        intermediateUnit: "kg H₂/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Methanol",
+        activeUnit: "kg H₂/kg Methanol",
         emission: emission,
       };
 

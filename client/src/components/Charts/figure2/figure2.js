@@ -27,7 +27,7 @@ export const secondChartSettings = {
     },
     categories: [
       {
-        name: "CO2 Mineralization",
+        name: "CO₂ Mineralization",
         categories: ["CWM"]
       },
       {
@@ -37,7 +37,7 @@ export const secondChartSettings = {
   },
   yAxis: {
     title: {
-      text: "Emissions (kg CO2eq emitted/kg CWM)"
+      text: "Emissions (kg CO₂eq emitted/kg CWM)"
     },
     stackLabels: {
       style: {
@@ -72,7 +72,7 @@ export const secondChartSettings = {
   },
   series: [
     {
-      name: "CO2 Converted",
+      name: "CO₂ Converted",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: 'column'
     },
@@ -82,7 +82,7 @@ export const secondChartSettings = {
       type: 'column'
     },
     {
-      name: "CO2 Conversion Process",
+      name: "CO₂ Conversion Process",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: 'column'
     },
@@ -92,7 +92,7 @@ export const secondChartSettings = {
       type: 'column'
     },
     {
-      name: "CO2 Capture Process",
+      name: "CO₂ Capture Process",
       data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       type: 'column'
     },

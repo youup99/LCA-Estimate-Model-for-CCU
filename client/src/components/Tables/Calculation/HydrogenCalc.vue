@@ -246,13 +246,13 @@ export default {
       var intermediateAmount = referenceAmount;
       var activeAmount = this.reductionHydrogen.DH2.diesel.hydrogen;
       var data3 = {
-        item: "Amount of H2",
+        item: "Amount of H₂",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Diesel",
+        referenceUnit: "kg H₂/kg Diesel",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg H2/kg Diesel",
+        intermediateUnit: "kg H₂/kg Diesel",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Diesel"
+        activeUnit: "kg H₂/kg Diesel"
       };
 
       // D-H2 - Diesel - Hydrogen Intensity
@@ -262,11 +262,11 @@ export default {
       var data4 = {
         item: "Hydrogen Intensity",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg CO2eq/kg H2",
+        referenceUnit: "kg CO2eq/kg H₂",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg CO2eq/kg H2",
+        intermediateUnit: "kg CO2eq/kg H₂",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg H2"
+        activeUnit: "kg CO2eq/kg H₂"
       };
 
       // D-H2 - Diesel - Fischer-Tropsch
@@ -405,11 +405,11 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methane",
+        referenceUnit: "kg H₂/kg Methane",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg H2/kg Methane",
+        intermediateUnit: "kg H₂/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Methane"
+        activeUnit: "kg H₂/kg Methane"
       };
 
       // D-H2 - Methane - Hydrogen Intensity
@@ -419,11 +419,11 @@ export default {
       var data4 = {
         item: "Hydrogen Intensity",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg CO2eq/kg H2",
+        referenceUnit: "kg CO2eq/kg H₂",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg CO2eq/kg H2",
+        intermediateUnit: "kg CO2eq/kg H₂",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg H2"
+        activeUnit: "kg CO2eq/kg H₂"
       };
 
       // D-H2 - Methane - Methanation
@@ -562,11 +562,11 @@ export default {
       var data3 = {
         item: "Hydrogen Amount",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg H2/kg Methanol",
+        referenceUnit: "kg H₂/kg Methanol",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg H2/kg Methanol",
+        intermediateUnit: "kg H₂/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg H2/kg Methanol"
+        activeUnit: "kg H₂/kg Methanol"
       };
 
       // D-H2 - Methanol - Hydrogen Intensity
@@ -576,11 +576,11 @@ export default {
       var data4 = {
         item: "Hydrogen Intensity",
         referenceAmount: referenceAmount,
-        referenceUnit: "kg CO2eq/kg H2",
+        referenceUnit: "kg CO2eq/kg H₂",
         intermediateAmount: intermediateAmount,
-        intermediateUnit: "kg CO2eq/kg H2",
+        intermediateUnit: "kg CO2eq/kg H₂",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2eq/kg H2"
+        activeUnit: "kg CO2eq/kg H₂"
       };
 
       // D-H2 - Methanol - Electricity Consumption
