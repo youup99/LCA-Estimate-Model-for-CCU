@@ -68,6 +68,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
+          this.$loading();
           const { email, password } = this.loginForm;
           this.$store
             .dispatch("auth/signIn", { email, password })
