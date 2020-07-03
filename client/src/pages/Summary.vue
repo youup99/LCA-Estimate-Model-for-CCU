@@ -3,20 +3,20 @@
     <div class="md-layout">
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <div class="header">
-          <h3>Calculation</h3>
+          <h3>Summary</h3>
         </div>
-        <pathway-table-card></pathway-table-card>
+        <summary-table-card></summary-table-card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { PathwayTableCard } from "@/components";
+import { SummaryTableCard } from "@/components";
 
 export default {
   components: {
-    PathwayTableCard
+    SummaryTableCard
   }
 };
 </script>

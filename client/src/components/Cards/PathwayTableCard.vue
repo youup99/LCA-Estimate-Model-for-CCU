@@ -28,14 +28,18 @@
   </el-card>
 </template>
 <script>
-import IncumbentsCalc from "./IncumbentsCalc.vue";
-import MineralizationCalc from "./MineralizationCalc.vue";
-import BioconversionCalc from "./BioconversionCalc.vue";
-import LightCalc from "./LightCalc.vue";
-import HydrogenCalc from "./HydrogenCalc.vue";
-import ElectricityCalc from "./ElectricityCalc.vue";
-import HydrocarbonCalc from "./HydrocarbonCalc.vue";
-import ActiveTable from "../ActiveTable";
+import IncumbentsCalc from "@/components/Calculation/IncumbentsCalc.vue";
+import MineralizationCalc from "@/components/Calculation/MineralizationCalc.vue";
+import BioconversionCalc from "@/components/Calculation/BioconversionCalc.vue";
+import LightCalc from "@/components/Calculation/LightCalc.vue";
+import HydrogenCalc from "@/components/Calculation/HydrogenCalc.vue";
+import ElectricityCalc from "@/components/Calculation/ElectricityCalc.vue";
+import HydrocarbonCalc from "@/components/Calculation/HydrocarbonCalc.vue";
+import ActiveTable from "@/components/Tables/ActiveTable";
+
+import { Event } from "@/event-bus";
+import { mapState } from "vuex";
+import { exportCalculation } from "@/excel/excelExport";
 
 export default {
   components: {
@@ -47,6 +51,21 @@ export default {
     HydrogenCalc,
     ElectricityCalc,
     HydrocarbonCalc
+  },
+  computed: {
+    ...mapState("pathwayCalc", [
+      "bioconversion",
+      "mineralization",
+      "reductionElectricity",
+      "reductionHydrocarbon",
+      "reductionHydrogen",
+      "reductionLight"
+    ])
+  },
+  mounted() {
+    Event.$on("export", () => {
+      exportCalculation(this);
+    });
   },
   data() {
     return {

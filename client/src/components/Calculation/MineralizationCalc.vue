@@ -74,7 +74,7 @@
 <script>
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
-import CalculationTable from "../CalculationTable.vue";
+import CalculationTable from "@/components/Tables/CalculationTable.vue";
 
 export default {
   components: {

@@ -23,6 +23,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="validate('loginForm')">Submit</el-button>
+          <el-button type="secondary" @click="cancel()">Cancel</el-button>
         </el-form-item>
       </el-form>
     </el-card>

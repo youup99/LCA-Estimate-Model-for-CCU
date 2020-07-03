@@ -1,25 +1,24 @@
 <template>
   <el-container direction="vertical">
     <top-navbar v-on:tabClick="tabClick"></top-navbar>
-    <dashboard v-show="activeTab === 'Home'"></dashboard>
+    <home v-show="activeTab === 'Home'"></home>
     <calculation v-show="activeTab === 'Calculation'"></calculation>
-    <summary-tables v-show="activeTab === 'Summary'"></summary-tables>
+    <summary-page v-show="activeTab === 'Summary'"></summary-page>
   </el-container>
 </template>
 
 <script>
 import TopNavbar from "../TopNavbar.vue";
-import ContentFooter from "../ContentFooter.vue";
-import Dashboard from "../Dashboard.vue";
+import Home from "../Home.vue";
 import Calculation from "../Calculation.vue";
-import SummaryTables from "../SummaryTables.vue";
+import SummaryPage from "../Summary.vue";
 
 export default {
   components: {
     TopNavbar,
-    Dashboard,
+    Home,
     Calculation,
-    SummaryTables
+    SummaryPage
   },
   data() {
     return {

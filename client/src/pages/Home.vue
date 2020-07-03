@@ -14,7 +14,7 @@
         <figure-1-chart></figure-1-chart>
       </div>
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-40">
-        <pathway-form></pathway-form>
+        <pathway-form-card></pathway-form-card>
       </div>
       <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-60">
         <figure-2-chart></figure-2-chart>
@@ -31,8 +31,8 @@
 
 <script>
 import {
+  PathwayFormCard,
   GeneralAssumptionsForm,
-  PathwayForm,
   Figure1Chart,
   Figure2Chart,
   Figure3Chart,
@@ -41,15 +41,12 @@ import {
 
 export default {
   components: {
+    PathwayFormCard,
     GeneralAssumptionsForm,
-    PathwayForm,
     Figure1Chart,
     Figure2Chart,
     Figure3Chart,
     Figure4Chart
-  },
-  data() {
-    return {};
   }
 };
 </script>

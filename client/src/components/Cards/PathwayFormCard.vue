@@ -38,12 +38,12 @@
   </el-card>
 </template>
 <script>
-import MineralizationForm from "./Pathways/MineralizationForm.vue";
-import BioconversionForm from "./Pathways/BioconversionForm.vue";
-import ReductionElectricityForm from "./Pathways/ReductionElectricityForm.vue";
-import ReductionHydrocarbonForm from "./Pathways/ReductionHydrocarbonForm.vue";
-import ReductionLightForm from "./Pathways/ReductionLightForm.vue";
-import ReductionHydrogenForm from "./Pathways/ReductionHydrogenForm.vue";
+import MineralizationForm from "@/components/Forms/MineralizationForm.vue";
+import BioconversionForm from "@/components/Forms/BioconversionForm.vue";
+import ReductionElectricityForm from "@/components/Forms/ReductionElectricityForm.vue";
+import ReductionHydrocarbonForm from "@/components/Forms/ReductionHydrocarbonForm.vue";
+import ReductionLightForm from "@/components/Forms/ReductionLightForm.vue";
+import ReductionHydrogenForm from "@/components/Forms/ReductionHydrogenForm.vue";
 
 export default {
   components: {

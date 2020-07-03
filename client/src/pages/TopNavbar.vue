@@ -24,7 +24,10 @@
               <el-dropdown-menu slot="dropdown">
                 <!-- <el-dropdown-item command="Profile">
                   <md-icon class="md-size">account_box</md-icon>Profile
-                </el-dropdown-item> -->
+                </el-dropdown-item>-->
+                <el-dropdown-item command="Export">
+                  <md-icon class="md-size">launch</md-icon>Export to Excel
+                </el-dropdown-item>
                 <el-dropdown-item command="Save">
                   <md-icon class="md-size">save</md-icon>Save Settings
                 </el-dropdown-item>
@@ -35,8 +38,7 @@
                   <md-icon class="md-size">description</md-icon>Docs
                 </el-dropdown-item>
                 <el-dropdown-item command="Log out">
-                  <md-icon class="md-size">exit_to_app</md-icon>
-                  Log out
+                  <md-icon class="md-size">exit_to_app</md-icon>Log out
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -48,6 +50,8 @@
 </template>
 
 <script>
+import { Event } from "@/event-bus";
+
 export default {
   data() {
     return {
@@ -124,6 +128,8 @@ export default {
           "https://lca-estimate-model-for-ccu-doc.web.app/",
           "_blank"
         );
+      } else if (command === "Export") {
+        Event.$emit("export");
       }
     },
     handleSelect(key, keyPath) {
