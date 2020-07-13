@@ -31,6 +31,7 @@
 <script>
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
+import { exportActive } from "@/excel/excelExport";
 
 export default {
   computed: {
@@ -84,6 +85,9 @@ export default {
     this.active = this.getActive();
     Event.$on("calculate", () => {
       this.active = this.getActive();
+    });
+    Event.$on("export", () => {
+      exportActive(this.active);
     });
   },
   data() {
