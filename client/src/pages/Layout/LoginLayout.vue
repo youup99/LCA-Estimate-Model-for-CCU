@@ -8,31 +8,26 @@
         :model="loginForm"
         :rules="rules"
         ref="loginForm"
-        label-width="100px"
+        label-width="90px"
         class="login-form"
       >
-        <el-form-item label="Username" prop="username">
-          <el-input
-            v-model="loginForm.username"
-            placeholder="Enter your username"
-          ></el-input>
+        <el-form-item label="Email" prop="email">
+          <el-input v-model="loginForm.email" placeholder="Enter your email"></el-input>
         </el-form-item>
         <el-form-item label="Password" prop="password">
           <el-input
             v-model="loginForm.password"
             placeholder="Enter your password"
+            @change="submitForm('loginForm')"
             show-password
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('loginForm')"
-            >Login</el-button
-          >
-          <el-button type="secondary" @click="forgotPassword"
-            >Forgot Password</el-button
-          >
+          <el-button type="primary" @click="submitForm('loginForm')">Login</el-button>
+          <el-button type="secondary" @click="forgotPassword">Forgot Password</el-button>
         </el-form-item>
       </el-form>
+      <el-link type="danger" @click="signUp()">New User? Sign up now!</el-link>
     </el-card>
   </div>
 </template>
@@ -42,58 +37,59 @@ export default {
   props: {
     mainLogo: {
       type: String,
-      default: require("@/assets/img/logo.png"),
-    },
+      default: require("@/assets/img/logo.png")
+    }
   },
   data() {
     return {
       loginForm: {
-        username: "",
-        password: "",
+        email: "",
+        password: ""
       },
       rules: {
-        username: [
+        email: [
           {
             required: true,
-            message: "Please enter a username",
-            trigger: "blur",
-          },
+            message: "Please enter an email",
+            trigger: "blur"
+          }
         ],
         password: [
           {
             required: true,
             message: "Please enter a password",
-            trigger: "blur",
-          },
-        ],
-      },
+            trigger: "blur"
+          }
+        ]
+      }
     };
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(valid => {
         if (valid) {
-          const { username, password } = this.loginForm;
+          this.$loading();
+          const { email, password } = this.loginForm;
           this.$store
-            .dispatch("auth/login", { username, password })
-            .then(() => {
+            .dispatch("auth/signIn", { email, password })
+            .then(value => {
               this.$router.push("/");
             })
-            .catch((err) => {
-              this.$message({
-                message: err,
-                type: "error",
-              });
+            .catch(error => {
+              this.$message.error(error);
             });
         } else {
           return false;
         }
       });
     },
-    forgotPassword() {
-      this.$router.push("/resetPassword");
+    signUp() {
+      this.$router.push("/register");
     },
-  },
+    forgotPassword() {
+      this.$router.push("/forgotpassword");
+    }
+  }
 };
 </script>
 <style scoped>

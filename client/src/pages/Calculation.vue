@@ -1,27 +1,22 @@
 <template>
   <div class="content">
     <div class="md-layout">
-      <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
-      >
+      <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100">
         <div class="header">
           <h3>Calculation</h3>
         </div>
-        <pathway-calc></pathway-calc>
+        <pathway-table-card></pathway-table-card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { PathwayCalc } from "@/components";
+import { PathwayTableCard } from "@/components";
 
 export default {
   components: {
-    PathwayCalc,
-  },
-  data() {
-    return {};
-  },
+    PathwayTableCard
+  }
 };
 </script>
