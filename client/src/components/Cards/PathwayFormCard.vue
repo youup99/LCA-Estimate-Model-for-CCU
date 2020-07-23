@@ -45,6 +45,8 @@ import ReductionHydrocarbonForm from "@/components/Forms/ReductionHydrocarbonFor
 import ReductionLightForm from "@/components/Forms/ReductionLightForm.vue";
 import ReductionHydrogenForm from "@/components/Forms/ReductionHydrogenForm.vue";
 
+import { Event } from "@/event-bus";
+
 export default {
   components: {
     MineralizationForm,
@@ -53,6 +55,14 @@ export default {
     ReductionHydrocarbonForm,
     ReductionLightForm,
     ReductionHydrogenForm
+  },
+  mounted() {
+    Event.$on("importReady", () => {
+      var pathways = Object.keys(this.$refs);
+      pathways.forEach((value) => {
+        this.$refs[value].import();
+      })
+    });
   },
   data() {
     return {

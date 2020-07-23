@@ -472,6 +472,10 @@ export default {
         this.forms.SOECCO = this.reductionElectricity.SOECCO;
         this.forms.SOECEL = this.reductionElectricity.SOECEL;
       });
+    },
+    import() {
+      this.forms.SOECCO = this.reductionElectricity.SOECCO;
+      this.forms.SOECEL = this.reductionElectricity.SOECEL;
     }
   }
 };

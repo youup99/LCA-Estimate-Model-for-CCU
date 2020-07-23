@@ -157,10 +157,6 @@ export default {
           name: "Methanol",
           value: this.getMethanol()
         }
-        // {
-        //   name: "Summary",
-        //   value: this.getSummary()
-        // }
       );
       this.summary = this.getSummary();
       this.products.push({

@@ -263,6 +263,10 @@ export default {
         this.forms.DMRCO = this.reductionHydrocarbon.DMRCO;
         this.forms.DMRH2 = this.reductionHydrocarbon.DMRH2;
       });
+    },
+    import() {
+      this.forms.DMRCO = this.reductionHydrocarbon.DMRCO;
+      this.forms.DMRH2 = this.reductionHydrocarbon.DMRH2;
     }
   }
 };

@@ -26,6 +26,7 @@
         <figure-4-chart></figure-4-chart>
       </div>
     </div>
+    <file-import-modal></file-import-modal>
   </div>
 </template>
 
@@ -36,7 +37,8 @@ import {
   Figure1Chart,
   Figure2Chart,
   Figure3Chart,
-  Figure4Chart
+  Figure4Chart,
+  FileImportModal
 } from "@/components";
 
 export default {
@@ -46,7 +48,8 @@ export default {
     Figure1Chart,
     Figure2Chart,
     Figure3Chart,
-    Figure4Chart
+    Figure4Chart,
+    FileImportModal
   }
 };
 </script>

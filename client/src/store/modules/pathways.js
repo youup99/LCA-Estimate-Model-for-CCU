@@ -9,6 +9,9 @@ const getters = {
 };
 
 const actions = {
+  update({ commit, dispatch }, newValue) {
+    commit("update", newValue);
+  },
   updateMineralization({ commit, dispatch }, newValue) {
     commit("updateMineralization", newValue);
   },
@@ -48,6 +51,9 @@ const actions = {
 };
 
 const mutations = {
+  update(state, newValue) {
+    Object.assign(state, newValue);
+  },
   updateMineralization(state, newValue) {
     Object.assign(state.mineralization, newValue);
   },

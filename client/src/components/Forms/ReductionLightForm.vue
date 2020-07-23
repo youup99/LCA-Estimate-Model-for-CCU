@@ -178,6 +178,9 @@ export default {
       this.$store.dispatch("pathways/resetReductionLight").then(() => {
         this.forms.PCAT = this.reductionLight.PCAT;
       });
+    },
+    import() {
+      this.forms.PCAT = this.reductionLight.PCAT;
     }
   }
 };

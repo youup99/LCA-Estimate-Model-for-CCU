@@ -10,7 +10,7 @@ import {
   fig2Header,
   fig3Header,
   fig4Header,
-} from "./headers";
+} from "./exportHeaders";
 
 var wb;
 

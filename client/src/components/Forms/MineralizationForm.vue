@@ -258,6 +258,11 @@ export default {
         this.forms.WMC = this.mineralization.WMC;
         this.forms.DMCO = this.mineralization.DMCO;
       });
+    },
+    import() {
+      this.forms.DMCW = this.mineralization.DMCW;
+      this.forms.WMC = this.mineralization.WMC;
+      this.forms.DMCO = this.mineralization.DMCO;
     }
   }
 };

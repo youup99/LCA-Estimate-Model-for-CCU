@@ -25,6 +25,9 @@
                 <!-- <el-dropdown-item command="Profile">
                   <md-icon class="md-size">account_box</md-icon>Profile
                 </el-dropdown-item>-->
+                <el-dropdown-item command="Import">
+                  <md-icon class="md-size">attachment</md-icon>Import from Excel
+                </el-dropdown-item>
                 <el-dropdown-item command="Export">
                   <md-icon class="md-size">launch</md-icon>Export to Excel
                 </el-dropdown-item>
@@ -130,6 +133,8 @@ export default {
         );
       } else if (command === "Export") {
         Event.$emit("export");
+      } else if (command === "Import"){
+        Event.$emit("import");
       }
     },
     handleSelect(key, keyPath) {

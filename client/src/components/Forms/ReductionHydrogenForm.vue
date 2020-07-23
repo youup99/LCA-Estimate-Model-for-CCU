@@ -273,6 +273,9 @@ export default {
       this.$store.dispatch("pathways/resetReductionHydrogen").then(() => {
         this.forms.DH2 = this.reductionHydrogen.DH2;
       });
+    },
+    import() {
+      this.forms.DH2 = this.reductionHydrogen.DH2;
     }
   }
 };

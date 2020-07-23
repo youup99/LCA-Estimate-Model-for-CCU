@@ -197,6 +197,10 @@ export default {
         this.forms.PDE = this.bioconversion.PDE;
         this.forms.PWE = this.bioconversion.PWE;
       });
+    },
+    import() {
+      this.forms.PDE = this.bioconversion.PDE;
+      this.forms.PWE = this.bioconversion.PWE;
     }
   }
 };
