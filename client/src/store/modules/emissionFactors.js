@@ -1,6 +1,6 @@
-import { defaultPathways } from "./default/defaultPathways";
+import { defaultEmissionFactors } from "./default/defaultEmissionFactors";
 
-const state = JSON.parse(JSON.stringify(defaultPathways));
+const state = JSON.parse(JSON.stringify(defaultEmissionFactors));
 const getters = {
   getState(state) {
     return state;
@@ -74,46 +74,46 @@ const mutations = {
   resetMineralization(state) {
     Object.assign(
       state.mineralization,
-      JSON.parse(JSON.stringify(defaultPathways.mineralization))
+      JSON.parse(JSON.stringify(defaultEmissionFactors.mineralization))
     );
   },
   resetBioconversion(state) {
     Object.assign(
       state.bioconversion,
-      JSON.parse(JSON.stringify(defaultPathways.bioconversion))
+      JSON.parse(JSON.stringify(defaultEmissionFactors.bioconversion))
     );
   },
   resetReductionLight(state) {
     Object.assign(
       state.reductionLight,
-      JSON.parse(JSON.stringify(defaultPathways.reductionLight))
+      JSON.parse(JSON.stringify(defaultEmissionFactors.reductionLight))
     );
   },
   resetReductionHydrogen(state) {
     Object.assign(
       state.reductionHydrogen,
-      JSON.parse(JSON.stringify(defaultPathways.reductionHydrogen))
+      JSON.parse(JSON.stringify(defaultEmissionFactors.reductionHydrogen))
     );
   },
   resetReductionElectricity(state) {
     Object.assign(
       state.reductionElectricity,
-      JSON.parse(JSON.stringify(defaultPathways.reductionElectricity))
+      JSON.parse(JSON.stringify(defaultEmissionFactors.reductionElectricity))
     );
   },
   resetReductionHydrocarbon(state) {
     Object.assign(
       state.reductionHydrocarbon,
-      JSON.parse(JSON.stringify(defaultPathways.reductionHydrocarbon))
+      JSON.parse(JSON.stringify(defaultEmissionFactors.reductionHydrocarbon))
     );
   },
 };
 
 export default {
   namespaced: true,
-  firestorePath: "userDocs/{userId}/store/pathways",
+  firestorePath: "userDocs/{userId}/store/emissionFactors",
   firestoreRefType: "doc", // or 'doc'
-  moduleName: "pathways",
+  moduleName: "emissionFactors",
   statePropName: "",
   state,
   getters,

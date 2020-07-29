@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.PDE.diesel.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -50,7 +50,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.PDE.diesel.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -93,7 +93,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.PWE.diesel.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -117,7 +117,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
-            <el-select v-model="heatSource.active" disabled>
+            <el-select v-model="emission.PWE.diesel.heat">
               <el-option v-for="item in heatSource.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -127,7 +127,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.PWE.diesel.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -142,7 +142,8 @@ import { Event } from "@/event-bus";
 
 export default {
   computed: {
-    ...mapState("pathways", ["bioconversion"]),
+    ...mapState(["pathways"]),
+    ...mapState(["emissionFactors"]),
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
@@ -164,15 +165,32 @@ export default {
         this.update(val);
       },
       deep: true
+    },
+    emission: {
+      handler(val) {
+        this.$store
+          .dispatch("emissionFactors/updateBioconversion", val)
+          .then(() => {
+            Event.$emit("calculcate");
+          });
+      },
+      deep: true
     }
   },
   created() {
-    this.forms.PDE = this.bioconversion.PDE;
-    this.forms.PWE = this.bioconversion.PWE;
+    this.forms.PDE = this.pathways.bioconversion.PDE;
+    this.forms.PWE = this.pathways.bioconversion.PWE;
+    this.emission.PDE = this.emissionFactors.bioconversion.PDE;
+    this.emission.PWE = this.emissionFactors.bioconversion.PWE;
+    this.defaultEmissionFactors();
   },
   data() {
     return {
       forms: {
+        PDE: {},
+        PWE: {}
+      },
+      emission: {
         PDE: {},
         PWE: {}
       }
@@ -194,13 +212,30 @@ export default {
     },
     reset() {
       this.$store.dispatch("pathways/resetBioconversion").then(() => {
-        this.forms.PDE = this.bioconversion.PDE;
-        this.forms.PWE = this.bioconversion.PWE;
+        this.forms.PDE = this.pathways.bioconversion.PDE;
+        this.forms.PWE = this.pathways.bioconversion.PWE;
       });
+      this.defaultEmissionFactors();
     },
     import() {
-      this.forms.PDE = this.bioconversion.PDE;
-      this.forms.PWE = this.bioconversion.PWE;
+      this.forms.PDE = this.pathways.bioconversion.PDE;
+      this.forms.PWE = this.pathways.bioconversion.PWE;
+      this.emission.PDE = this.emissionFactors.bioconversion.PDE;
+      this.emission.PWE = this.emissionFactors.bioconversion.PWE;
+    },
+    defaultEmissionFactors() {
+      for (let [key, value] of Object.entries(this.emission)) {
+        for (let [key1, value1] of Object.entries(value)) {
+          for (let [key2, value2] of Object.entries(value1)) {
+            if (key2 === "electricity")
+              this.emission[key][key1][key2] = this.electricitySource.active;
+            else if (key2 === "heat")
+              this.emission[key][key1][key2] = this.heatSource.active;
+            else if (key2 === "co2")
+              this.emission[key][key1][key2] = this.co2Source.active;
+          }
+        }
+      }
     }
   }
 };

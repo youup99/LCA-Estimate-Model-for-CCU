@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.DMCW.calcite.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
-            <el-select v-model="heatSource.active" disabled>
+            <el-select v-model="emission.DMCW.calcite.heat">
               <el-option v-for="item in heatSource.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -69,7 +69,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.DMCW.calcite.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -112,7 +112,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.WMC.CWM.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -127,7 +127,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.WMC.CWM.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -170,7 +170,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.DMCO.magnesite.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -185,7 +185,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.DMCO.magnesite.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -200,7 +200,8 @@ import { Event } from "@/event-bus";
 
 export default {
   computed: {
-    ...mapState("pathways", ["mineralization"]),
+    ...mapState(["pathways"]),
+    ...mapState(["emissionFactors"]),
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
@@ -222,16 +223,35 @@ export default {
         this.update(val);
       },
       deep: true
+    },
+    emission: {
+      handler(val) {
+        this.$store
+          .dispatch("emissionFactors/updateMineralization", val)
+          .then(() => {
+            Event.$emit("calculate");
+          });
+      },
+      deep: true
     }
   },
   created() {
-    this.forms.DMCW = this.mineralization.DMCW;
-    this.forms.WMC = this.mineralization.WMC;
-    this.forms.DMCO = this.mineralization.DMCO;
+    this.forms.DMCW = this.pathways.mineralization.DMCW;
+    this.forms.WMC = this.pathways.mineralization.WMC;
+    this.forms.DMCO = this.pathways.mineralization.DMCO;
+    this.emission.DMCW = this.emissionFactors.mineralization.DMCW;
+    this.emission.WMC = this.emissionFactors.mineralization.WMC;
+    this.emission.DMCO = this.emissionFactors.mineralization.DMCO;
+    this.defaultEmissionFactors();
   },
   data() {
     return {
       forms: {
+        DMCW: {},
+        WMC: {},
+        DMCO: {}
+      },
+      emission: {
         DMCW: {},
         WMC: {},
         DMCO: {}
@@ -254,15 +274,30 @@ export default {
     },
     reset() {
       this.$store.dispatch("pathways/resetMineralization").then(() => {
-        this.forms.DMCW = this.mineralization.DMCW;
-        this.forms.WMC = this.mineralization.WMC;
-        this.forms.DMCO = this.mineralization.DMCO;
+        this.forms.DMCW = this.pathways.mineralization.DMCW;
+        this.forms.WMC = this.pathways.mineralization.WMC;
+        this.forms.DMCO = this.pathways.mineralization.DMCO;
       });
+      this.defaultEmissionFactors();
     },
     import() {
-      this.forms.DMCW = this.mineralization.DMCW;
-      this.forms.WMC = this.mineralization.WMC;
-      this.forms.DMCO = this.mineralization.DMCO;
+      this.forms.DMCW = this.pathways.mineralization.DMCW;
+      this.forms.WMC = this.pathways.mineralization.WMC;
+      this.forms.DMCO = this.pathways.mineralization.DMCO;
+      this.emission.DMCW = this.emissionFactors.mineralization.DMCW;
+      this.emission.WMC = this.emissionFactors.mineralization.WMC;
+      this.emission.DMCO = this.emissionFactors.mineralization.DMCO;
+    },
+    defaultEmissionFactors() {
+      for(let [key, value] of Object.entries(this.emission)){
+        for(let [key1, value1] of Object.entries(value)){
+          for(let [key2, value2] of Object.entries(value1)){
+            if(key2 === "electricity") this.emission[key][key1][key2] = this.electricitySource.active;
+            else if(key2 === "heat") this.emission[key][key1][key2] = this.heatSource.active;
+            else if(key2 === "co2") this.emission[key][key1][key2] = this.co2Source.active;
+          }
+        }
+      }
     }
   }
 };

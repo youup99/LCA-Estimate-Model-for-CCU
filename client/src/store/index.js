@@ -9,6 +9,7 @@ import literature from "./modules/literature";
 import pathways from "./modules/pathways";
 import pathwayCalc from "./modules/pathwayCalc";
 import summary from "./modules/summary";
+import emissionFactors from "./modules/emissionFactors";
 import { Loading, Message } from "element-ui";
 
 Vue.use(Vuex);
@@ -30,6 +31,7 @@ const easyFirestore = VuexEasyFirestore(
     pathwayCalc,
     pathways,
     summary,
+    emissionFactors
   ],
   {
     // logging: true,
@@ -47,6 +49,7 @@ const store = new Vuex.Store({
     incumbents,
     literature,
     summary,
+    emissionFactors
   },
   plugins: [vuexPersist.plugin, easyFirestore],
 });
@@ -66,6 +69,7 @@ Firebase.auth().onAuthStateChanged((user) => {
     store.dispatch("pathwayCalc/fetchAndAdd");
     store.dispatch("pathways/fetchAndAdd");
     store.dispatch("summary/fetchAndAdd");
+    store.dispatch("emissionFactors/fetchAndAdd");
     setTimeout(() => {
       loadingInstance.close();
       Message.success("Loaded saved values");

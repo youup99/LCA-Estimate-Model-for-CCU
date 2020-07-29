@@ -103,6 +103,10 @@ export default {
           "summary/set",
           this.$store.getters["summary/getState"]
         );
+        this.$store.dispatch(
+          "emissionFactors/set",
+          this.$store.getters["emissionFactors/getState"]
+        );
         this.$message.success("Sucessfully Saved!");
       } else if (command === "Load") {
         let loading = this.$loading();
@@ -113,6 +117,7 @@ export default {
         this.$store.dispatch("pathwayCalc/fetchAndAdd");
         this.$store.dispatch("pathways/fetchAndAdd");
         this.$store.dispatch("summary/fetchAndAdd");
+        this.$store.dispatch("emissionFactors/fetchAndAdd");
         setTimeout(() => {
           loading.close();
           this.$message.success("Loaded saved values");
@@ -133,7 +138,7 @@ export default {
         );
       } else if (command === "Export") {
         Event.$emit("export");
-      } else if (command === "Import"){
+      } else if (command === "Import") {
         Event.$emit("import");
       }
     },

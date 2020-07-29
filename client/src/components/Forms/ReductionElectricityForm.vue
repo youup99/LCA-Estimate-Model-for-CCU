@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECCO.methane.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
-            <el-select v-model="heatSource.active" disabled>
+            <el-select v-model="emission.SOECCO.methane.heat">
               <el-option v-for="item in heatSource.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -69,7 +69,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECCO.methane.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -96,7 +96,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECCO.methanol.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -120,7 +120,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
-            <el-select v-model="heatSource.active" disabled>
+            <el-select v-model="emission.SOECCO.methanol.heat">
               <el-option v-for="item in heatSource.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -130,7 +130,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECCO.methanol.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -158,7 +158,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECCO.diesel.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -182,7 +182,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Heat" label-width="85px">
-            <el-select v-model="heatSource.active" disabled>
+            <el-select v-model="emission.SOECCO.diesel.heat">
               <el-option v-for="item in heatSource.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -192,7 +192,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECCO.diesel.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -220,7 +220,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECCO.ethanol.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -235,7 +235,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECCO.ethanol.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -278,7 +278,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECEL.methane.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -302,7 +302,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECEL.methane.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -330,7 +330,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECEL.methanol.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -354,7 +354,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECEL.methanol.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -382,7 +382,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.SOECEL.diesel.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -397,7 +397,7 @@
         <div class="col-md-6"></div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.SOECEL.diesel.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -412,7 +412,8 @@ import { Event } from "@/event-bus";
 
 export default {
   computed: {
-    ...mapState("pathways", ["reductionElectricity"]),
+    ...mapState(["pathways"]),
+    ...mapState(["emissionFactors"]),
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
@@ -437,15 +438,32 @@ export default {
         this.update(val);
       },
       deep: true
+    },
+    emission: {
+      handler(val) {
+        this.$store
+          .dispatch("emissionFactors/updateReductionElectricity", val)
+          .then(() => {
+            Event.$emit("calculate");
+          });
+      },
+      deep: true
     }
   },
   created() {
-    this.forms.SOECCO = this.reductionElectricity.SOECCO;
-    this.forms.SOECEL = this.reductionElectricity.SOECEL;
+    this.forms.SOECCO = this.pathways.reductionElectricity.SOECCO;
+    this.forms.SOECEL = this.pathways.reductionElectricity.SOECEL;
+    this.emission.SOECCO = this.emissionFactors.reductionElectricity.SOECCO;
+    this.emission.SOECEL = this.emissionFactors.reductionElectricity.SOECEL;
+    this.defaultEmissionFactors();
   },
   data() {
     return {
       forms: {
+        SOECCO: {},
+        SOECEL: {}
+      },
+      emission: {
         SOECCO: {},
         SOECEL: {}
       }
@@ -469,13 +487,30 @@ export default {
     },
     reset() {
       this.$store.dispatch("pathways/resetReductionElectricity").then(() => {
-        this.forms.SOECCO = this.reductionElectricity.SOECCO;
-        this.forms.SOECEL = this.reductionElectricity.SOECEL;
+        this.forms.SOECCO = this.pathways.reductionElectricity.SOECCO;
+        this.forms.SOECEL = this.pathways.reductionElectricity.SOECEL;
       });
+      this.defaultEmissionFactors();
     },
     import() {
-      this.forms.SOECCO = this.reductionElectricity.SOECCO;
-      this.forms.SOECEL = this.reductionElectricity.SOECEL;
+      this.forms.SOECCO = this.pathways.reductionElectricity.SOECCO;
+      this.forms.SOECEL = this.pathways.reductionElectricity.SOECEL;
+      this.emission.SOECCO = this.emissionFactors.reductionElectricity.SOECCO;
+      this.emission.SOECEL = this.emissionFactors.reductionElectricity.SOECEL;
+    },
+    defaultEmissionFactors() {
+      for (let [key, value] of Object.entries(this.emission)) {
+        for (let [key1, value1] of Object.entries(value)) {
+          for (let [key2, value2] of Object.entries(value1)) {
+            if (key2 === "electricity")
+              this.emission[key][key1][key2] = this.electricitySource.active;
+            else if (key2 === "heat")
+              this.emission[key][key1][key2] = this.heatSource.active;
+            else if (key2 === "co2")
+              this.emission[key][key1][key2] = this.co2Source.active;
+          }
+        }
+      }
     }
   }
 };

@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.PCAT.methane.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.PCAT.methane.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -87,7 +87,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="Electricity" label-width="85px">
-            <el-select v-model="electricitySource.active" disabled>
+            <el-select v-model="emission.PCAT.methanol.electricity">
               <el-option
                 v-for="item in electricitySource.list"
                 :key="item"
@@ -111,7 +111,7 @@
         </div>
         <div class="col-md-6">
           <el-form-item label="CO2 Source" label-width="85px">
-            <el-select v-model="co2Source.active" disabled>
+            <el-select v-model="emission.PCAT.methanol.co2">
               <el-option v-for="item in co2Source.list" :key="item" :label="item" :value="item"></el-option>
             </el-select>
           </el-form-item>
@@ -126,7 +126,8 @@ import { Event } from "@/event-bus";
 
 export default {
   computed: {
-    ...mapState("pathways", ["reductionLight"]),
+    ...mapState(["pathways"]),
+    ...mapState(["emissionFactors"]),
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
@@ -148,14 +149,29 @@ export default {
         this.update(val);
       },
       deep: true
+    },
+    emission: {
+      handler(val) {
+        this.$store
+          .dispatch("emissionFactors/updateReductionLight", val)
+          .then(() => {
+            Event.$emit("calculcate");
+          });
+      },
+      deep: true
     }
   },
   created() {
-    this.forms.PCAT = this.reductionLight.PCAT;
+    this.forms.PCAT = this.pathways.reductionLight.PCAT;
+    this.emission.PCAT = this.emissionFactors.reductionLight.PCAT;
+    this.defaultEmissionFactors();
   },
   data() {
     return {
       forms: {
+        PCAT: {}
+      },
+      emission: {
         PCAT: {}
       }
     };
@@ -176,11 +192,27 @@ export default {
     },
     reset() {
       this.$store.dispatch("pathways/resetReductionLight").then(() => {
-        this.forms.PCAT = this.reductionLight.PCAT;
+        this.forms.PCAT = this.pathways.reductionLight.PCAT;
       });
+      this.defaultEmissionFactors();
     },
     import() {
-      this.forms.PCAT = this.reductionLight.PCAT;
+      this.forms.PCAT = this.pathways.reductionLight.PCAT;
+      this.emission.PCAT = this.emissionFactors.reductionLight.PCAT;
+    },
+    defaultEmissionFactors() {
+      for (let [key, value] of Object.entries(this.emission)) {
+        for (let [key1, value1] of Object.entries(value)) {
+          for (let [key2, value2] of Object.entries(value1)) {
+            if (key2 === "electricity")
+              this.emission[key][key1][key2] = this.electricitySource.active;
+            else if (key2 === "heat")
+              this.emission[key][key1][key2] = this.heatSource.active;
+            else if (key2 === "co2")
+              this.emission[key][key1][key2] = this.co2Source.active;
+          }
+        }
+      }
     }
   }
 };
