@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="SOEC-CO - Syngas" name="first">
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name">
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Sub-Pathway: SOEC-CO</b>
+              <b>Sub-Pathway: {{ item.title }}</b>
             </span>
           </div>
         </div>
@@ -13,177 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Product: Syngas</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-CO - Methane" name="second">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-CO</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methane</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-CO - Methanol" name="third">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-CO</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methanol</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-CO - Diesel" name="fourth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-CO</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Diesel</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-CO - Ethanol" name="fifth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-CO</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Ethanol</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-EL - Methane" name="sixth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-EL</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methane</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-EL - Methanol" name="seventh">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-EL</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methanol</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="SOEC-EL - Diesel" name="eighth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: SOEC-EL</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Diesel</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="PEM - Methane" name="ninth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: PEM</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methane</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="PEM - Methanol" name="tenth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: PEM</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methanol</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="PEM - Diesel" name="eleventh">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: PEM</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Diesel</b>
+              <b>Product: {{ item.product }}</b>
             </span>
           </div>
         </div>
@@ -211,6 +41,7 @@
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
 import CalculationTable from "@/components/Tables/CalculationTable.vue";
+import { electricityItems } from "./items";
 
 export default {
   components: {
@@ -293,6 +124,7 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "SOEC-CO - Syngas",
+      items: electricityItems,
       subPathways: [],
       summary: []
     };

@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="P-DE" name="first">
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name">
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Sub-Pathway: Photobioreactor Dry-Extraction</b>
+              <b>Sub-Pathway: {{ item.title }}</b>
             </span>
           </div>
         </div>
@@ -13,37 +13,12 @@
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Product: Diesel</b>
+              <b>Product: {{ item.product }}</b>
             </span>
           </div>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="P-WE" name="second">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: Pond Wet Extraction</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Diesel</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="Summary" name="third">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Summary</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
+      <el-tab-pane label="Summary" name="third"></el-tab-pane>
     </el-tabs>
     <br />
     <calculation-table
@@ -58,6 +33,7 @@
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
 import CalculationTable from "@/components/Tables/CalculationTable.vue";
+import { bioconversionItems } from "./items";
 
 export default {
   components: {
@@ -125,6 +101,7 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "P-DE",
+      items: bioconversionItems,
       subPathways: [],
       summary: []
     };

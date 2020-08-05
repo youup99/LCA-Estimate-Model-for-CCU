@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="D-H2 - Diesel" name="first">
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name">
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Sub-Pathway: D-H2</b>
+              <b>Sub-Pathway: {{ item.title }}</b>
             </span>
           </div>
         </div>
@@ -13,41 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Product: Diesel</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="D-H2 - Methane" name="second">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: D-H2</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methane</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="D-H2 - Methanol" name="third">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: D-H2</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methanol</b>
+              <b>Product: {{ item.product }}</b>
             </span>
           </div>
         </div>
@@ -75,6 +41,7 @@
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
 import CalculationTable from "@/components/Tables/CalculationTable.vue";
+import { hydrogenItems } from "./items";
 
 export default {
   components: {
@@ -151,6 +118,7 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "D-H2 - Diesel",
+      items: hydrogenItems,
       subPathways: [],
       summary: []
     };

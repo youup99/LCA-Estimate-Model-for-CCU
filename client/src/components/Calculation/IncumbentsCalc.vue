@@ -1,42 +1,7 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="Diesel" name="first">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Diesel</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="Ethanol" name="second">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Ethanol</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="Methane" name="third">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methane</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="Methanol" name="fourth">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Methanol</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name"></el-tab-pane>
     </el-tabs>
     <br />
     <el-table
@@ -63,6 +28,7 @@
 <script>
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
+import { incumbentItems } from "./items";
 
 export default {
   computed: {
@@ -133,6 +99,7 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "Diesel",
+      items: incumbentItems,
       products: [],
       summary: []
     };
