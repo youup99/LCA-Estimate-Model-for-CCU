@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="DMC-W" name="first">
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name">
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Sub-Pathway: DMC-W</b>
+              <b>Sub-Pathway: {{ item.title }}</b>
             </span>
           </div>
         </div>
@@ -13,41 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <span>
-              <b>Product: Calcite</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="WMC" name="second">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: WMC</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: CWM</b>
-            </span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="DMC-O" name="third">
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Sub-Pathway: DMC-O</b>
-            </span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span>
-              <b>Product: Magnesite</b>
+              <b>Product: {{ item.product }}</b>
             </span>
           </div>
         </div>
@@ -75,6 +41,7 @@
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
 import CalculationTable from "@/components/Tables/CalculationTable.vue";
+import { mineralizationItems } from "./items";
 
 export default {
   components: {
@@ -138,6 +105,7 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "DMC-W",
+      items: mineralizationItems,
       subPathways: [],
       summary: []
     };

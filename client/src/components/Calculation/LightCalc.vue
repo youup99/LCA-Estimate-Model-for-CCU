@@ -1,36 +1,29 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="P.CAT - Methane" name="first">
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: P.CAT</b></span>
+            <span>
+              <b>Sub-Pathway: {{ item.title }}</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methane</b></span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="P.CAT - Methanol" name="second"
-        ><div class="row">
-          <div class="col-md-12">
-            <span><b>Sub-Pathway: P.CAT</b></span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: {{ item.product }}</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Summary" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Summary</b></span>
+            <span>
+              <b>Summary</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -48,28 +41,29 @@
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
 import CalculationTable from "@/components/Tables/CalculationTable.vue";
+import { lightItems } from "./items";
 
 export default {
   components: {
-    CalculationTable,
+    CalculationTable
   },
   computed: {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
     ...mapState("literature", ["reductionLightLit"]),
     ...mapState("pathways", ["reductionLight"]),
     ...mapState("incumbents", ["Diesel", "Ethanol", "Methane", "Methanol"]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -77,25 +71,25 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
@@ -110,7 +104,7 @@ export default {
     },
     naturalGas: function() {
       return this.energyUnitConversions.LHV.naturalGas;
-    },
+    }
   },
   mounted() {
     Event.$on("incumbentReady", () => {
@@ -121,8 +115,9 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "P.CAT - Methane",
+      items: lightItems,
       subPathways: [],
-      summary: [],
+      summary: []
     };
   },
   methods: {
@@ -131,18 +126,18 @@ export default {
       this.subPathways.push(
         {
           name: "P.CAT - Methane",
-          value: this.getMethane(),
+          value: this.getMethane()
         },
         {
           name: "P.CAT - Methanol",
-          value: this.getMethanol(),
-        },
+          value: this.getMethanol()
+        }
       );
       this.summary = this.getSummary();
       this.$store
         .dispatch("pathwayCalc/updateReductionLight", {
           subPathways: this.subPathways,
-          summary: this.summary,
+          summary: this.summary
         })
         .then(() => {
           Event.$emit("summary", "reductionLight");
@@ -170,7 +165,7 @@ export default {
         activeUnit: "kg CO2conv/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methanol - CO2 Unconverted
@@ -184,7 +179,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2 unconv/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2 unconv/kg Methanol",
+        activeUnit: "kg CO2 unconv/kg Methanol"
       };
 
       // P.CAT - Methanol - CO2 Captured Process
@@ -204,7 +199,7 @@ export default {
         activeUnit: "kg CO2eq/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methanol - Electricity
@@ -218,7 +213,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Methanol",
+        activeUnit: "kWh/kg Methanol"
       };
 
       // P.CAT - Methanol - Natural Gas
@@ -232,7 +227,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "MJ/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "MJ/kg Methanol",
+        activeUnit: "MJ/kg Methanol"
       };
 
       // P.CAT - Methanol - Hard Coal
@@ -246,7 +241,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "MJ Hard Coal/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "MJ Hard Coal/kg Methanol",
+        activeUnit: "MJ Hard Coal/kg Methanol"
       };
 
       // P.CAT - Methanol - Oil
@@ -260,7 +255,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "MJ Oil/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "MJ Oil/kg Methanol",
+        activeUnit: "MJ Oil/kg Methanol"
       };
 
       // P.CAT - Methanol - N2O Emitted
@@ -274,7 +269,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg N₂O/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg N₂O/kg Methanol",
+        activeUnit: "kg N₂O/kg Methanol"
       };
 
       // P.CAT - Methanol - Methane Emitted
@@ -288,7 +283,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg Methane/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg Methane/kg Methanol",
+        activeUnit: "kg Methane/kg Methanol"
       };
 
       // P.CAT - Methanol - CO2 Emitted
@@ -302,7 +297,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Methanol",
+        activeUnit: "kg CO2/kg Methanol"
       };
 
       // P.CAT - Methanol - Total
@@ -334,7 +329,7 @@ export default {
         activeUnit: "kg CO2eq/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methanol - End Use
@@ -355,7 +350,7 @@ export default {
         activeUnit: "kg CO2eq/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methanol - Net
@@ -372,7 +367,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -391,7 +386,7 @@ export default {
         {},
         data11,
         {},
-        data12,
+        data12
       ];
     },
     getMethane() {
@@ -412,7 +407,7 @@ export default {
         activeUnit: "kg CO2conv/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methane - CO2 Unconverted
@@ -426,7 +421,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2 unconv/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2 unconv/kg Methane",
+        activeUnit: "kg CO2 unconv/kg Methane"
       };
 
       // P.CAT - Methane - CO2 Captured Process
@@ -446,7 +441,7 @@ export default {
         activeUnit: "kg CO2eq/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methane - Electricity
@@ -460,7 +455,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kWh/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kWh/kg Methane",
+        activeUnit: "kWh/kg Methane"
       };
 
       // P.CAT - Methane - Natural Gas
@@ -474,7 +469,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "MJ/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "MJ/kg Methane",
+        activeUnit: "MJ/kg Methane"
       };
 
       // P.CAT - Methane - Hard Coal and Oil
@@ -488,7 +483,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "MJ Hard Coal/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "MJ Hard Coal/kg Methane",
+        activeUnit: "MJ Hard Coal/kg Methane"
       };
 
       // P.CAT - Methane - Oil
@@ -502,7 +497,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "MJ Oil/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "MJ Oil/kg Methane",
+        activeUnit: "MJ Oil/kg Methane"
       };
 
       // P.CAT - Methane - N2O Emitted
@@ -516,7 +511,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg N₂O/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg N₂O/kg Methane",
+        activeUnit: "kg N₂O/kg Methane"
       };
 
       // P.CAT - Methane - Methane Emitted
@@ -530,7 +525,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg Methane/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg Methane/kg Methane",
+        activeUnit: "kg Methane/kg Methane"
       };
 
       // P.CAT - Methane - CO2 Emitted
@@ -544,7 +539,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Methane",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Methane",
+        activeUnit: "kg CO2/kg Methane"
       };
 
       // P.CAT - Methane - Total
@@ -576,7 +571,7 @@ export default {
         activeUnit: "kg CO2eq/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methane - End Use
@@ -596,7 +591,7 @@ export default {
         activeUnit: "kg CO2eq/kg Methane",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // P.CAT - Methane - Net
@@ -613,7 +608,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -632,15 +627,15 @@ export default {
         {},
         data11,
         {},
-        data12,
+        data12
       ];
     },
     getSummary() {
       // P.CAT - Methane
       var literatureValues = {
         lit1: 0
-      }
-      if(this.defaultEmission.electricity.active === "Natural gas"){
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
         literatureValues.lit1 = this.reductionLightLit.PCAT.methane.conversion.baseline;
       }
       var avoidedEmission =
@@ -665,14 +660,14 @@ export default {
         endUse2: this.subPathways[0].value[13].emission,
         net2: this.subPathways[0].value[15].emission,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // P.CAT - Methanol
       var literatureValues = {
         lit1: 0
-      }
-      if(this.defaultEmission.electricity.active === "Natural gas"){
+      };
+      if (this.defaultEmission.electricity.active === "Natural gas") {
         literatureValues.lit1 = this.reductionLightLit.PCAT.methanol.conversion.baseline;
       }
       var avoidedEmission =
@@ -697,11 +692,11 @@ export default {
         endUse2: this.subPathways[1].value[13].emission,
         net2: this.subPathways[1].value[15].emission,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       return [data0, data1];
-    },
-  },
+    }
+  }
 };
 </script>

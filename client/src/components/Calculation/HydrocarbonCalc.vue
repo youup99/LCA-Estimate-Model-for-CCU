@@ -1,36 +1,29 @@
 <template>
   <div>
     <el-tabs v-model="activeTabName" @tab-click="handleClick" type="card">
-      <el-tab-pane label="DMR-CO - Methanol" name="first"
-        ><div class="row">
+      <el-tab-pane v-for="item in items" :key="item.name" :label="item.label" :name="item.name">
+        <div class="row">
           <div class="col-md-12">
-            <span><b>Sub-Pathway: DMR-CO</b></span>
+            <span>
+              <b>Sub-Pathway: {{ item.title }}</b>
+            </span>
           </div>
         </div>
         <br />
         <div class="row">
           <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
-          </div>
-        </div>
-      </el-tab-pane>
-      <el-tab-pane label="DMR-H2 - Methanol" name="second">
-        <div class="row">
-          <div class="col-md-12">
-            <span><b>Sub-Pathway: DMR-H2</b></span>
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <span><b>Product: Methanol</b></span>
+            <span>
+              <b>Product: {{ item.product }}</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
       <el-tab-pane label="Summary" name="third">
         <div class="row">
           <div class="col-md-12">
-            <span><b>Summary</b></span>
+            <span>
+              <b>Summary</b>
+            </span>
           </div>
         </div>
       </el-tab-pane>
@@ -48,27 +41,28 @@
 import { mapState } from "vuex";
 import { Event } from "@/event-bus";
 import CalculationTable from "@/components/Tables/CalculationTable.vue";
+import { hydrocarbonItems } from "./items";
 
 export default {
   components: {
-    CalculationTable,
+    CalculationTable
   },
   computed: {
     ...mapState("generalAssumptions", [
       "defaultEmission",
       "customEmission",
-      "showAdditional",
+      "showAdditional"
     ]),
     ...mapState("constants", [
       "emissionFactors",
       "energyUnitConversions",
       "constants",
-      "processCorrelations",
+      "processCorrelations"
     ]),
     ...mapState("pathways", ["reductionHydrocarbon"]),
     ...mapState("incumbents", ["Diesel", "Ethanol", "Methane", "Methanol"]),
     electricity: function() {
-      if(this.customEmission.electricity.use == true){
+      if (this.customEmission.electricity.use == true) {
         return this.customEmission.electricity.value;
       }
       return this.defaultEmission.electricity[
@@ -76,25 +70,25 @@ export default {
       ];
     },
     co2: function() {
-      if(this.customEmission.co2.use == true){
+      if (this.customEmission.co2.use == true) {
         return this.customEmission.co2.value;
       }
       return this.defaultEmission.co2[this.defaultEmission.co2.active];
     },
     heat: function() {
-      if(this.customEmission.heat.use == true){
+      if (this.customEmission.heat.use == true) {
         return this.customEmission.heat.value;
       }
       return this.defaultEmission.heat[this.defaultEmission.heat.active];
     },
     steam: function() {
-      if(this.customEmission.steam.use == true){
+      if (this.customEmission.steam.use == true) {
         return this.customEmission.steam.value;
       }
       return this.defaultEmission.steam[this.defaultEmission.steam.active];
     },
     hydrogen: function() {
-      if(this.customEmission.hydrogen.use == true){
+      if (this.customEmission.hydrogen.use == true) {
         return this.customEmission.hydrogen.value;
       }
       return this.defaultEmission.hydrogen[
@@ -109,7 +103,7 @@ export default {
     },
     naturalGas: function() {
       return this.energyUnitConversions.LHV.naturalGas;
-    },
+    }
   },
   mounted() {
     Event.$on("incumbentReady", () => {
@@ -120,28 +114,29 @@ export default {
     return {
       activeTabName: "first",
       activeTabLabel: "DMR-CO - Methanol",
+      items: hydrocarbonItems,
       subPathways: [],
-      summary: [],
+      summary: []
     };
   },
   methods: {
-    calculate(){
+    calculate() {
       this.subPathways = [];
       this.subPathways.push(
         {
           name: "DMR-CO - Methanol",
-          value: this.getMethanol(),
+          value: this.getMethanol()
         },
         {
           name: "DMR-H2 - Methanol",
-          value: this.getMethanol1(),
+          value: this.getMethanol1()
         }
       );
       this.summary = this.getSummary();
       this.$store
         .dispatch("pathwayCalc/updateReductionHydrocarbon", {
           subPathways: this.subPathways,
-          summary: this.summary,
+          summary: this.summary
         })
         .then(() => {
           Event.$emit("summary", "reductionHydrocarbon");
@@ -169,7 +164,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-CO - Methanol - CO2 Unconverted
@@ -183,7 +178,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Methanol",
+        activeUnit: "kg CO2/kg Methanol"
       };
 
       // DMR-CO - Methanol - CO2 Capture Process
@@ -203,7 +198,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-CO - Methanol - Methane Input
@@ -220,7 +215,7 @@ export default {
         intermediateUnit: "kg H₂/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kg H₂/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-CO - Methanol - CO Emitted
@@ -236,7 +231,7 @@ export default {
         intermediateUnit: "kg CO/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kg CO/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-CO - Methanol - Thermal Consumption
@@ -252,7 +247,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-CO - Methanol - Electricity
@@ -268,7 +263,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-CO - Methanol - Total
@@ -284,7 +279,7 @@ export default {
         item: "Total",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-CO - Methanol - End Use
@@ -305,7 +300,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-CO - Methanol - Net
@@ -322,7 +317,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -338,7 +333,7 @@ export default {
         {},
         data8,
         {},
-        data9,
+        data9
       ];
     },
     getMethanol1() {
@@ -359,7 +354,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-H2 - Methanol - CO2 Unconverted
@@ -373,7 +368,7 @@ export default {
         intermediateAmount: intermediateAmount,
         intermediateUnit: "kg CO2/kg Methanol",
         activeAmount: activeAmount,
-        activeUnit: "kg CO2/kg Methanol",
+        activeUnit: "kg CO2/kg Methanol"
       };
 
       // DMR-H2 - Methanol - CO2 Capture Process
@@ -393,7 +388,7 @@ export default {
         activeUnit: "kg CO2/kg CO2 captured",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-H2 - Methanol - H2 Amount
@@ -409,7 +404,7 @@ export default {
         intermediateUnit: "kg H₂/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kg H₂/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-H2 - Methanol - Methane Input
@@ -426,7 +421,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-H2 - Methanol - Thermal Consumption
@@ -442,7 +437,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-H2 - Methanol - Electricity
@@ -458,7 +453,7 @@ export default {
         intermediateUnit: "kWh/kg Methanol",
         activeAmount: activeAmount,
         activeUnit: "kWh/kg Methanol",
-        emission: emission,
+        emission: emission
       };
 
       // DMR-H2 - Methanol - Total
@@ -474,7 +469,7 @@ export default {
         item: "Total",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-H2 - Methanol - End Use
@@ -495,7 +490,7 @@ export default {
         activeUnit: "kg CO2/kg Methanol",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       // DMR-H2 - Methanol - Net
@@ -512,7 +507,7 @@ export default {
         item: "Net",
         emission: emission,
         converted: converted,
-        converted2: converted2,
+        converted2: converted2
       };
 
       return [
@@ -528,7 +523,7 @@ export default {
         {},
         data8,
         {},
-        data9,
+        data9
       ];
     },
     getSummary() {
@@ -558,7 +553,7 @@ export default {
         net2: this.subPathways[0].value[12].emission,
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       // DMR-H2 - Methanol
@@ -587,11 +582,11 @@ export default {
         net2: this.subPathways[1].value[12].emission,
         avoidedEmission2: avoidedEmission2,
         avoidedEmission: avoidedEmission,
-        globalEmissionReductionPotential: gerp,
+        globalEmissionReductionPotential: gerp
       };
 
       return [data0, data1];
-    },
-  },
+    }
+  }
 };
 </script>
