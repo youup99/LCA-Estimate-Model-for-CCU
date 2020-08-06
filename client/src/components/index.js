@@ -26,4 +26,3 @@ export {
   Figure4Chart,
   FileImportModal
 };
-//test Github
