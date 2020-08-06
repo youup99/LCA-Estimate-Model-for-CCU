@@ -38,6 +38,7 @@ export function exportGeneralAssumptions(evt) {
     result.forEach((value, index) => {
       output[generalAssumptionNames[index]] = value;
     });
+
   };
   reader.readAsArrayBuffer(file);
   return output;

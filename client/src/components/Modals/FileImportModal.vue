@@ -11,13 +11,7 @@
 <script>
 import { Event } from "@/event-bus";
 import {
-  // exportGeneralAssumptions,
-  // exportMineralization,
-  // exportBioconversion,
-  // exportReductionElectricity,
-  // exportReductionHydrocarbon,
-  // exportReductionLight,
-  // exportReductionHydrogen
+  exportGeneralAssumptions,
   exportPathways
 } from "@/excel/excelImport";
 import { mapState } from "vuex";
@@ -42,13 +36,7 @@ export default {
     return {
       modalVisible: false,
       importedPathways: {},
-      importedGeneralAssumptions: {},
-      importedMineralization: {},
-      importedBioconversion: {},
-      importedReductionElectricity: {},
-      importedReductionHydrocarbon: {},
-      importedReductionLight: {},
-      importedReductionHydrogen: {}
+      importedGeneralAssumptions: {}
     };
   },
   mounted() {
@@ -59,6 +47,7 @@ export default {
   methods: {
     previewFiles(evt) {
       this.importedPathways = exportPathways(evt);
+      this.importedGeneralAssumptions = exportGeneralAssumptions(evt);
     },
     submitUpload() {
       this.updateGeneralAssumptions();
