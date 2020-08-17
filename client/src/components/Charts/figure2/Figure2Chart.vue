@@ -261,6 +261,10 @@ export default {
             categories: ["P.CAT"]
           },
           {
+            name: "Pathway Test",
+            categories: ["DMR-CO", "DMR-H2"]
+          },
+          {
             name: "Incumbent"
           }
         ];

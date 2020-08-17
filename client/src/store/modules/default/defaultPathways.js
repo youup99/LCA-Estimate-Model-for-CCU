@@ -106,5 +106,22 @@ export const defaultPathways = {
         methane: 0.332496413199426
       }
     }
+  },
+  pathwayTest: {
+    subpathway1: {
+      methanol: {
+        electricity: 0.203952143533123,
+        heat: 4.62890310725552,
+        methane: 0.731072555205047
+      }
+    },
+    subpathway2: {
+      methanol: {
+        electricity: 0.291029246054519,
+        heat: 3.43137529411765,
+        h2: 0.0911047345767575,
+        methane: 0.332496413199426
+      }
+    }
   }
 };

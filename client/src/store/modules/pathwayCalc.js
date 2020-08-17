@@ -4,7 +4,8 @@ const state = {
   reductionLight: {},
   reductionHydrogen: {},
   reductionElectricity: {},
-  reductionHydrocarbon: {}
+  reductionHydrocarbon: {},
+  pathwayTest: {},
 };
 
 const getters = {
@@ -31,7 +32,10 @@ const actions = {
   },
   updateReductionHydrocarbon({ commit, dispatch }, newValue) {
     commit("updateReductionHydrocarbon", newValue);
-  }
+  },
+  updatePathwayTest({ commit, dispatch }, newValue) {
+    commit("updatePathwayTest", newValue);
+  },
 };
 
 const mutations = {
@@ -52,17 +56,20 @@ const mutations = {
   },
   updateReductionHydrocarbon(state, newValue) {
     state.reductionHydrocarbon = newValue;
-  }
+  },
+  updatePathwayTest(state, newValue) {
+    state.pathwayTest = newValue;
+  },
 };
 
 export default {
   namespaced: true,
-  firestorePath: 'userDocs/{userId}/store/pathwayCalc',
-  firestoreRefType: 'doc', // or 'doc'
-  moduleName: 'pathwayCalc',
-  statePropName: '',
+  firestorePath: "userDocs/{userId}/store/pathwayCalc",
+  firestoreRefType: "doc", // or 'doc'
+  moduleName: "pathwayCalc",
+  statePropName: "",
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };

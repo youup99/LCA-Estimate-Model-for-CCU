@@ -172,3 +172,18 @@ export const mineralizationItems = [
     product: "Magnesite",
   },
 ];
+
+export const pathwayTestItems = [
+  {
+    name: "first",
+    label: "Sub-pathway 1 - Methanol",
+    title: "Sub-pathway 1",
+    product: "Methanol",
+  },
+  {
+    name: "second",
+    label: "Sub-pathway 2 - Methanol",
+    title: "Sub-pathway 2",
+    product: "Methanol",
+  },
+];

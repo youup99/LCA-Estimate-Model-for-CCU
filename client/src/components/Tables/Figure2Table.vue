@@ -38,7 +38,8 @@ export default {
       "reductionLight",
       "reductionHydrogen",
       "reductionElectricity",
-      "reductionHydrocarbon"
+      "reductionHydrocarbon",
+      "pathwayTest"
     ]),
     ...mapState("incumbents", ["Summary"]),
     ...mapState("constants", ["emissionFactors"])
@@ -52,7 +53,7 @@ export default {
     return {
       summary: [],
       temp: [],
-      ready: new Array(6).fill(false)
+      ready: new Array(7).fill(false)
     };
   },
   methods: {
@@ -69,6 +70,8 @@ export default {
         this.ready[4] = true;
       } else if (pathway === "bioconversion") {
         this.ready[5] = true;
+      } else if (pathway === "pathwayTest") {
+        this.ready[6] = true;
       }
 
       // Calculate when all the pathways are ready
@@ -79,6 +82,7 @@ export default {
         this.getReductionHydrogen();
         this.getReductionLight();
         this.getBioconversion();
+        this.getPathwayTest();
         this.getIncumbents();
 
         this.$store.dispatch("summary/updateFigure2", this.temp).then(() => {
@@ -252,6 +256,33 @@ export default {
           co2ConversionProcess2,
           endUse2,
           net2
+        }))(value);
+        this.temp.push(subset);
+      });
+    },
+    getPathwayTest() {
+      var _pathwayTest = this.pathwayTest.summary;
+      _pathwayTest.forEach(value => {
+        var subset = (({
+          category,
+          subCategory,
+          product,
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2,
+        }) => ({
+          category,
+          subCategory,
+          product,
+          co2Converted2,
+          co2CaptureProcess2,
+          electrolysis2,
+          co2ConversionProcess2,
+          endUse2,
+          net2,
         }))(value);
         this.temp.push(subset);
       });

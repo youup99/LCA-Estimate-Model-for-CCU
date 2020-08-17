@@ -21,7 +21,10 @@
       <el-tab-pane label="CO2 Reduction by Hydrocarbon" name="sixth">
         <hydrocarbon-calc></hydrocarbon-calc>
       </el-tab-pane>
-      <el-tab-pane label="Incumbents" name="seventh">
+      <el-tab-pane label="Pathway Test" name="seventh">
+        <pathway-test-calc></pathway-test-calc>
+      </el-tab-pane>
+      <el-tab-pane label="Incumbents" name="eight">
         <incumbents-calc></incumbents-calc>
       </el-tab-pane>
     </el-tabs>
@@ -36,6 +39,7 @@ import HydrogenCalc from "@/components/Calculation/HydrogenCalc.vue";
 import ElectricityCalc from "@/components/Calculation/ElectricityCalc.vue";
 import HydrocarbonCalc from "@/components/Calculation/HydrocarbonCalc.vue";
 import ActiveTable from "@/components/Tables/ActiveTable";
+import PathwayTestCalc from "@/components/Calculation/PathwayTestCalc.vue";
 
 import { Event } from "@/event-bus";
 import { mapState } from "vuex";
@@ -50,7 +54,8 @@ export default {
     LightCalc,
     HydrogenCalc,
     ElectricityCalc,
-    HydrocarbonCalc
+    HydrocarbonCalc,
+    PathwayTestCalc
   },
   computed: {
     ...mapState("pathwayCalc", [
@@ -59,7 +64,8 @@ export default {
       "reductionElectricity",
       "reductionHydrocarbon",
       "reductionHydrogen",
-      "reductionLight"
+      "reductionLight",
+      "pathwayTest"
     ])
   },
   mounted() {

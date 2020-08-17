@@ -25,7 +25,8 @@ export default {
       "reductionLight",
       "reductionHydrogen",
       "reductionElectricity",
-      "reductionHydrocarbon"
+      "reductionHydrocarbon",
+      "pathwayTest"
     ])
   },
   mounted() {
@@ -37,7 +38,7 @@ export default {
     return {
       summary: [],
       temp: [],
-      ready: new Array(6).fill(false)
+      ready: new Array(7).fill(false)
     };
   },
   methods: {
@@ -54,6 +55,8 @@ export default {
         this.ready[4] = true;
       } else if (pathway === "bioconversion") {
         this.ready[5] = true;
+      } else if (pathway === "pathwayTest"){
+        this.ready[6] = true;
       }
 
       // Calculate when all the pathways are ready
@@ -64,6 +67,7 @@ export default {
         this.getReductionHydrogen();
         this.getReductionLight();
         this.getBioconversion();
+        this.getPathwayTest();
 
         this.$store.dispatch("summary/updateFigure3", this.temp).then(() => {
           Event.$emit("ready");
@@ -179,7 +183,24 @@ export default {
         }))(value);
         this.temp.push(subset);
       });
-    }
+    },
+    getPathwayTest() {
+      var _pathwayTest = this.pathwayTest.summary;
+      _pathwayTest.forEach(value => {
+        var subset = (({
+          category,
+          subCategory,
+          product,
+          avoidedEmission
+        }) => ({
+          category,
+          subCategory,
+          product,
+          avoidedEmission
+        }))(value);
+        this.temp.push(subset);
+      });
+    },
   }
 };
 </script>

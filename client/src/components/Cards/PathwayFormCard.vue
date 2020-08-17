@@ -34,6 +34,9 @@
       <el-tab-pane label="CO2 Reduction by Hydrogen" name="reductionHydrogen">
         <reduction-hydrogen-form ref="reductionHydrogen"></reduction-hydrogen-form>
       </el-tab-pane>
+      <el-tab-pane label="Pathway Test" name="pathwayTest">
+        <pathway-test-form ref="pathwayTest"></pathway-test-form>
+      </el-tab-pane>
     </el-tabs>
   </el-card>
 </template>
@@ -44,6 +47,7 @@ import ReductionElectricityForm from "@/components/Forms/ReductionElectricityFor
 import ReductionHydrocarbonForm from "@/components/Forms/ReductionHydrocarbonForm.vue";
 import ReductionLightForm from "@/components/Forms/ReductionLightForm.vue";
 import ReductionHydrogenForm from "@/components/Forms/ReductionHydrogenForm.vue";
+import PathwayTestForm from "@/components/Forms/PathwayTestForm.vue";
 
 import { Event } from "@/event-bus";
 
@@ -54,14 +58,15 @@ export default {
     ReductionElectricityForm,
     ReductionHydrocarbonForm,
     ReductionLightForm,
-    ReductionHydrogenForm
+    ReductionHydrogenForm,
+    PathwayTestForm
   },
   mounted() {
     Event.$on("importReady", () => {
       var pathways = Object.keys(this.$refs);
-      pathways.forEach((value) => {
+      pathways.forEach(value => {
         this.$refs[value].import();
-      })
+      });
     });
   },
   data() {

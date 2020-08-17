@@ -109,6 +109,19 @@ export const firstChartSettings = {
           },
         ],
       },
+      {
+        name: "Pathway Test",
+        categories: [
+          {
+            name: "DMR-CO",
+            categories: ["Methanol"],
+          },
+          {
+            name: "DMR-H2",
+            categories: ["Methanol"],
+          },
+        ],
+      },
     ],
   },
   yAxis: {

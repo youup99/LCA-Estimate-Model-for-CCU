@@ -30,6 +30,9 @@ const actions = {
   updateReductionHydrocarbon({ commit, dispatch }, newValue) {
     commit("updateReductionHydrocarbon", newValue);
   },
+  updatePathwayTest({ commit, dispatch }, newValue) {
+    commit("updatePathwayTest", newValue);
+  },
   resetMineralization({ commit, dispatch }) {
     commit("resetMineralization");
   },
@@ -47,6 +50,9 @@ const actions = {
   },
   resetReductionHydrocarbon({ commit, dispatch }) {
     commit("resetReductionHydrocarbon");
+  },
+  resetPathwayTest({ commit, dispatch }) {
+    commit("resetPathwayTest");
   },
 };
 
@@ -71,6 +77,9 @@ const mutations = {
   },
   updateReductionHydrocarbon(state, newValue) {
     Object.assign(state.reductionHydrocarbon, newValue);
+  },
+  updatePathwayTest(state, newValue) {
+    Object.assign(state.pathwayTest, newValue);
   },
   resetMineralization(state) {
     Object.assign(
@@ -106,6 +115,12 @@ const mutations = {
     Object.assign(
       state.reductionHydrocarbon,
       JSON.parse(JSON.stringify(defaultPathways.reductionHydrocarbon))
+    );
+  },
+  resetPathwayTest(state) {
+    Object.assign(
+      state.pathwayTest,
+      JSON.parse(JSON.stringify(defaultPathways.pathwayTest))
     );
   },
 };
